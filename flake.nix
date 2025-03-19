@@ -9,10 +9,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # stylix.url = "github:danth/stylix";
+    stylix.url = "github:danth/stylix";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, stylix }:
   {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#EPGETBIW0286
@@ -20,7 +20,7 @@
       modules = [ 
         ./configuration.nix
         home-manager.darwinModules.home-manager
-        # stylix.darwinModules.stylix
+        stylix.darwinModules.stylix
       ];
     };
   };

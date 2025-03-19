@@ -126,8 +126,8 @@
       end
 
       # Pyenv initialization
-      pyenv init - | source
-      pyenv virtualenv-init - | source
+      # pyenv init - | source
+      # pyenv virtualenv-init - | source
 
       # UV shell completion
       uv generate-shell-completion fish | source

@@ -168,6 +168,12 @@
       "zsh-autocomplete"
       "zsh-history-substring-search"
       "zsh-syntax-highlighting"
+
+      # other
+      "chafa" "libsixel" "spdlog" "tbb"
+      "cfitsio" "cgif" "libaec" "hdf5" "libmatio"
+      "libspng" "uthash" "libdicom" "libxml2"
+      "openslide" "vips"
     ];
     # Add casks (macOS applications)
     casks = [
