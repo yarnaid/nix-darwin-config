@@ -135,6 +135,9 @@
 
       # Set PAGER from .profile
       set -gx PAGER bat
+      # Add nix-darwin binary path
+      fish_add_path /run/current-system/sw/bin
+
     '';
 
     plugins = [
@@ -198,7 +201,7 @@
           owner = "patrickf1";
           repo = "colored_man_pages.fish";
           rev = "master";
-          sha256 = "sha256-VC8LMjwIvF6oG8ZVtFQvo2mGdyAzQyluAGBoK8N2/QM=";
+          sha256 = "sha256-ii9gdBPlC1/P1N9xJzqomrkyDqIdTg+iCg0mwNVq2EU=";
         };
       }
       {

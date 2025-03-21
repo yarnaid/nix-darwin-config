@@ -28,9 +28,13 @@
         name = "sketchybar";
         start_service = true;
       }
+      "bgrep"
       "broot"
+      "gnu-sed"
       "btop"
       "chezmoi"
+      "hidapi"
+      "make"
       "cmake"
       "coreutils"
       "curl"
@@ -177,7 +181,12 @@
     ];
     # Add casks (macOS applications)
     casks = [
+      "affinity-designer"
+      "affinity-photo"
+      "affinity-publisher"
       "balenaetcher"
+      "setapp"
+      "folx"
       "batfi"
       "busycal"
       "calibre"
@@ -203,7 +212,6 @@
       "qlcolorcode"
       "qlmarkdown"
       "qlstephen"
-      "qlvideo"
       "quicklook-json"
       "quicklookase"
       "send-to-kindle"
