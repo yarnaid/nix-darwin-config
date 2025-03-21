@@ -89,6 +89,7 @@
     enable = true;
     
     interactiveShellInit = ''
+      fish_add_path /run/current-system/sw/bin
       # Set environment variables
       set -gx EDITOR nvim
       set -gx LANG en_US.UTF-8
@@ -136,7 +137,6 @@
       # Set PAGER from .profile
       set -gx PAGER bat
       # Add nix-darwin binary path
-      fish_add_path /run/current-system/sw/bin
 
     '';
 
