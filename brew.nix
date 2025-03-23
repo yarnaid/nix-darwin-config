@@ -178,6 +178,7 @@
     # Add casks (macOS applications)
     casks = [
       "balenaetcher"
+      "fsmonitor"
       "batfi"
       "busycal"
       "calibre"
