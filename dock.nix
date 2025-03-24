@@ -8,7 +8,7 @@
       { app = "/Applications/Microsoft Outlook.app"; }
       { app = "/Applications/Setapp/Spark Mail.app"; }
       { app = "/Applications/Telegram.app"; }
-      { app = "/Applications/Microsoft Teams (work or school).app"; }
+      { app = "/Applications/Microsoft Teams.app"; }
       { spacer = { small = true; }; }
       { app = "/Applications/Windows App.app"; }
       { app = "/Applications/WezTerm.app"; }
