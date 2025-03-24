@@ -134,6 +134,7 @@
       "pyright"
       "python-lsp-server"
       "python-setuptools"
+      "pyenv"
       "ranger"
       "ripgrep"
       "ripgrep-all"
