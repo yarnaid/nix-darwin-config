@@ -31,9 +31,16 @@
 
   # System-wide shell aliases
   environment.shellAliases = {
+    # git related
+    g = "git";
+    gs = "git status";
+    gp = "git push";
+    gl = "git pull";
+
+
     # Vim related
     vim = "nvim";
-    v = "vim";
+    v = "nvim";
 
     # File listing
     ls =
@@ -88,7 +95,7 @@
   programs.direnv.enable = true;
 
   services.openssh.enable = true;
-  services.sketchybar.enable = true;
+  services.sketchybar.enable = false;
   services.tailscale.enable = true;
 
   system.defaults.".GlobalPreferences"."com.apple.mouse.scaling" = 4.0;
@@ -110,7 +117,7 @@
   system.defaults.NSGlobalDomain.NSAutomaticCapitalizationEnabled = false;
   system.defaults.NSGlobalDomain.NSAutomaticWindowAnimationsEnabled = false;
   system.defaults.NSGlobalDomain.NSWindowShouldDragOnGesture = true;
-  system.defaults.NSGlobalDomain._HIHideMenuBar = true;
+  system.defaults.NSGlobalDomain._HIHideMenuBar = false;
   system.defaults.NSGlobalDomain."com.apple.keyboard.fnState" = false;
   system.defaults.NSGlobalDomain."com.apple.mouse.tapBehavior" = 1;
   system.defaults.SoftwareUpdate.AutomaticallyInstallMacOSUpdates = false;

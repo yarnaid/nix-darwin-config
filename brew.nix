@@ -24,10 +24,10 @@
     ];
     # Add brews (packages)
     brews = [
-      {
-        name = "sketchybar";
-        start_service = true;
-      }
+      # {
+      #   name = "sketchybar";
+      #   start_service = false;
+      # }
       "bgrep"
       "broot"
       "gnu-sed"
@@ -182,6 +182,7 @@
     ];
     # Add casks (macOS applications)
     casks = [
+      "oracle-jdk"
       "affinity-designer"
       "affinity-photo"
       "affinity-publisher"
