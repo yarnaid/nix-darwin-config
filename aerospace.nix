@@ -32,7 +32,7 @@
             { monitor."LG HDR 4K" = 32; }
             { monitor."HDMI" = 32; }
             { monitor."Retina" = 0; }
-            32
+            0
           ];
         };
       };
