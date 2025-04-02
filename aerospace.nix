@@ -29,8 +29,8 @@
           bottom = 0;
           right = 0;
           top = [
-            { monitor."LG HDR 4K" = 32; }
-            { monitor."HDMI" = 32; }
+            { monitor."LG HDR 4K" = 0; }
+            { monitor."HDMI" = 0; }
             { monitor."Retina" = 0; }
             0
           ];
