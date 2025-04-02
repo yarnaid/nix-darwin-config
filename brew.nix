@@ -183,6 +183,8 @@
     # Add casks (macOS applications)
     casks = [
       "oracle-jdk"
+      "ollama"
+      "ollamac"
       "affinity-designer"
       "affinity-photo"
       "affinity-publisher"
