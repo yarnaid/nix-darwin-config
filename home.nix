@@ -239,6 +239,15 @@
         };
       }
       {
+        name = "nvm.fish";
+        src = pkgs.fetchFromGitHub {
+          owner = "jorgebucaran";
+          repo = "nvm.fish";
+          rev = "2.2.17";
+          sha256 = "sha256-T8KYLA/r/gOKvAivKRoeqIwE2pINlxFQtZJHpOy9GMM=";
+        };
+      }
+      {
         name = "fzf.fish";
         src = pkgs.fetchFromGitHub {
           owner = "PatrickF1";
