@@ -2,10 +2,10 @@
   homebrew.masApps = {
     # Productivity
     "Things" = 904280696;
-    "Microsoft Excel" = 462058435;
-    "Microsoft Word" = 462054704;
-    "Microsoft PowerPoint" = 462062816;
-    "Microsoft Outlook" = 985367838;
+    # "Microsoft Excel" = 462058435;
+    # "Microsoft Word" = 462054704;
+    # "Microsoft PowerPoint" = 462062816;
+    # "Microsoft Outlook" = 985367838;
     "Pages" = 409201541;
     "Numbers" = 409203825;
     "Keynote" = 409183694;
