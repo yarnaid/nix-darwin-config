@@ -144,6 +144,10 @@
       # Set PAGER from .profile
       set -gx PAGER bat
       # Add nix-darwin binary path
+      
+      function nvm
+        bash -c "source ~/.nvm/nvm.sh; nvm $argv"
+      end
 
     '';
 
