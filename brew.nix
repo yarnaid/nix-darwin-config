@@ -28,6 +28,8 @@
       #   name = "sketchybar";
       #   start_service = false;
       # }
+      "podman"
+      "podman-compose"
       "bgrep"
       "broot"
       "gnu-sed"
@@ -182,6 +184,9 @@
     ];
     # Add casks (macOS applications)
     casks = [
+      "pgadmin4"
+      "podman-desktop"
+      "lm-studio"
       "oracle-jdk"
       "ollama"
       "ollamac"
