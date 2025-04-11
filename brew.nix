@@ -28,6 +28,7 @@
       #   name = "sketchybar";
       #   start_service = false;
       # }
+      "nvm"
       "podman"
       "podman-compose"
       "bgrep"
