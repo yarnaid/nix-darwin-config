@@ -116,7 +116,7 @@
       "netpbm"
       "ninja"
       "nlohmann-json"
-      "node"
+      "node@22"
       "node-build"
       "nodenv"
       "ouch"
