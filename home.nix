@@ -148,6 +148,13 @@
       function nvm
         bash -c "source ~/.nvm/nvm.sh; nvm $argv"
       end
+	
+	# pnpm
+	set -gx PNPM_HOME "/Users/yarnaid/Library/pnpm"
+	if not string match -q -- $PNPM_HOME $PATH
+	  set -gx PATH "$PNPM_HOME" $PATH
+	end
+	# pnpm end
 
     '';
 

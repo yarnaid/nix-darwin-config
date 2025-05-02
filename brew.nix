@@ -185,6 +185,7 @@
     ];
     # Add casks (macOS applications)
     casks = [
+      "windsurf"
       "pgadmin4"
       "podman-desktop"
       "lm-studio"
@@ -205,7 +206,7 @@
       "deezer"
       "cursor"
       "figma"
-      "font-hack-nerd-font"
+      # "font-hack-nerd-font"
       "font-jetbrains-mono-nerd-font"
       "font-symbols-only-nerd-font"
       "fontforge"
