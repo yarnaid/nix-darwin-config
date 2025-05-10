@@ -185,6 +185,7 @@
     ];
     # Add casks (macOS applications)
     casks = [
+      "nikitabobko/tap/aerospace"
       "windsurf"
       "pgadmin4"
       "podman-desktop"
@@ -214,6 +215,7 @@
       "google-chrome"
       "iina"
       "iterm2"
+      "itermai"
       "macpilot"
       "mediainfo"
       "monitorcontrol"
@@ -232,7 +234,6 @@
       "syntax-highlight"
       "visual-studio-code"
       "warp"
-      "wezterm@nightly"
       "zoom"
     ];
   };
