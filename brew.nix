@@ -28,6 +28,8 @@
       #   name = "sketchybar";
       #   start_service = false;
       # }
+      "bat"
+      "tailscale"
       "nvm"
       "podman"
       "podman-compose"
@@ -185,6 +187,7 @@
     ];
     # Add casks (macOS applications)
     casks = [
+      "telegram-desktop"
       "nikitabobko/tap/aerospace"
       "windsurf"
       "pgadmin4"
@@ -207,6 +210,8 @@
       "deezer"
       "cursor"
       "figma"
+      "karabiner-elements"
+      "raycast"
       # "font-hack-nerd-font"
       "font-jetbrains-mono-nerd-font"
       "font-symbols-only-nerd-font"

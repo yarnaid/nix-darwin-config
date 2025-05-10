@@ -6,27 +6,8 @@
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
-    vim
-    bat
-    git
-    neovim
     nixfmt-classic
-    eza
-    ranger
-    yazi
-    fish
-    wget
-    curl
     appcleaner
-    arc-browser
-    iina
-    iterm2
-    karabiner-elements
-    languagetool
-    obsidian
-    raycast
-    tailscale
-    telegram-desktop
   ];
 
   # System-wide shell aliases
