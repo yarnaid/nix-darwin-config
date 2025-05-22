@@ -5,35 +5,17 @@
     stateVersion = "23.11";
     
     packages = with pkgs; [
-      pyenv
-      starship
-      fzf
-      zoxide
-      eza
-      delta
-      pyenv
-      fastfetch
-      fd
-      ripgrep
-      neovim
-      bat
-      yazi
-      chezmoi
-      ollama
-      jupyter
-      uv
-      wezterm
     ];
   };
 
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
 
-    programs.pyenv = {
-      enable = true;
-      enableFishIntegration = true;
-      enableZshIntegration = true;
-    };
+    # programs.pyenv = {
+    #   enable = true;
+    #   enableFishIntegration = true;
+    #   enableZshIntegration = true;
+    # };
 
     # Git configuration
     programs.git = {
