@@ -187,6 +187,7 @@
     ];
     # Add casks (macOS applications)
     casks = [
+      "neohtop"
       "telegram-desktop"
       "nikitabobko/tap/aerospace"
       "windsurf"
