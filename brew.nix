@@ -28,6 +28,8 @@
       #   name = "sketchybar";
       #   start_service = false;
       # }
+      "pieces-cli"
+      "block-goose-cli"
       "bat"
       "tailscale"
       "nvm"
@@ -187,10 +189,10 @@
     ];
     # Add casks (macOS applications)
     casks = [
+      "block-goose"
       "neohtop"
       "pieces"
       "pieces-os"
-      "pieces-cli"
       "telegram-desktop"
       "nikitabobko/tap/aerospace"
       "windsurf"
