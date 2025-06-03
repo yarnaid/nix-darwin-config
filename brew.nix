@@ -189,6 +189,7 @@
     ];
     # Add casks (macOS applications)
     casks = [
+      "orion"
       "block-goose"
       "neohtop"
       "pieces"
