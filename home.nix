@@ -148,6 +148,8 @@
       function nvm
         bash -c "source ~/.nvm/nvm.sh; nvm $argv"
       end
+
+      direnv hook fish | source
 	
 	# pnpm
 	set -gx PNPM_HOME "/Users/yarnaid/Library/pnpm"
