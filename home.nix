@@ -91,6 +91,10 @@
         fenv source /etc/static/bashrc
       end
 
+      # Fix PATH for nix
+      set -gx PATH $HOME/.nix-profile/bin /run/current-system/sw/bin /nix/var/nix/profiles/default/bin $PATH
+      __nixos_path_fix
+
 
 
       # Set environment variables

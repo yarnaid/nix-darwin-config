@@ -10,7 +10,7 @@
     "/usr/local/opt/gnu-sed/libexec/gnubin"
     "/Users/yarnaid/.cargo/bin"
     "/usr/local/bin"
-    "/Applications/Postgres.app/Contents/Versions/15/bin"
+    "/Applications/Postgres.app/Contents/Versions/17/bin"
   ];
 
   environment.variables = {

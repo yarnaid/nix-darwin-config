@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   imports =
     [ ./brew.nix ./kanata.nix ./mas.nix ./env.nix ./aerospace.nix ./dock.nix ];
   nixpkgs.config.allowUnfree = true;
@@ -9,6 +9,24 @@
     nixfmt-classic
     appcleaner
   ];
+
+  environment.etc."fish/nixos-env-preinit.fish".text = lib.mkMerge [
+    (lib.mkBefore ''
+      set -g __nixos_path_original $PATH
+    '')
+    (lib.mkAfter ''
+      function __nixos_path_fix -d "fix PATH value"
+        set -l result (string replace '$HOME' "$HOME" $__nixos_path_original)
+        for elt in $PATH
+          if not contains -- $elt $result
+            set -a result $elt
+          end
+        end
+        set -g PATH $result
+      end
+    '')
+  ];
+
 
   # System-wide shell aliases
   environment.shellAliases = {
