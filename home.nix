@@ -76,9 +76,23 @@
   # Configure fish shell through home-manager
   programs.fish = {
     enable = true;
+    # useBabelfish = true;
     
     interactiveShellInit = ''
       fish_add_path /run/current-system/sw/bin
+
+      # Source nix environment
+      if test -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+        fenv source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+      end
+      
+      # Source nix-darwin environment
+      if test -e /etc/static/bashrc
+        fenv source /etc/static/bashrc
+      end
+
+
+
       # Set environment variables
       set -gx EDITOR nvim
       set -gx LANG en_US.UTF-8
@@ -238,6 +252,15 @@
           repo = "nvm.fish";
           rev = "2.2.17";
           sha256 = "sha256-T8KYLA/r/gOKvAivKRoeqIwE2pINlxFQtZJHpOy9GMM=";
+        };
+      }
+      {
+        name = "foreign-env";
+        src = pkgs.fetchFromGitHub {
+          owner = "oh-my-fish";
+          repo = "plugin-foreign-env";
+          rev = "dddd9213272a0ab848d474d0cbde12ad034e65bc";
+          sha256 = "00xqlyl3lffc5l0viin1nyp819wf81fncqyz87jx8ljjdhilmgbs";
         };
       }
       {

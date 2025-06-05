@@ -72,7 +72,11 @@
   };
 
   # Enable fish shell system-wide
-  programs.fish.enable = true;
+  # programs.fish.enable = true;
+  programs.fish = {
+    enable = true;
+    useBabelfish = true;
+  };
   programs.direnv.enable = true;
 
   services.openssh.enable = true;
@@ -131,6 +135,7 @@
   system.defaults.trackpad.Clicking = true;
   system.defaults.trackpad.TrackpadThreeFingerDrag = true;
   system.defaults.trackpad.TrackpadThreeFingerTapGesture = 0;
+  system.primaryUser = "yarnaid";
   # system.defaults.universalaccess.reduceMotion = true;
 
   # Add fish to /etc/shells

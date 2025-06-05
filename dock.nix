@@ -4,6 +4,7 @@
   system.defaults.dock = {
     persistent-apps = [
       { app = "/Applications/Safari.app"; }
+      { app = "/Applications/Google Chrome.app"; }
       { spacer = { small = true; }; }
       { app = "/Applications/Microsoft Outlook.app"; }
       { app = "/Applications/Setapp/Spark Mail.app"; }
@@ -11,8 +12,10 @@
       { app = "/Applications/Microsoft Teams.app"; }
       { spacer = { small = true; }; }
       { app = "/Applications/Windows App.app"; }
-      { app = "/Applications/WezTerm.app"; }
+      { app = "/Applications/Warp.app"; }
+      { app = "/Applications/iTerm.app"; }
       { app = "/Applications/Cursor.app"; }
+      { app = "/Applications/Windsurf.app"; }
       { app = "/Applications/Visual Studio Code.app"; }
       { spacer = { small = true; }; }
       { app = "/System/Applications/System Settings.app"; }
