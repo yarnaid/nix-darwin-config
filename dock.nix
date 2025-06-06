@@ -3,8 +3,8 @@
 {
   system.defaults.dock = {
     persistent-apps = [
-      { app = "/Applications/Safari.app"; }
-      { app = "/Applications/Google Chrome.app"; }
+      # { app = "/Applications/Safari.app"; }
+      { app = "/Applications/Orion.app"; }
       { spacer = { small = true; }; }
       { app = "/Applications/Microsoft Outlook.app"; }
       { app = "/Applications/Setapp/Spark Mail.app"; }

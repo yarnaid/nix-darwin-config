@@ -188,6 +188,7 @@
     ];
     # Add casks (macOS applications)
     casks = [
+      "1password-cli"
       "orion"
       "block-goose"
       "neohtop"
