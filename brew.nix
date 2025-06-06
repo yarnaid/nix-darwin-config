@@ -28,7 +28,6 @@
       #   name = "sketchybar";
       #   start_service = false;
       # }
-      "pieces-cli"
       "block-goose-cli"
       "bat"
       "tailscale"
@@ -192,8 +191,6 @@
       "orion"
       "block-goose"
       "neohtop"
-      "pieces"
-      "pieces-os"
       "telegram-desktop"
       "nikitabobko/tap/aerospace"
       "windsurf"
