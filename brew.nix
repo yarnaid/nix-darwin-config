@@ -28,6 +28,7 @@
       #   name = "sketchybar";
       #   start_service = false;
       # }
+      "swiftlint"
       "block-goose-cli"
       "bat"
       "tailscale"
@@ -188,6 +189,7 @@
     ];
     # Add casks (macOS applications)
     casks = [
+      "zed"
       "1password-cli"
       "orion"
       "block-goose"
