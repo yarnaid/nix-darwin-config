@@ -46,5 +46,6 @@
         
     # Finance
     "Exchange Rates" = 1463361068;
+    "LiquidText" = 922765270;
   };
 } 
