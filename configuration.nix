@@ -28,46 +28,6 @@
   ];
 
 
-  # System-wide shell aliases
-  environment.shellAliases = {
-    # git related
-    g = "git";
-    gs = "git status";
-    gp = "git push";
-    gl = "git pull";
-
-
-    # Vim related
-    vim = "nvim";
-    v = "nvim";
-
-    # File listing
-    ls =
-      "eza --color=always --long --git --icons=always --no-permissions --header --mounts --git-repos --hyperlink";
-    l = "ls";
-    ll = "ls -la";
-
-    # Navigation
-    ".." = "cd ..";
-    cd = "z";
-
-    # Chezmoi
-    cv = "chezmoi edit --watch";
-    ca = "chezmoi add";
-    cu = "chezmoi update";
-
-    # Brew
-    b = "brew";
-    bs = "brew search --desc --eval-all";
-    bi = "brew install";
-    bu = "brew upgrade -g";
-
-    # Other tools
-    y = "yazi";
-    js = "jupyter server";
-    os = "ollama serve";
-  };
-
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
 
@@ -75,8 +35,8 @@
     package = pkgs.nix;
     gc = {
       automatic = true;
-      interval.Day = 30;
-      options = "--delete-older-than 30d";
+      interval.Day = 10;
+      options = "--delete-older-than 10d";
     };
     extraOptions = ''
       # auto-optimise-store = true
@@ -95,11 +55,11 @@
     enable = true;
     useBabelfish = true;
   };
-  programs.direnv.enable = true;
+  # programs.direnv.enable = true;
 
-  services.openssh.enable = true;
-  services.sketchybar.enable = false;
-  services.tailscale.enable = true;
+  # services.openssh.enable = true;
+  # services.sketchybar.enable = false;
+  # services.tailscale.enable = true;
 
   system.defaults.".GlobalPreferences"."com.apple.mouse.scaling" = 4.0;
 
@@ -157,7 +117,7 @@
   # system.defaults.universalaccess.reduceMotion = true;
 
   # Add fish to /etc/shells
-  environment.shells = [ pkgs.fish ];
+  environment.shells = []; # [ pkgs.fish ];
 
   # Set Git commit hash for darwin-version.
   system.configurationRevision = null;
@@ -170,11 +130,12 @@
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
 
+  # users.defaultUserShell = pkgs.fish;
   # User configuration
   users.users.yarnaid = {
     name = "yarnaid";
     home = "/Users/yarnaid";
-    shell = pkgs.fish;
+    # shell = pkgs.fish;
   };
 
   # Enable home-manager

@@ -6,6 +6,49 @@
     
     packages = with pkgs; [
     ];
+
+    shell.enableShellIntegration = true;
+
+    shellAliases = {
+    # git related
+    g = "git";
+    gs = "git status";
+    gp = "git push";
+    gl = "git pull";
+
+
+    # Vim related
+    vim = "nvim";
+    v = "nvim";
+
+    # File listing
+    ls =
+      "eza --color=always --long --git --icons=always --no-permissions --header --mounts --git-repos --hyperlink";
+    l = "ls";
+    ll = "ls -la";
+
+    # Navigation
+    ".." = "cd ..";
+    cd = "z";
+
+    # Chezmoi
+    cv = "chezmoi edit --watch";
+    ca = "chezmoi add";
+    cu = "chezmoi update";
+
+    # Brew
+    b = "brew";
+    bs = "brew search --desc --eval-all";
+    bi = "brew install";
+    bu = "brew upgrade -g";
+
+    # Other tools
+    y = "yazi";
+    js = "jupyter server";
+    os = "ollama serve";
+  };
+
+
   };
 
     # Let Home Manager install and manage itself.

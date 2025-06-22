@@ -57,7 +57,7 @@
       "ffmpeg"
       "ffmpegthumbnailer"
       "fftw"
-      "fish"
+      # "fish"
       "flac"
       "fmt"
       "fontconfig"
