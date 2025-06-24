@@ -5,6 +5,8 @@
     persistent-apps = [
       # { app = "/Applications/Safari.app"; }
       { app = "/Applications/Orion.app"; }
+      { app = "/Applications/Dia.app"; }
+      { app = "/Applications/Google Chrome.app"; }
       { spacer = { small = true; }; }
       { app = "/Applications/Microsoft Outlook.app"; }
       { app = "/Applications/Setapp/Spark Mail.app"; }
@@ -25,7 +27,7 @@
       { app = "/Applications/Tana.app"; }
       { app = "/System/Applications/iPhone Mirroring.app"; }
       { app = "/Applications/Parcel.app"; }
-      { app = "/Applications/Deezer.app"; }
+      { app = "/System/Applications/Music.app"; }
     ];
   };
 }
