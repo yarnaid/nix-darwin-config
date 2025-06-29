@@ -190,6 +190,7 @@
     # Add casks (macOS applications)
     casks = [
       "zed"
+      "ungoogled-chromium"
       "deepl"
       "cleanmymac"
       "devutils"
