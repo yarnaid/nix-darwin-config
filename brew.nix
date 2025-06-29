@@ -190,6 +190,9 @@
     # Add casks (macOS applications)
     casks = [
       "zed"
+      "deepl"
+      "cleanmymac"
+      "devutils"
       "1password-cli"
       "orion"
       "block-goose"

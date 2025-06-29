@@ -8,8 +8,9 @@
       { app = "/Applications/Dia.app"; }
       { app = "/Applications/Google Chrome.app"; }
       { spacer = { small = true; }; }
+      { app = "/System/Applications/Mail.app"; }
       { app = "/Applications/Microsoft Outlook.app"; }
-      { app = "/Applications/Setapp/Spark Mail.app"; }
+      # { app = "/Applications/Setapp/Spark Mail.app"; }
       { app = "/Applications/Telegram.app"; }
       { app = "/Applications/Microsoft Teams.app"; }
       { spacer = { small = true; }; }
@@ -27,6 +28,7 @@
       { app = "/Applications/Tana.app"; }
       { app = "/System/Applications/iPhone Mirroring.app"; }
       { app = "/Applications/Parcel.app"; }
+      { app = "/Applications/Yandex Music.app"; }
       { app = "/System/Applications/Music.app"; }
     ];
   };

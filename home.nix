@@ -164,7 +164,8 @@
       # Initialize various tools
       starship init fish | source
       fzf --fish | source
-      zoxide init fish | source
+      zox
+      ee init fish | source
       set -Ux fifc_editor nvim
 
       # Homebrew completions
@@ -268,10 +269,10 @@
         };
       }
       {
-        name = "zoxide";
+        name = "zoxiee";
         src = pkgs.fetchFromGitHub {
           owner = "icezyclon";
-          repo = "zoxide.fish";
+          repo = "zoxiee.fish";
           rev = "3.0";
           sha256 = "sha256-OjrX0d8VjDMxiI5JlJPyu/scTs/fS/f5ehVyhAA/KDM=";
         };
