@@ -29,6 +29,7 @@
     "WiFi Signal" = 525912054;
     "Windows App" = 1295203466;
     "Speedtest" = 1153157709;
+    "OpenIn" = 1643649331;
 
     # Development & Power User Tools
     "JSONPeep" = 1458969831;

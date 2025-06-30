@@ -190,6 +190,15 @@
     # Add casks (macOS applications)
     casks = [
       "zed"
+      "airbuddy"
+      "aldente"
+      "bettertouchtool"
+      "cleanmymac"
+      "clop"
+      "dash"
+      "hazeover"
+      "pixelsnap"
+      "popclip"
       "deepl"
       "cleanmymac"
       "devutils"
