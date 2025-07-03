@@ -29,7 +29,6 @@
       #   start_service = false;
       # }
       "swiftlint"
-      "block-goose-cli"
       "bat"
       "tailscale"
       "nvm"
@@ -204,12 +203,10 @@
       "devutils"
       "1password-cli"
       "orion"
-      "block-goose"
       "neohtop"
       "telegram-desktop"
       "nikitabobko/tap/aerospace"
       "windsurf"
-      "pgadmin4"
       "podman-desktop"
       "lm-studio"
       "oracle-jdk"
