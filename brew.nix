@@ -189,6 +189,10 @@
     # Add casks (macOS applications)
     casks = [
       "zed"
+      "proton-mail"
+      "proton-mail-bridge"
+      "protonvpn"
+      "vivaldi"
       "airbuddy"
       "aldente"
       "bettertouchtool"
