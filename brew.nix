@@ -29,7 +29,6 @@
       #   start_service = false;
       # }
       "swiftlint"
-      "block-goose-cli"
       "bat"
       "tailscale"
       "nvm"
@@ -190,18 +189,34 @@
     # Add casks (macOS applications)
     casks = [
       "zed"
+<<<<<<< HEAD
       "ungoogled-chromium"
+||||||| ba25c3d
+=======
+      "proton-mail"
+      "proton-mail-bridge"
+      "protonvpn"
+      "vivaldi"
+      "airbuddy"
+      "aldente"
+      "bettertouchtool"
+      "bartender"
+      "cleanmymac"
+      "clop"
+      "dash"
+      "hazeover"
+      "pixelsnap"
+      "popclip"
+>>>>>>> 84616b763e83a208fab063a1b6f309a3ab13bd2e
       "deepl"
       "cleanmymac"
       "devutils"
       "1password-cli"
       "orion"
-      "block-goose"
       "neohtop"
       "telegram-desktop"
       "nikitabobko/tap/aerospace"
       "windsurf"
-      "pgadmin4"
       "podman-desktop"
       "lm-studio"
       "oracle-jdk"
