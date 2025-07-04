@@ -196,6 +196,7 @@
       "airbuddy"
       "aldente"
       "bettertouchtool"
+      "bartender"
       "cleanmymac"
       "clop"
       "dash"
