@@ -189,10 +189,6 @@
     # Add casks (macOS applications)
     casks = [
       "zed"
-<<<<<<< HEAD
-      "ungoogled-chromium"
-||||||| ba25c3d
-=======
       "proton-mail"
       "proton-mail-bridge"
       "protonvpn"
@@ -207,7 +203,6 @@
       "hazeover"
       "pixelsnap"
       "popclip"
->>>>>>> 84616b763e83a208fab063a1b6f309a3ab13bd2e
       "deepl"
       "cleanmymac"
       "devutils"
