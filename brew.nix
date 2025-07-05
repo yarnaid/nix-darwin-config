@@ -15,9 +15,9 @@
       "acarl005/formulas"
       "domt4/autoupdate"
       "felixkratz/formulae"
-      "homebrew/bundle"
+      # "homebrew/bundle"
       "homebrew/command-not-found"
-      "homebrew/services"
+      # "homebrew/services"
       "jesseduffield/lazygit"
       "jstkdng/programs"
       "nikitabobko/tap"
@@ -188,6 +188,7 @@
     ];
     # Add casks (macOS applications)
     casks = [
+      "arq"
       "zed"
       "proton-mail"
       "proton-mail-bridge"

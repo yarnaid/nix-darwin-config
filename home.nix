@@ -274,7 +274,7 @@
           owner = "icezyclon";
           repo = "zoxiee.fish";
           rev = "3.0";
-          sha256 = "sha256-OjrX0d8VjDMxiI5JlJPyu/scTs/fS/f5ehVyhAA/KDM=";
+          sha256 = "sha256-4+k5rSoxkTtYFh/lEjhRkVYa2S4KEzJ/IJbyJl+rJjQ=";
         };
       }
       {
@@ -283,18 +283,18 @@
           owner = "gazorby";
           repo = "fish-abbreviation-tips";
           rev = "v0.7.0";
-          sha256 = "sha256-OjrX0d8VjDMxiI5JlJPyu/scTs/fS/f5ehVyhAA/KDM=";
+          sha256 = "sha256-4+k5rSoxkTtYFh/lEjhRkVYa2S4KEzJ/IJbyJl+rJjQ=";
         };
       }
-      {
-        name = "plugin-foreign-env";
-        src = pkgs.fetchFromGitHub {
-          owner = "oh-my-fish";
-          repo = "plugin-foreign-env";
-          rev = "master";
-          sha256 = "sha256-OjrX0d8VjDMxiI5JlJPyu/scTs/fS/f5ehVyhAA/KDM=";
-        };
-      }
+      # {
+      #   name = "plugin-foreign-env";
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "oh-my-fish";
+      #     repo = "plugin-foreign-env";
+      #     rev = "master";
+      #     sha256 = "sha256-4+k5rSoxkTtYFh/lEjhRkVYa2S4KEzJ/IJbyJl+rJjQ=";
+      #   };
+      # }
       {
         name = "nvm.fish";
         src = pkgs.fetchFromGitHub {
