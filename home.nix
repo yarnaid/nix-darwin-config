@@ -269,12 +269,12 @@
         };
       }
       {
-        name = "zoxiee";
+        name = "zoxide";
         src = pkgs.fetchFromGitHub {
           owner = "icezyclon";
-          repo = "zoxiee.fish";
+          repo = "zoxide.fish";
           rev = "3.0";
-          sha256 = "sha256-4+k5rSoxkTtYFh/lEjhRkVYa2S4KEzJ/IJbyJl+rJjQ=";
+          sha256 = "sha256-OjrX0d8VjDMxiI5JlJPyu/scTs/fS/f5ehVyhAA/KDM=";
         };
       }
       {
@@ -283,7 +283,7 @@
           owner = "gazorby";
           repo = "fish-abbreviation-tips";
           rev = "v0.7.0";
-          sha256 = "sha256-4+k5rSoxkTtYFh/lEjhRkVYa2S4KEzJ/IJbyJl+rJjQ=";
+          sha256 = "sha256-F1t81VliD+v6WEWqj1c1ehFBXzqLyumx5vV46s/FZRU=";
         };
       }
       # {
