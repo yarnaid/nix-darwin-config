@@ -1,5 +1,5 @@
 {config, lib, pkgs, ...}: {
-  launchd.user.agents = {
+  launchd.agents = {
     kanata = {
       serviceConfig = {
         KeepAlive = true;
