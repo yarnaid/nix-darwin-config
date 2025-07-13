@@ -5,7 +5,7 @@
         KeepAlive = true;
         Label = "kanata";
         ProgramArguments = [
-          "${config.homebrew.brewPrefix}/bin/kanata"
+          "${config.homebrew.brewPrefix}/kanata"
           "--cfg"
           "/Users/yarnaid/.config/kanata.kbd"
         ];
