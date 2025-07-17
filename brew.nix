@@ -190,6 +190,10 @@
     # Add casks (macOS applications)
     casks = [
       "launchcontrol"
+      "qbserve"
+      "pearcleaner"
+      "hammerspoon"
+      "betterzip"
       "arq"
       "shottr"
       "zed"

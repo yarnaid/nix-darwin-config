@@ -1,5 +1,5 @@
 {config, lib, pkgs, ...}: {
-  launchd.agents = {
+  launchd.daemons = {
     kanata = {
       serviceConfig = {
         KeepAlive = true;
