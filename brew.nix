@@ -29,6 +29,9 @@
       #   start_service = false;
       # }
       "deno"
+      "mise"
+      "crystal"
+      "crystalline"
       "swiftlint"
       "bat"
       "tailscale"
@@ -189,6 +192,9 @@
     ];
     # Add casks (macOS applications)
     casks = [
+      "coconutbattery"
+      "lunar"
+      "homerow"
       "launchcontrol"
       "qbserve"
       "pearcleaner"
@@ -220,7 +226,6 @@
       "neohtop"
       "telegram-desktop"
       "telegram"
-      "windsurf"
       "podman-desktop"
       "lm-studio"
       "oracle-jdk"

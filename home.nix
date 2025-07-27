@@ -193,6 +193,8 @@
         bash -c "source ~/.nvm/nvm.sh; nvm $argv"
       end
 
+      mise activate fish | source
+
       direnv hook fish | source
 	
 	# pnpm
