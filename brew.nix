@@ -192,6 +192,7 @@
     ];
     # Add casks (macOS applications)
     casks = [
+      "slidepad"
       "coconutbattery"
       "lunar"
       "homerow"
