@@ -6,6 +6,8 @@
     # "Microsoft Word" = 462054704;
     # "Microsoft PowerPoint" = 462062816;
     # "Microsoft Outlook" = 985367838;
+    "Actions" = 1586435171;
+    "Agenda" = 1287445660;
     "Pages" = 409201541;
     "Numbers" = 409203825;
     "Keynote" = 409183694;
@@ -66,5 +68,14 @@
 
     # Finance
     "Exchange Rates" = 1463361068;
+
+    # Weather & Lifestyle
+    "CARROTweather" = 993487541;
+    "Drafts" = 1435957248;
+    "flowy" = 6748351905;
+    "Mic Drop" = 1489816366;
+    "Micro Snitch" = 972028355;
+    "rcmd" = 1596283165;
+    "Shortery" = 1594183810;
   };
 }
