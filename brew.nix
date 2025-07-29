@@ -196,6 +196,7 @@
     casks = [
       "raindropio"
       "slidepad"
+      "betterdisplay"
       "coconutbattery"
       "sigmaos"
       "lunar"
