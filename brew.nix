@@ -192,9 +192,11 @@
     ];
     # Add casks (macOS applications)
     casks = [
+      "raindropio"
       "slidepad"
       "betterdisplay"
       "coconutbattery"
+      "sigmaos"
       "lunar"
       "homerow"
       "launchcontrol"
