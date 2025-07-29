@@ -21,6 +21,7 @@
       "jesseduffield/lazygit"
       "jstkdng/programs"
       "nikitabobko/tap"
+      "crystal-ameba/ameba"
     ];
     # Add brews (packages)
     brews = [
@@ -28,6 +29,7 @@
       #   name = "sketchybar";
       #   start_service = false;
       # }
+      "ameba"
       "deno"
       "mise"
       "crystal"
