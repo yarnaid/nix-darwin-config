@@ -30,6 +30,8 @@
       #   start_service = false;
       # }
       "ameba"
+      "whisper-cpp"
+      "sox"
       "deno"
       "mise"
       "crystal"
