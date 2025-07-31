@@ -12,7 +12,7 @@
     "Numbers" = 409203825;
     "Keynote" = 409183694;
     "Soulver 3" = 1508732804;
-    "Kindle" = 302584613;
+    # "Kindle" = 302584613;
     "LiquidText" = 922765270;
 
     # Utilities
