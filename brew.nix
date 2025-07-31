@@ -201,7 +201,7 @@
       "betterdisplay"
       "coconutbattery"
       "sigmaos"
-      "lunar"
+      # "lunar"
       "homerow"
       "launchcontrol"
       "qbserve"
