@@ -15,6 +15,7 @@
       "acarl005/formulas"
       "domt4/autoupdate"
       "felixkratz/formulae"
+      "lzt1008/powerflow"
       # "homebrew/bundle"
       "homebrew/command-not-found"
       # "homebrew/services"
@@ -197,6 +198,9 @@
     # Add casks (macOS applications)
     casks = [
       "raindropio"
+      "powerflow"
+      "dockdoor"
+      "connectmenow"
       "betterdisplay"
       "slidepad"
       "betterdisplay"
