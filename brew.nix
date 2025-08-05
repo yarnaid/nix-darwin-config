@@ -174,7 +174,7 @@
       "ueberzugpp"
       "unar"
       "uv"
-      "vercel-cli"
+      # "vercel-cli"
       "viu"
       "watch"
       "websocat"
@@ -197,6 +197,7 @@
     ];
     # Add casks (macOS applications)
     casks = [
+      "leader-key"
       "raindropio"
       "powerflow"
       "superwhisper"
