@@ -197,7 +197,8 @@
     ];
     # Add casks (macOS applications)
     casks = [
-      "leader-key"
+      "mindmac"
+      # "leader-key"
       "raindropio"
       "powerflow"
       "superwhisper"
