@@ -4,9 +4,10 @@
   system.defaults.dock = {
     persistent-apps = [
       { app = "/Applications/Vivaldi.app"; }
-      # { app = "/Applications/Orion.app"; }
+      { app = "/Applications/Orion.app"; }
       { app = "/Applications/Dia.app"; }
       { app = "/Applications/SigmaOS.app"; }
+      { app = "/Applications/Comet.app"; }
       # { app = "/Applications/Google Chrome.app"; }
       { spacer = { small = true; }; }
       # { app = "/System/Applications/Mail.app"; }
@@ -18,7 +19,7 @@
       { app = "/Applications/Windows App.app"; }
       { app = "/Applications/Warp.app"; }
       # { app = "/Applications/iTerm.app"; }
-      { app = "/Applications/Cursor.app"; }
+      # { app = "/Applications/Cursor.app"; }
       { app = "/Applications/Zed.app"; }
       # { app = "/Applications/Windsurf.app"; }
       { app = "/Applications/Visual Studio Code.app"; }
@@ -31,7 +32,6 @@
       { app = "/Applications/Drafts.app"; }
       { app = "/System/Applications/iPhone Mirroring.app"; }
       # { app = "/Applications/Parcel.app"; }
-      # { app = "/Applications/Yandex Music.app"; }
       { app = "/Applications/Яндекс Музыка.app"; }
       { app = "/System/Applications/Music.app"; }
     ];

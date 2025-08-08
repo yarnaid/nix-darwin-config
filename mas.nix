@@ -1,4 +1,4 @@
-{...}: {
+{ ... }: {
   homebrew.masApps = {
     # Productivity
     "Things" = 904280696;
@@ -7,26 +7,23 @@
     # "Microsoft PowerPoint" = 462062816;
     # "Microsoft Outlook" = 985367838;
     "Actions" = 1586435171;
-    "Agenda" = 1287445660;
+    # "Agenda" = 1287445660;
     "Pages" = 409201541;
     "Numbers" = 409203825;
     "Keynote" = 409183694;
     "Soulver 3" = 1508732804;
     # "Kindle" = 302584613;
     "LiquidText" = 922765270;
+    "Merlin Project" = 1335639877;
 
     # Utilities
     "Disk Space Analyzer" = 446243721;
-    "Disk Speed Test" = 425264550;
     "Blackmagic Disk Speed Test" = 425264550;
     "Apple Configurator" = 1037126344;
     "Amphetamine" = 937984704;
     "OneDrive" = 823766827;
-    "Unzip - RAR ZIP 7Z Unarchiver" = 1537056818;
-    "Parcel" = 639968404;
+    # "Parcel" = 639968404;
     "Key Codes" = 414568915;
-    "RAR Extractor - Unarchiver" = 646295438;
-    "The Unarchiver" = 425424353;
     "WiFi Explorer" = 494803304;
     "WiFi Signal" = 525912054;
     "Windows App" = 1295203466;
@@ -39,13 +36,11 @@
     "superagent" = 1568262835;
     "Super Agent" = 1568262835;
     "Xcode" = 497799835;
-    "Expressions" = 913158085;
 
     # Browser Extensions & Web Tools
     "Vimlike" = 1584519802;
     "StopTheMadness Pro" = 6471380298;
     "PayPal Honey" = 1472777122;
-    "Fakespot" = 1592541616;
     "1Password for Safari" = 1569813296;
     "Kagi for Safari" = 1622835804;
     "PiPifier" = 1160374471;
@@ -53,7 +48,6 @@
     "Hover for Safari" = 1540705431;
     "Karma" = 1481191441;
     "Keyword Search" = 1558453954;
-    "Pieoneer" = 6739781207;
 
     # Network & System Tools
     "Tailscale" = 1475387142;
@@ -64,7 +58,9 @@
     "Pixelmator Pro" = 1289583905;
     "YamaCast" = 1415107621;
     "FilmNoir" = 1528417240;
-    # "Pixelmator Pro" already listed above
+    "Affinity Designer 2" = 1616831348;
+    "Affinity Photo 2" = 1616822987;
+    "Affinity Publisher 2" = 1606941598;
 
     # Finance
     "Exchange Rates" = 1463361068;
@@ -76,6 +72,7 @@
     "Mic Drop" = 1489816366;
     "Micro Snitch" = 972028355;
     "rcmd" = 1596283165;
-    "Shortery" = 1594183810;
+    "Save to Raindrop.io" = 1549370672;
+    "Save to Reader" = 1640236961;
   };
 }
