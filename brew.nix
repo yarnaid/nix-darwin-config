@@ -30,6 +30,7 @@
       #   start_service = false;
       # }
       "ameba"
+      "exercism"
       "whisper-cpp"
       "sox"
       "deno"
