@@ -13,7 +13,7 @@
     # Add taps (repositories)
     taps = [
       "acarl005/formulas"
-      "jordanbaird-ice"
+      # "jordanbaird-ice"
       "domt4/autoupdate"
       "felixkratz/formulae"
       "lzt1008/powerflow"
@@ -193,11 +193,11 @@
       "cfitsio" "cgif" "libaec" "hdf5" "libmatio"
       "libspng" "uthash" "libdicom" "libxml2"
       "openslide" "vips"
+      "ice"
     ];
     # Add casks (macOS applications)
     casks = [
       "mindmac"
-      "ice"
       "raindropio"
       "powerflow"
       # "dockdoor"
