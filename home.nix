@@ -252,15 +252,15 @@
           sha256 = "sha256-MdcZUDRtNJdiyo2l9o5ma7nAX84xEJbGFhAVhK+Zm1w=";
         };
       }
-      {
-        name = "preview.fish";
-        src = pkgs.fetchFromGitHub {
-          owner = "kidonng";
-          repo = "preview.fish";
-          rev = "1.3.0";
-          sha256 = "sha256-dxG9Drbmy0M5c4lCzeJ4k7BnkrJwmpI4IpkeRP6CYFk=";
-        };
-      }
+      # {
+      #   name = "preview.fish";
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "kidonng";
+      #     repo = "preview.fish";
+      #     rev = "master";
+      #     sha256 = "sha256-ba3fbef3a9f23840b25764be2e1c82da5b205d42";
+      #   };
+      # }
       {
         name = "colored_man_pages.fish";
         src = pkgs.fetchFromGitHub {
