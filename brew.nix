@@ -13,12 +13,11 @@
     # Add taps (repositories)
     taps = [
       "acarl005/formulas"
+      "jordanbaird-ice"
       "domt4/autoupdate"
       "felixkratz/formulae"
       "lzt1008/powerflow"
-      # "homebrew/bundle"
       "homebrew/command-not-found"
-      # "homebrew/services"
       "jesseduffield/lazygit"
       "jstkdng/programs"
       "nikitabobko/tap"
