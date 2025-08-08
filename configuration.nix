@@ -8,6 +8,7 @@
   environment.systemPackages = with pkgs; [
     nixfmt-classic
     appcleaner
+    cacert
   ];
 
   environment.etc."fish/nixos-env-preinit.fish".text = lib.mkMerge [
@@ -46,7 +47,9 @@
       automatic = true;
       interval = { Hour = 12; };
     };
-    settings = { };
+    settings = {
+      ssl-cert-file = "/etc/ssl/cert.pem";
+    };
   };
 
   # Enable fish shell system-wide

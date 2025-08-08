@@ -230,8 +230,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "franciscolourenco";
           repo = "done";
-          rev = "master";
-          sha256 = "sha256-VC8LMjwIvF6oG8ZVtFQvo2mGdyAzQyluAGBoK8N2/QM=";
+          rev = "1.19.3";
+          sha256 = "sha256-DMIRKRAVOn7YEnuAtz4hIxrU93ULxNoQhW6juxCoh4o=";
         };
       }
       {
@@ -257,8 +257,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "kidonng";
           repo = "preview.fish";
-          rev = "master";
-          sha256 = "sha256-VC8LMjwIvF6oG8ZVtFQvo2mGdyAzQyluAGBoK8N2/QM=";
+          rev = "1.3.0";
+          sha256 = "sha256-dxG9Drbmy0M5c4lCzeJ4k7BnkrJwmpI4IpkeRP6CYFk=";
         };
       }
       {
@@ -303,7 +303,7 @@
           owner = "jorgebucaran";
           repo = "nvm.fish";
           rev = "2.2.17";
-          sha256 = "sha256-T8KYLA/r/gOKvAivKRoeqIwE2pINlxFQtZJHpOy9GMM=";
+          sha256 = "sha256-BNnoP9gLQuZQt/0SOOsZaYOexNN2K7PKWT/paS0BJJY=";
         };
       }
       {
