@@ -49,8 +49,8 @@
 
     # crystal
     cr = "crystal";
-    cs = "crystal spec";
-    cu = "crystal run";
+    crs = "crystal spec";
+    cru = "crystal run";
     si = "shards init && shards install";
     su = "shards update";
   };
