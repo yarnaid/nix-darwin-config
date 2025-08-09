@@ -5,6 +5,7 @@
     stateVersion = "23.11";
     
     packages = with pkgs; [
+      fishPlugins.foreign-env
     ];
 
     shell.enableShellIntegration = true;
@@ -129,6 +130,11 @@
     # useBabelfish = true;
     
     interactiveShellInit = ''
+      # Source nix-darwin pre-initialization
+      if test -e /etc/fish/nixos-env-preinit.fish
+        source /etc/fish/nixos-env-preinit.fish
+      end
+
       fish_add_path /run/current-system/sw/bin
 
       # Source nix environment
@@ -143,7 +149,11 @@
 
       # Fix PATH for nix
       set -gx PATH $HOME/.nix-profile/bin /run/current-system/sw/bin /nix/var/nix/profiles/default/bin $PATH
-      __nixos_path_fix
+      
+      # Apply PATH fix if function is available
+      if functions -q __nixos_path_fix
+        __nixos_path_fix
+      end
 
 
 

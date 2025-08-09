@@ -120,7 +120,7 @@
   # system.defaults.universalaccess.reduceMotion = true;
 
   # Add fish to /etc/shells
-  environment.shells = []; # [ pkgs.fish ];
+  environment.shells = [ pkgs.fish ];
 
   # Set Git commit hash for darwin-version.
   system.configurationRevision = null;
@@ -133,12 +133,11 @@
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
 
-  # users.defaultUserShell = pkgs.fish;
   # User configuration
   users.users.yarnaid = {
     name = "yarnaid";
     home = "/Users/yarnaid";
-    # shell = pkgs.fish;
+    shell = pkgs.fish;
   };
 
   # Enable home-manager
