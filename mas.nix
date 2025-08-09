@@ -21,7 +21,7 @@
     "Blackmagic Disk Speed Test" = 425264550;
     "Apple Configurator" = 1037126344;
     "Amphetamine" = 937984704;
-    "OneDrive" = 823766827;
+    # "OneDrive" = 823766827;
     # "Parcel" = 639968404;
     "Key Codes" = 414568915;
     "WiFi Explorer" = 494803304;

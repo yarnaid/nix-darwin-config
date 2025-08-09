@@ -46,6 +46,13 @@
     y = "yazi";
     js = "jupyter server";
     os = "ollama serve";
+
+    # crystal
+    cr = "crystal";
+    cs = "crystal spec";
+    cu = "crystal run";
+    si = "shards init && shards install";
+    su = "shards update";
   };
 
 
