@@ -181,8 +181,7 @@
       # Initialize various tools
       starship init fish | source
       fzf --fish | source
-      zox
-      ee init fish | source
+      zoxide init fish | source
       set -Ux fifc_editor nvim
 
       # Homebrew completions
