@@ -29,6 +29,7 @@
       #   name = "sketchybar";
       #   start_service = false;
       # }
+      "codecrafters-io/tap/codecrafters"
       "ameba"
       "exercism"
       "whisper-cpp"
