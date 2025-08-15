@@ -35,7 +35,7 @@
     "Peek" = 1554235898;
     "superagent" = 1568262835;
     "Super Agent" = 1568262835;
-    "Xcode" = 497799835;
+    # "Xcode" = 497799835;
 
     # Browser Extensions & Web Tools
     "Vimlike" = 1584519802;
