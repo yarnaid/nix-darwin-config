@@ -199,6 +199,7 @@
     ];
     # Add casks (macOS applications)
     casks = [
+      "reader"
       "bleunlock"
       "mindmac"
       "raindropio"
