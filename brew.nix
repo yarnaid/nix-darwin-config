@@ -172,7 +172,7 @@
       "tree"
       "tree-sitter"
       "uchardet"
-      "ueberzugpp"
+      # "ueberzugpp"
       "unar"
       "uv"
       # "vercel-cli"
