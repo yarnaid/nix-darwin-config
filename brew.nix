@@ -210,6 +210,7 @@
     ];
     # Add casks (macOS applications)
     casks = [
+      "obs"
       "istherenet"
       "mindmac"
       "raindropio"
