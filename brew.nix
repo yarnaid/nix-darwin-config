@@ -213,6 +213,8 @@
     casks = [
       "reader"
       "bleunlock"
+      "obs"
+      "istherenet"
       "mindmac"
       "raindropio"
       "powerflow"
