@@ -29,6 +29,7 @@
       #   name = "sketchybar";
       #   start_service = false;
       # }
+      "rustup"
       "codecrafters-io/tap/codecrafters"
       "ameba"
       "exercism"
@@ -191,10 +192,21 @@
       "zsh-syntax-highlighting"
 
       # other
-      "chafa" "libsixel" "spdlog" "tbb"
-      "cfitsio" "cgif" "libaec" "hdf5" "libmatio"
-      "libspng" "uthash" "libdicom" "libxml2"
-      "openslide" "vips"
+      "chafa"
+      "libsixel"
+      "spdlog"
+      "tbb"
+      "cfitsio"
+      "cgif"
+      "libaec"
+      "hdf5"
+      "libmatio"
+      "libspng"
+      "uthash"
+      "libdicom"
+      "libxml2"
+      "openslide"
+      "vips"
       "ice"
     ];
     # Add casks (macOS applications)
