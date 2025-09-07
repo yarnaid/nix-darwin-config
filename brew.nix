@@ -211,6 +211,7 @@
     ];
     # Add casks (macOS applications)
     casks = [
+      "istat-menus"
       "reader"
       "bleunlock"
       "obs"
