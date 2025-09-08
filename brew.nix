@@ -208,6 +208,7 @@
       "openslide"
       "vips"
       "ice"
+      "helix"
     ];
     # Add casks (macOS applications)
     casks = [
