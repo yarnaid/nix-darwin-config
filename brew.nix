@@ -212,6 +212,7 @@
     ];
     # Add casks (macOS applications)
     casks = [
+      "spotify"
       "istat-menus"
       "reader"
       "bleunlock"
