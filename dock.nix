@@ -44,8 +44,12 @@
         app = "/System/Applications/iPhone Mirroring.app";
       }
       # { app = "/Applications/Parcel.app"; }
-      { app = "/Applications/Яндекс Музыка.app"; }
-      { app = "/System/Applications/Music.app"; }
+      {
+        app = "/Applications/Яндекс Музыка.app";
+      }
+      # { app = "/System/Applications/Music.app"; }
+      { app = "/System/Applications/Spotify.app"; }
+
     ];
   };
 }
