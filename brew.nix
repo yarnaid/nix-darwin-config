@@ -207,7 +207,7 @@
       "libxml2"
       "openslide"
       "vips"
-      "ice"
+      # "ice"
       "helix"
     ];
     # Add casks (macOS applications)
