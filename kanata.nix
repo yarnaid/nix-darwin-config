@@ -1,8 +1,8 @@
-{config, lib, pkgs, ...}: {
+{ config, lib, pkgs, ... }: {
   launchd.daemons = {
     kanata = {
       serviceConfig = {
-        KeepAlive = true;
+        KeepAlive = false;
         Label = "kanata";
         ProgramArguments = [
           "${config.homebrew.brewPrefix}/kanata"
@@ -15,4 +15,4 @@
       };
     };
   };
-} 
+}

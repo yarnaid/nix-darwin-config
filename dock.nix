@@ -48,7 +48,7 @@
         app = "/Applications/Яндекс Музыка.app";
       }
       # { app = "/System/Applications/Music.app"; }
-      { app = "/System/Applications/Spotify.app"; }
+      { app = "/Applications/Spotify.app"; }
 
     ];
   };

@@ -212,6 +212,10 @@
     ];
     # Add casks (macOS applications)
     casks = [
+      "command-x"
+      "simsim"
+      "mist"
+
       "spotify"
       "istat-menus"
       "reader"
