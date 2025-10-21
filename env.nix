@@ -1,4 +1,4 @@
-{...}: {
+{ ... }: {
   # Add directories to the system PATH
   environment.systemPath = [
     "/Users/yarnaid/.local/bin"
@@ -7,7 +7,11 @@
     "/Users/yarnaid/.goenv/go/bin"
     "/usr/local/sbin"
     "/usr/local/opt/sqlite/bin"
-    "/usr/local/opt/gnu-sed/libexec/gnubin"
+    "/opt/homebrew/opt/gnu-sed/libexec/gnubin"
+    "/opt/homebrew/opt/gnu-tar/libexec/gnubin"
+    "/opt/homebrew/opt/findutils/libexec/gnubin"
+    "/opt/homebrew/opt/diffutils/libexec/gnubin"
+    "/opt/homebrew/opt/gpatch/libexec/gnubin"
     "/Users/yarnaid/.cargo/bin"
     "/usr/local/bin"
     "/Applications/Postgres.app/Contents/Versions/17/bin"
@@ -46,9 +50,12 @@
     VISUAL = "nvim";
 
     # FZF
-    FZF_DEFAULT_COMMAND = "fd --hidden --strip-cwd-prefix --exclude .git --exclude node_modules";
-    FZF_CTRL_T_COMMAND = "fd --hidden --strip-cwd-prefix --exclude .git --exclude node_modules";
-    FZF_ALT_C_COMMAND = "fd --type=d --hidden --strip-cwd-prefix --exclude .git --exclude node_modules";
+    FZF_DEFAULT_COMMAND =
+      "fd --hidden --strip-cwd-prefix --exclude .git --exclude node_modules";
+    FZF_CTRL_T_COMMAND =
+      "fd --hidden --strip-cwd-prefix --exclude .git --exclude node_modules";
+    FZF_ALT_C_COMMAND =
+      "fd --type=d --hidden --strip-cwd-prefix --exclude .git --exclude node_modules";
     FZF_ALT_C_OPTS = "--preview 'eza --tree --color=always {} | head -200'";
 
     # Pager
@@ -58,6 +65,7 @@
     VIRTUALENVWRAPPER_SCRIPT = "/opt/homebrew/bin/virtualenvwrapper.sh";
     VIRTUAL_ENV_DISABLE_PROMPT = "1";
     ZSH_TMUX_TERM = "screen-256color";
-    _VIRTUALENVWRAPPER_API = "mkvirtualenv rmvirtualenv lsvirtualenv showvirtualenv workon add2virtualenv cdsitepackages cdvirtualenv lssitepackages toggleglobalsitepackages cpvirtualenv setvirtualenvproject mkproject cdproject mktmpenv wipeenv allvirtualenv";
+    _VIRTUALENVWRAPPER_API =
+      "mkvirtualenv rmvirtualenv lsvirtualenv showvirtualenv workon add2virtualenv cdsitepackages cdvirtualenv lssitepackages toggleglobalsitepackages cpvirtualenv setvirtualenvproject mkproject cdproject mktmpenv wipeenv allvirtualenv";
   };
-} 
+}
