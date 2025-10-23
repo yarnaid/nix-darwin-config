@@ -227,6 +227,8 @@
     ];
     # Add casks (macOS applications)
     casks = [
+      "kando"
+      # "hyperkey"
       "command-x"
       "simsim"
       "mist"
@@ -234,6 +236,7 @@
       "todoist-app"
       "zen"
       "mouseless"
+      "folder-preview-pro"
 
       "spotify"
       "istat-menus"

@@ -3,14 +3,12 @@
 {
   system.defaults.dock = {
     persistent-apps = [
+      { app = "/Applications/Zen.app"; }
       {
         app = "/Applications/Vivaldi.app";
       }
       # { app = "/Applications/Orion.app"; }
-      # { app = "/Applications/Dia.app"; }
-      # { app = "/Applications/SigmaOS.app"; }
       { app = "/Applications/Comet.app"; }
-      { app = "/Applications/Google Chrome.app"; }
       {
         spacer = { small = true; };
       }
@@ -23,31 +21,26 @@
       { app = "/Applications/Microsoft Teams.app"; }
       { spacer = { small = true; }; }
       { app = "/Applications/Windows App.app"; }
-      {
-        app = "/Applications/Warp.app";
-      }
-      # { app = "/Applications/iTerm.app"; }
+      { app = "/Applications/Warp.app"; }
+      { app = "/Applications/iTerm.app"; }
       { app = "/Applications/Cursor.app"; }
-      {
-        app = "/Applications/Zed.app";
-      }
-      # { app = "/Applications/Windsurf.app"; }
+      { app = "/Applications/Zed.app"; }
       { app = "/Applications/Visual Studio Code.app"; }
+
       { spacer = { small = true; }; }
+
       { app = "/System/Applications/System Settings.app"; }
       { app = "/System/Applications/Utilities/Activity Monitor.app"; }
+
       { spacer = { small = true; }; }
+
+      { app = "/Applications/Todoist.app"; }
       { app = "/Applications/Things3.app"; }
-      { app = "/Applications/Tana.app"; }
-      { app = "/Applications/Drafts.app"; }
       {
-        app = "/System/Applications/iPhone Mirroring.app";
+        app = "/Applications/Tana.app";
       }
-      # { app = "/Applications/Parcel.app"; }
-      {
-        app = "/Applications/Яндекс Музыка.app";
-      }
-      # { app = "/System/Applications/Music.app"; }
+      # { app = "/Applications/Drafts.app"; }
+      { app = "/System/Applications/iPhone Mirroring.app"; }
       { app = "/Applications/Spotify.app"; }
 
     ];
