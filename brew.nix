@@ -229,6 +229,7 @@
     # Add casks (macOS applications)
     casks = [
       "thock"
+      "codex"
       "min"
       "kando"
       # "hyperkey"
