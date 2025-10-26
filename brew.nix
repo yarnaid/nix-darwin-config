@@ -12,6 +12,7 @@
     };
     # Add taps (repositories)
     taps = [
+      "kamillobinski/thock"
       "acarl005/formulas"
       # "jordanbaird-ice"
       "domt4/autoupdate"
@@ -166,7 +167,7 @@
       "pyright"
       "python-lsp-server"
       "python-setuptools"
-      "pyenv"
+      # "pyenv"
       "ranger"
       "ripgrep"
       "ripgrep-all"
@@ -227,11 +228,14 @@
     ];
     # Add casks (macOS applications)
     casks = [
+      "thock"
+      "min"
       "kando"
       # "hyperkey"
       "command-x"
       "simsim"
       "mist"
+      "orbstack"
       "capacities"
       "todoist-app"
       "zen"
