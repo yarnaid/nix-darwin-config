@@ -12,7 +12,8 @@
     };
     # Add taps (repositories)
     taps = [
-      "kamillobinski/thock"
+      # "kamillobinski/thock"
+      "houmain/tap"
       "acarl005/formulas"
       # "jordanbaird-ice"
       "domt4/autoupdate"
@@ -117,7 +118,7 @@
       "imagemagick"
       "iperf3"
       "jq"
-      "kanata"
+      # "kanata"
       "lame"
       "lazygit"
       "lf"
@@ -228,7 +229,10 @@
     ];
     # Add casks (macOS applications)
     casks = [
-      "thock"
+      # "koekeishiya/formulae/skhd"
+      "brave-browser"
+      "spacelauncher"
+      # "thock"
       "codex"
       "min"
       "kando"
