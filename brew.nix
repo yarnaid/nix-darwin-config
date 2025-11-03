@@ -13,8 +13,6 @@
     # Add taps (repositories)
     taps = [
       # "kamillobinski/thock"
-      "lego"
-      "certbot"
       "houmain/tap"
       "acarl005/formulas"
       # "jordanbaird-ice"
@@ -232,8 +230,9 @@
     # Add casks (macOS applications)
     casks = [
       # "koekeishiya/formulae/skhd"
+      "supermaven"
       "brave-browser"
-      "spacelauncher"
+      # "spacelauncher"
       # "thock"
       "codex"
       "min"

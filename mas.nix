@@ -33,7 +33,7 @@
     # Development & Power User Tools
     "JSONPeep" = 1458969831;
     "Peek" = 1554235898;
-    "superagent" = 1568262835;
+    # "superagent" = 1568262835;
     "Super Agent" = 1568262835;
     # "Xcode" = 497799835;
 
