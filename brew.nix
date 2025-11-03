@@ -13,6 +13,8 @@
     # Add taps (repositories)
     taps = [
       # "kamillobinski/thock"
+      "lego"
+      "certbot"
       "houmain/tap"
       "acarl005/formulas"
       # "jordanbaird-ice"
@@ -273,9 +275,10 @@
       "dropbox"
       # "dropbox-dash"
       # "proton-mail"
-      # "proton-mail-bridge"
-      # "protonvpn"
-      # "proton-pass"
+      "proton-mail-bridge"
+      "protonvpn"
+      "proton-pass"
+      "bluetility"
       # "proton-drive"
       "vivaldi"
       "airbuddy"
