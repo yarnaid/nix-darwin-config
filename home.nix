@@ -61,8 +61,13 @@
   # Git configuration
   programs.git = {
     enable = true;
-    userName = "yarnaid";
-    userEmail = "yarnaid@gmail.com";
+
+    settings = {
+      user = {
+        name = "yarnaid";
+        email = "yarnaid@gmail.com";
+      };
+    };
 
     extraConfig = {
       push.default = "current";

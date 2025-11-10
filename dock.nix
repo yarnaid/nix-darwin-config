@@ -3,28 +3,22 @@
 {
   system.defaults.dock = {
     persistent-apps = [
-      { app = "/Applications/Zen.app"; }
-      {
-        app = "/Applications/Vivaldi.app";
-      }
-      # { app = "/Applications/Orion.app"; }
-      { app = "/Applications/Comet.app"; }
+      { app = "/Applications/Arc.app"; }
+      { app = "/Applications/Proton Mail.app"; }
+      { app = "/Applications/Telegram.app"; }
       {
         spacer = { small = true; };
       }
-      # { app = "/System/Applications/Mail.app"; }
       {
         app = "/Applications/Microsoft Outlook.app";
       }
-      # { app = "/Applications/Setapp/Spark Mail.app"; }
-      { app = "/Applications/Telegram.app"; }
       { app = "/Applications/Microsoft Teams.app"; }
       { spacer = { small = true; }; }
       { app = "/Applications/Windows App.app"; }
-      { app = "/Applications/Warp.app"; }
+      # { app = "/Applications/Warp.app"; }
       { app = "/Applications/iTerm.app"; }
       { app = "/Applications/Cursor.app"; }
-      { app = "/Applications/Zed.app"; }
+      # { app = "/Applications/Zed.app"; }
       { app = "/Applications/Visual Studio Code.app"; }
 
       { spacer = { small = true; }; }
