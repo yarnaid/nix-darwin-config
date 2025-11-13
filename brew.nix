@@ -269,6 +269,8 @@
       "arq"
       "shottr"
       "zed"
+      "voiceink"
+      "leader-key"
       "dropbox"
       # "dropbox-dash"
       "proton-mail"
