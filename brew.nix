@@ -271,6 +271,7 @@
       "zed"
       "voiceink"
       "leader-key"
+      "script-debugger"
       "dropbox"
       # "dropbox-dash"
       "proton-mail"
