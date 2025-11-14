@@ -274,6 +274,7 @@
       "script-debugger"
       "dropbox"
       "cleanshot"
+      "pixelsnap"
       "keyboard-maestro"
       # "dropbox-dash"
       "proton-mail"
