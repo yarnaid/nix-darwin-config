@@ -273,6 +273,8 @@
       "leader-key"
       "script-debugger"
       "dropbox"
+      "cleanshot"
+      "keyboard-maestro"
       # "dropbox-dash"
       "proton-mail"
       "proton-mail-bridge"
