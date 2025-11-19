@@ -276,6 +276,7 @@
       "cleanshot"
       "pixelsnap"
       "ghostty"
+      "kindavim"
       "keyboard-maestro"
       # "dropbox-dash"
       "proton-mail"
