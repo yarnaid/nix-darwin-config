@@ -232,6 +232,7 @@
       # "thock"
       # "readdle-spark"
       "superwhisper"
+      "carapace"
       "codex"
       "min"
       # "kando"
