@@ -275,6 +275,7 @@
       "dropbox"
       "cleanshot"
       "pixelsnap"
+      "wave"
       "keyboard-maestro"
       # "dropbox-dash"
       "proton-mail"
