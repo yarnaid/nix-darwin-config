@@ -52,11 +52,6 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  # programs.pyenv = {
-  #   enable = true;
-  #   enableFishIntegration = true;
-  #   enableZshIntegration = true;
-  # };
 
   # Git configuration
   programs.git = {
@@ -197,6 +192,9 @@
             function nvm
               bash -c "source ~/.nvm/nvm.sh; nvm $argv"
             end
+
+            set -Ux CARAPACE_BRIDGES 'zsh,fish,bash,inshellisense' # optional
+            carapace _carapace | source
 
             mise activate fish | source
 

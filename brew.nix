@@ -232,6 +232,8 @@
       # "thock"
       # "readdle-spark"
       "superwhisper"
+      "surfshark"
+      "qutebrowser"
       "carapace"
       "codex"
       "min"
