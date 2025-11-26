@@ -16,8 +16,9 @@
       { spacer = { small = true; }; }
       { app = "/Applications/Windows App.app"; }
       # { app = "/Applications/Warp.app"; }
-      { app = "/Applications/iTerm.app"; }
+      { app = "/Applications/Ghostty.app"; }
       { app = "/Applications/Cursor.app"; }
+      { app = "/Applications/Antigravity.app"; }
       # { app = "/Applications/Zed.app"; }
       { app = "/Applications/Visual Studio Code.app"; }
 
