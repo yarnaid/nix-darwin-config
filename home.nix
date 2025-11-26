@@ -212,6 +212,8 @@
           source $HOMEBREW_COMMAND_NOT_FOUND_HANDLER
         end
 
+        source ~/.config/atuin/atuin.fish
+
     '';
 
     plugins = [

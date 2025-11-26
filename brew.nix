@@ -276,6 +276,7 @@
       "leader-key"
       "script-debugger"
       "dropbox"
+      "keysmith"
       "cleanshot"
       "pixelsnap"
       "ghostty"
