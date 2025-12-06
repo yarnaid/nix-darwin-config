@@ -2,7 +2,7 @@
   launchd.daemons = {
     kanata = {
       serviceConfig = {
-        KeepAlive = false;
+        KeepAlive = true;
         Label = "kanata";
         ProgramArguments = [
           # "${config.homebrew.brewPrefix}/kanata"
