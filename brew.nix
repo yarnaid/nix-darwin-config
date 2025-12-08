@@ -27,10 +27,11 @@
     ];
     # Add brews (packages)
     brews = [
-      # {
-      #   name = "sketchybar";
-      #   start_service = false;
-      # }
+      {
+        name = "sketchybar";
+        start_service = true;
+      }
+      "carapace"
       "gawk"
       "gnu-tar"
       "findutils"
@@ -231,10 +232,11 @@
     casks = [
       # "thock"
       # "readdle-spark"
+      # "nikitabobko/tap/aerospace"
+      "adguard"
       "superwhisper"
       "surfshark"
       "qutebrowser"
-      "carapace"
       "codex"
       "min"
       # "kando"

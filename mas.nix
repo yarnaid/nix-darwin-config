@@ -58,9 +58,6 @@
     "Pixelmator Pro" = 1289583905;
     "YamaCast" = 1415107621;
     "FilmNoir" = 1528417240;
-    "Affinity Designer 2" = 1616831348;
-    "Affinity Photo 2" = 1616822987;
-    "Affinity Publisher 2" = 1606941598;
 
     # Finance
     "Exchange Rates" = 1463361068;

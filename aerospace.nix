@@ -1,17 +1,19 @@
 {pkgs, ...}: {
   services.aerospace = {
-    enable = false;
+    enable = true;
     package = pkgs.aerospace;
     
     settings = {
       # Basic settings
-      # start-at-login = true;
       enable-normalization-flatten-containers = true;
       enable-normalization-opposite-orientation-for-nested-containers = true;
       accordion-padding = 300;
       default-root-container-layout = "tiles";
       default-root-container-orientation = "auto";
       automatically-unhide-macos-hidden-apps = false;
+      after-startup-command = [
+      "exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0"
+      ];
 
       # Key mapping
       key-mapping = {
@@ -21,13 +23,13 @@
       # Gaps configuration
       gaps = {
         inner = {
-          horizontal = 0;
-          vertical = 0;
+          horizontal = 20;
+          vertical = 20;
         };
         outer = {
-          left = 0;
-          bottom = 0;
-          right = 0;
+          left = 20;
+          bottom = 20;
+          right = 40;
           top = [
             { monitor."LG HDR 4K" = 0; }
             { monitor."HDMI" = 0; }
@@ -72,14 +74,8 @@
           "alt-7" = "workspace 7";
           "alt-8" = "workspace 8";
           "alt-9" = "workspace 9";
-          "alt-a" = "workspace A";
-          "alt-c" = "workspace C";
-          "alt-d" = "workspace D";
-          "alt-f" = "workspace F";
-          "alt-m" = "workspace M";
-          "alt-s" = "workspace S";
-          "alt-t" = "workspace T";
           "alt-w" = "workspace W";
+          "alt-e" = "workspace E";
           
           # Move to workspace
           "alt-shift-1" = "move-node-to-workspace 1";
@@ -91,14 +87,8 @@
           "alt-shift-7" = "move-node-to-workspace 7";
           "alt-shift-8" = "move-node-to-workspace 8";
           "alt-shift-9" = "move-node-to-workspace 9";
-          "alt-shift-a" = "move-node-to-workspace A";
-          "alt-shift-c" = "move-node-to-workspace C";
-          "alt-shift-d" = "move-node-to-workspace D";
-          "alt-shift-f" = "move-node-to-workspace F";
-          "alt-shift-m" = "move-node-to-workspace M";
-          "alt-shift-s" = "move-node-to-workspace S";
-          "alt-shift-t" = "move-node-to-workspace T";
           "alt-shift-w" = "move-node-to-workspace W";
+          "alt-shift-e" = "move-node-to-workspace E";
           
           # Other controls
           "alt-tab" = "workspace-back-and-forth";
@@ -121,64 +111,33 @@
         };
       };
 
+      workspace-to-monitor-force-assignment = {
+        "E" = "Built-in Retina Display";
+        "W" = "TYPE-C";
+      };
+
       # Window detection rules
       on-window-detected = [
-        {
-          "if" = {
-            app-id = "com.apple.Safari";
-          };
-          run = "move-node-to-workspace W";
-        }
-        {
-          "if" = {
-            app-id = "com.google.Chrome";
-          };
-          run = "move-node-to-workspace W";
-        }
-        {
-          "if" = {
-            app-id = "co.podzim.BoltGPT-setapp";
-          };
-          run = "move-node-to-workspace A";
-        }
-        {
-          "if" = {
-            app-id = "inc.tana.desktop";
-            during-aerospace-startup = true;
-          };
-          run = "move-node-to-workspace T";
-          check-further-callbacks = true;
-        }
-        {
-          "if" = {
-            app-id = "com.culturedcode.ThingsMac";
-          };
-          run = "move-node-to-workspace T";
-        }
-        {
-          "if" = {
-            app-id = "com.deezer.deezer-desktop";
-          };
-          run = "move-node-to-workspace M";
-        }
-        {
-          "if" = {
-            app-id = "ru.keepcoder.Telegram";
-          };
-          run = "move-node-to-workspace C";
-        }
-        {
-          "if" = {
-            app-id = "com.readdle.SparkDesktop-setapp";
-          };
-          run = "move-node-to-workspace C";
-        }
-        {
-          "if" = {
-            app-id = "io.zsa.keymapp";
-          };
-          run = "move-node-to-workspace 11";
-        }
+        # {
+        #   "if" = {
+        #     app-id = "com.apple.Safari";
+        #   };
+        #   run = "move-node-to-workspace W";
+        # }
+        # {
+        #   "if" = {
+        #     app-id = "inc.tana.desktop";
+        #     during-aerospace-startup = true;
+        #   };
+        #   run = "move-node-to-workspace T";
+        #   check-further-callbacks = true;
+        # }
+        # {
+        #   "if" = {
+        #     app-id = "com.culturedcode.ThingsMac";
+        #   };
+        #   run = "move-node-to-workspace T";
+        # }
       ];
     };
   };
