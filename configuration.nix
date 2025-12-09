@@ -99,6 +99,9 @@
   system.defaults.dock.minimize-to-application = true;
   system.defaults.dock.orientation = "bottom";
   system.defaults.dock.wvous-br-corner = 1;
+  system.defaults.dock.autohide = true;
+  system.defaults.dock.autohide-delay = 0.0;
+  system.defaults.dock.autohide-time-modifier = 0.25;
   system.defaults.finder.AppleShowAllExtensions = true;
   system.defaults.finder.AppleShowAllFiles = true;
   system.defaults.finder.FXDefaultSearchScope = "SCcf";
@@ -128,7 +131,7 @@
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 6;
-  system.defaults.dock.autohide = false;
+  # system.defaults.dock.autohide = false;
 
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";

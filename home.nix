@@ -2,7 +2,7 @@
   home = {
     username = "yarnaid";
     homeDirectory = "/Users/yarnaid";
-    stateVersion = "25.05";
+    stateVersion = "25.11";
 
     packages = with pkgs; [ fishPlugins.foreign-env ];
 
@@ -107,6 +107,21 @@
       style = "numbers,changes,header";
     };
   };
+
+  programs.atuin = {
+    enable = true;
+    daemon = {
+      enable = true;
+    };
+    enableBashIntegration = true;
+    enableFishIntegration = true;
+    enableZshIntegration = true;
+  };
+
+    programs.carapace.enableBashIntegration = true;
+    programs.carapace.enableFishIntegration = true;
+    programs.carapace.enableZshIntegration = true;
+
 
   # Configure fish shell through home-manager
   programs.fish = {
@@ -298,15 +313,6 @@
           sha256 = "sha256-F1t81VliD+v6WEWqj1c1ehFBXzqLyumx5vV46s/FZRU=";
         };
       }
-      # {
-      #   name = "plugin-foreign-env";
-      #   src = pkgs.fetchFromGitHub {
-      #     owner = "oh-my-fish";
-      #     repo = "plugin-foreign-env";
-      #     rev = "master";
-      #     sha256 = "sha256-4+k5rSoxkTtYFh/lEjhRkVYa2S4KEzJ/IJbyJl+rJjQ=";
-      #   };
-      # }
       {
         name = "nvm.fish";
         src = pkgs.fetchFromGitHub {

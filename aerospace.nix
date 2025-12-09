@@ -23,12 +23,12 @@
       # Gaps configuration
       gaps = {
         inner = {
-          horizontal = 20;
-          vertical = 20;
+          horizontal = 10;
+          vertical = 10;
         };
         outer = {
-          left = 20;
-          bottom = 20;
+          left = 10;
+          bottom = 10;
           right = 40;
           top = [
             { monitor."LG HDR 4K" = 0; }
@@ -100,7 +100,7 @@
           "esc" = ["reload-config" "mode main"];
           "r" = ["flatten-workspace-tree" "mode main"];
           "f" = ["layout floating tiling" "mode main"];
-          "backspace" = ["close-all-windows-but-current" "mode main"];
+          # "backspace" = ["close-all-windows-but-current" "mode main"];
           "alt-shift-h" = ["join-with left" "mode main"];
           "alt-shift-j" = ["join-with down" "mode main"];
           "alt-shift-k" = ["join-with up" "mode main"];
@@ -112,8 +112,8 @@
       };
 
       workspace-to-monitor-force-assignment = {
-        "E" = "Built-in Retina Display";
-        "W" = "TYPE-C";
+        "W" = "Built-in Retina Display";
+        "E" = "TYPE-C";
       };
 
       # Window detection rules
