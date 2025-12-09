@@ -61,11 +61,8 @@
     # Pager
     PAGER = "bat";
 
-    # Virtualenv
-    VIRTUALENVWRAPPER_SCRIPT = "/opt/homebrew/bin/virtualenvwrapper.sh";
-    VIRTUAL_ENV_DISABLE_PROMPT = "1";
-    ZSH_TMUX_TERM = "screen-256color";
-    _VIRTUALENVWRAPPER_API =
-      "mkvirtualenv rmvirtualenv lsvirtualenv showvirtualenv workon add2virtualenv cdsitepackages cdvirtualenv lssitepackages toggleglobalsitepackages cpvirtualenv setvirtualenvproject mkproject cdproject mktmpenv wipeenv allvirtualenv";
+    SAVEHIST = "1000000";
+    HISTSIZE = "1000000";
+
   };
 }

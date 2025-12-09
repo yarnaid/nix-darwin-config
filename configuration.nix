@@ -12,23 +12,6 @@
   ];
   stylix.fonts.monospace.name = "MonoLiza Nerd Font";
 
-  environment.etc."fish/nixos-env-preinit.fish".text = lib.mkMerge [
-    (lib.mkBefore ''
-      set -g __nixos_path_original $PATH
-    '')
-    (lib.mkAfter ''
-      function __nixos_path_fix -d "fix PATH value"
-        set -l result (string replace '$HOME' "$HOME" $__nixos_path_original)
-        for elt in $PATH
-          if not contains -- $elt $result
-            set -a result $elt
-          end
-        end
-        set -g PATH $result
-      end
-    '')
-  ];
-
 
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
@@ -53,17 +36,10 @@
     };
   };
 
-  # Enable fish shell system-wide
-  # programs.fish.enable = true;
   programs.fish = {
-    enable = true;
+    enable = false;
     useBabelfish = true;
   };
-  # programs.direnv.enable = true;
-
-  # services.openssh.enable = true;
-  # services.sketchybar.enable = false;
-  # services.tailscale.enable = true;
 
   system.defaults.".GlobalPreferences"."com.apple.mouse.scaling" = 4.0;
 
@@ -124,7 +100,7 @@
   # system.defaults.universalaccess.reduceMotion = true;
 
   # Add fish to /etc/shells
-  environment.shells = [ pkgs.fish ];
+  environment.shells = [ pkgs.zsh pkgs.fish pkgs.bash pkgs.nushell ];
 
   # Set Git commit hash for darwin-version.
   system.configurationRevision = null;
@@ -132,7 +108,6 @@
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 6;
-  # system.defaults.dock.autohide = false;
 
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
@@ -141,7 +116,7 @@
   users.users.yarnaid = {
     name = "yarnaid";
     home = "/Users/yarnaid";
-    shell = pkgs.fish;
+    shell = pkgs.zsh;
   };
 
   # Enable home-manager

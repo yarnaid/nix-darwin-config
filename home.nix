@@ -1,10 +1,11 @@
 { pkgs, ... }: {
+  # imports = [ ./fish.nix ];
   home = {
     username = "yarnaid";
     homeDirectory = "/Users/yarnaid";
     stateVersion = "25.11";
 
-    packages = with pkgs; [ fishPlugins.foreign-env ];
+    # packages = with pkgs; [ fishPlugins.foreign-env ];
 
     shell.enableShellIntegration = true;
 
@@ -105,251 +106,144 @@
     };
   };
 
+  programs.btop = {
+    enable = true;
+    settings = {
+      color_theme = "tokyo-night";
+    };
+  };
+
   programs.atuin = {
     enable = true;
     daemon = {
       enable = true;
     };
-    enableBashIntegration = true;
-    enableFishIntegration = true;
-    enableZshIntegration = true;
+    settings = {
+      theme = {
+        name = "tokyo-night";
+      };
+    };
   };
   
+  programs.direnv = {
+    enable = true;
+    mise.enable = true;
+  };
+
   programs.oh-my-posh = {
     enable = true;
-    # enableBashIntegration = true;
-    # enableFishIntegration = true;
-    # enableZshIntegration = true;
     # useTheme = "night-owl";
     configFile = "$HOME/.config/oh-my-posh.json";
   };
 
+  programs.mise = {
+    enable = true;
+    settings = {
+      experimental = true;
+      verbose = true;
+      jobs = 16;
+    };
+    globalConfig = {
+      min_version = "2024.9.5";
+      env = {PROJECT_NAME = "{{ config_root | basename }}";};
+      tools = {
+        python = "{{ get_env(name='PYTHON_VERSION', default='3.13') }}";
+        ruff = "latest";
+        uv = "latest";
+      };
+      settings = {
+        idiomatic_version_file_enable_tools = [];
+        python.uv_venv_auto = true;
+      };
+      tasks = {
+        install = {
+          description = "Install dependencies";
+          alias = "i";
+          run = "uv pip install -r requirements.txt";
+        };
+        run = {
+          description = "Run the application";
+          run = "python app.py";
+        };
+        test = {
+          description = "Run tests";
+          run = "pytest tests/";
+        };
+        lint = {
+          description = "Lint the code";
+          run = "ruff src/";
+        };
+      };
+    };
+  };
+
+  programs.fastfetch = {
+    enable = true;
+    settings = {
+      theme = "tokyo-night";
+    };
+  };
+
   programs.carapace = {
     enable = true;
-    # enableBashIntegration = true;
-    # enableFishIntegration = true;
-    # enableZshIntegration = true;
   };
 
 
-  # Configure fish shell through home-manager
-  programs.fish = {
+
+  programs.nushell = {
     enable = true;
-    # useBabelfish = true;
+  };
 
-    interactiveShellInit = ''
-            # Source nix-darwin pre-initialization
-            if test -e /etc/fish/nixos-env-preinit.fish
-              source /etc/fish/nixos-env-preinit.fish
-            end
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    syntaxHighlighting = { enable = true;};
+    antidote = {
+      enable = false;
+      plugins = [
+        # "zsh-users/zsh-autosuggestions"
+        # "zsh-users/zsh-completions"
+        # "zsh-users/zsh-syntax-highlighting"
+      ];
+    };
+    # autocd = true;
+    # defaultKeymap = "viins";
+    history = {
+      ignoreDups = true;
+    };
+    loginExtra = "fastfetch\nzellij\n";
+    localVariables = {
+      ZSH_HIGHLIGHT_HIGHLIGHTERS = "(main brackets)";
+      CASE_SENSITIVE = false;
+      ENABLE_CORRECTION = true;
+    };
+  };
+  programs.sheldon = {
+    enable = true;
+  };
 
-            fish_add_path /run/current-system/sw/bin
-
-            # Source nix environment
-            if test -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
-              fenv source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
-            end
-            
-            # Source nix-darwin environment
-            if test -e /etc/static/bashrc
-              fenv source /etc/static/bashrc
-            end
-
-            # Fix PATH for nix
-            set -gx PATH $HOME/.nix-profile/bin /run/current-system/sw/bin /nix/var/nix/profiles/default/bin $PATH
-            
-            # Apply PATH fix if function is available
-            if functions -q __nixos_path_fix
-              __nixos_path_fix
-            end
-
-
-
-            # Set environment variables
-            set -gx EDITOR nvim
-            set -gx LANG en_US.UTF-8
-            set -gx LC_ALL en_US.UTF-8
-            set -gx LC_CTYPE en_US.UTF-8
-            set -U fish_user_paths /opt/homebrew/bin $fish_user_paths
-            
-            # FZF configuration
-            set -gx fzf_preview_file_cmd preview
-            set -gx fzf_preview_dir_cmd "eza --all -F --color=always --icons=always --oneline --level=1 --tree"
-            set -gx fzf_fd_opts "--hidden --max-depth 5 --exclude .git --exclude node_modules"
-            set fzf_diff_highlighter "delta --paging=never --width=20"
-            set -gx FZF_CTRL_T_OPTS "--preview 'preview {}' --bind 'tab:down,shift-tab:up'"
-            
-            # FZF environment variables from .profile
-            set -gx FZF_DEFAULT_COMMAND "fd --hidden --strip-cwd-prefix --exclude .git --exclude node_modules"
-            set -gx FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
-            set -gx FZF_ALT_C_COMMAND "fd --type=d --hidden --strip-cwd-prefix --exclude .git --exclude node_modules"
-            set -gx FZF_ALT_C_OPTS "--preview 'eza --tree --color=always {} | head -200' --bind 'tab:down,shift-tab:up'"
-            set -gx FZF_DEFAULT_OPTS "--bind 'tab:down,shift-tab:up'"
-
-            # Initialize various tools
-            # starship init fish | source
-            # oh-my-posh init fish | source
-            fzf --fish | source
-            zoxide init fish | source
-            set -Ux fifc_editor nvim
-
-            # Homebrew completions
-            if test -d (brew --prefix)"/share/fish/completions"
-                set -p fish_complete_path (brew --prefix)/share/fish/completions
-            end
-
-            if test -d (brew --prefix)"/share/fish/vendor_completions.d"
-                set -p fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
-            end
-
-            # Pyenv initialization
-            # pyenv init - | source
-            # pyenv virtualenv-init - | source
-
-            # UV shell completion
-            uv generate-shell-completion fish | source
-            uvx --generate-shell-completion fish | source
-
-            # Set PAGER from .profile
-            set -gx PAGER bat
-            # Add nix-darwin binary path
-            
-            function nvm
-              bash -c "source ~/.nvm/nvm.sh; nvm $argv"
-            end
-
-            set -Ux CARAPACE_BRIDGES 'zsh,fish,bash,inshellisense' # optional
-            carapace _carapace | source
-
-            mise activate fish | source
-
-            direnv hook fish | source
-      	
-      	# pnpm
-      	set -gx PNPM_HOME "/Users/yarnaid/Library/pnpm"
-      	if not string match -q -- $PNPM_HOME $PATH
-      	  set -gx PATH "$PNPM_HOME" $PATH
-      	end
-      	# pnpm end
-
-        set HOMEBREW_COMMAND_NOT_FOUND_HANDLER (brew --repository)/Library/Homebrew/command-not-found/handler.fish
-        if test -f $HOMEBREW_COMMAND_NOT_FOUND_HANDLER
-          source $HOMEBREW_COMMAND_NOT_FOUND_HANDLER
-        end
-
-        source ~/.config/atuin/atuin.fish
-
-    '';
-
-    plugins = [
-      {
-        name = "fisher";
-        src = pkgs.fetchFromGitHub {
-          owner = "jorgebucaran";
-          repo = "fisher";
-          rev = "4.4.5";
-          sha256 = "sha256-VC8LMjwIvF6oG8ZVtFQvo2mGdyAzQyluAGBoK8N2/QM=";
-        };
-      }
-      {
-        name = "autopair.fish";
-        src = pkgs.fetchFromGitHub {
-          owner = "jorgebucaran";
-          repo = "autopair.fish";
-          rev = "1.0.4";
-          sha256 = "sha256-s1o188TlwpUQEN3X5MxUlD/2CFCpEkWu83U9O+wg3VU=";
-        };
-      }
-      {
-        name = "done";
-        src = pkgs.fetchFromGitHub {
-          owner = "franciscolourenco";
-          repo = "done";
-          rev = "1.19.3";
-          sha256 = "sha256-DMIRKRAVOn7YEnuAtz4hIxrU93ULxNoQhW6juxCoh4o=";
-        };
-      }
-      {
-        name = "fifc";
-        src = pkgs.fetchFromGitHub {
-          owner = "gazorby";
-          repo = "fifc";
-          rev = "v0.1.1";
-          sha256 = "sha256-p5E4Mx6j8hcM1bDbeftikyhfHxQ+qPDanuM1wNqGm6E=";
-        };
-      }
-      {
-        name = "sponge";
-        src = pkgs.fetchFromGitHub {
-          owner = "meaningful-ooo";
-          repo = "sponge";
-          rev = "1.1.0";
-          sha256 = "sha256-MdcZUDRtNJdiyo2l9o5ma7nAX84xEJbGFhAVhK+Zm1w=";
-        };
-      }
-      # {
-      #   name = "preview.fish";
-      #   src = pkgs.fetchFromGitHub {
-      #     owner = "kidonng";
-      #     repo = "preview.fish";
-      #     rev = "master";
-      #     sha256 = "sha256-ba3fbef3a9f23840b25764be2e1c82da5b205d42";
-      #   };
-      # }
-      {
-        name = "colored_man_pages.fish";
-        src = pkgs.fetchFromGitHub {
-          owner = "patrickf1";
-          repo = "colored_man_pages.fish";
-          rev = "master";
-          sha256 = "sha256-ii9gdBPlC1/P1N9xJzqomrkyDqIdTg+iCg0mwNVq2EU=";
-        };
-      }
-      {
-        name = "zoxide";
-        src = pkgs.fetchFromGitHub {
-          owner = "icezyclon";
-          repo = "zoxide.fish";
-          rev = "3.0";
-          sha256 = "sha256-OjrX0d8VjDMxiI5JlJPyu/scTs/fS/f5ehVyhAA/KDM=";
-        };
-      }
-      {
-        name = "abbreviation-tips";
-        src = pkgs.fetchFromGitHub {
-          owner = "gazorby";
-          repo = "fish-abbreviation-tips";
-          rev = "v0.7.0";
-          sha256 = "sha256-F1t81VliD+v6WEWqj1c1ehFBXzqLyumx5vV46s/FZRU=";
-        };
-      }
-      {
-        name = "nvm.fish";
-        src = pkgs.fetchFromGitHub {
-          owner = "jorgebucaran";
-          repo = "nvm.fish";
-          rev = "2.2.17";
-          sha256 = "sha256-BNnoP9gLQuZQt/0SOOsZaYOexNN2K7PKWT/paS0BJJY=";
-        };
-      }
-      {
-        name = "foreign-env";
-        src = pkgs.fetchFromGitHub {
-          owner = "oh-my-fish";
-          repo = "plugin-foreign-env";
-          rev = "dddd9213272a0ab848d474d0cbde12ad034e65bc";
-          sha256 = "00xqlyl3lffc5l0viin1nyp819wf81fncqyz87jx8ljjdhilmgbs";
-        };
-      }
-      {
-        name = "fzf.fish";
-        src = pkgs.fetchFromGitHub {
-          owner = "PatrickF1";
-          repo = "fzf.fish";
-          rev = "v10.3";
-          sha256 = "sha256-T8KYLA/r/gOKvAivKRoeqIwE2pINlxFQtZJHpOy9GMM=";
-        };
-      }
-    ];
+  programs.zoxide = {
+    enable = true;
+  };
+  programs.zellij = {
+    enable = true;
+  };
+  programs.yazi = {
+    enable = true;
+  };
+  programs.intelli-shell = {
+    # enable = true;
+    enable = false;
+  };
+  programs.fzf = {
+    enable = true;
+  };
+  programs.broot = {
+    enable = true;
+  };
+  programs.eza = {
+    enable = true;
+    colors = "auto";
+    icons = "auto";
   };
 }
