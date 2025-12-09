@@ -211,7 +211,16 @@
     history = {
       ignoreDups = true;
     };
-    loginExtra = "fastfetch\nzellij\n";
+    # loginExtra = "zellij\n";
+    initContent = ''
+      export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --ansi --preview-window=right:60%:wrap'
+      export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+      export BAT_THEME="tokyo-night"
+      if [[ -z "$ZELLIJ" && "$TERM_PROGRAM" != "vscode" && -z "$SSH_CONNECTION" ]]; then
+          # Try to attach to a session named "default", or create it if it doesn't exist
+          zellij attach -c default
+      fi
+    '';
     localVariables = {
       ZSH_HIGHLIGHT_HIGHLIGHTERS = "(main brackets)";
       CASE_SENSITIVE = false;
@@ -246,4 +255,39 @@
     colors = "auto";
     icons = "auto";
   };
+  programs.ranger.enable = true;
+  programs.ruff = {
+    enable = true;
+    settings = {
+      line-length = 88;
+      indent-width = 4;
+      indent-style = "space";
+      format = {
+        quote-style = "double";
+      };
+    };
+  };
+  # not available on macOS
+  # programs.ghostty = {
+  #   enable = true;
+  #   # theme = "tokyo-night";
+  #   settings = {
+  #     font-family = "MonoLiza Nerd Font";
+  #     # font-family = Monospace
+  #     background-opacity = 0.8;
+  #     background-blur = true;
+  #     background-blur-radius = 8;
+  #     copy-on-select = true;
+  #     shell-integration = "detect";
+  #     macos-option-as-alt = true;
+  #     scrollback-limit = 1000000;
+  #     link-previews = true;
+  #     working-directory = "inherit";
+  #     # keybind = "global:cmd+backquote=toggle_quick_terminal";
+  #     quick-terminal-size = "300px,50%";
+  #     quick-terminal-screen = "mouse";
+  #     quick-terminal-animation-duration = 0.125;
+  #     theme = "TokyoNight";
+  #   };
+  # };
 }
