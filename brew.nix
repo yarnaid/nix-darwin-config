@@ -2,20 +2,19 @@
   homebrew = {
     enable = true;
     onActivation = {
-      autoUpdate = true;
+      autoUpdate = false;
       upgrade = true;
       cleanup = "zap"; # Uninstall all programs not declared
     };
     global = {
       brewfile = true;
       lockfiles = true;
+      autoUpdate = true;
     };
     # Add taps (repositories)
     taps = [
-      # "kamillobinski/thock"
       "houmain/tap"
       "acarl005/formulas"
-      # "jordanbaird-ice"
       "domt4/autoupdate"
       "felixkratz/formulae"
       "lzt1008/powerflow"

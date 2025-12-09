@@ -10,6 +10,7 @@
     appcleaner
     cacert
   ];
+  stylix.fonts.monospace.name = "MonoLiza Nerd Font";
 
   environment.etc."fish/nixos-env-preinit.fish".text = lib.mkMerge [
     (lib.mkBefore ''

@@ -62,9 +62,6 @@
         name = "yarnaid";
         email = "yarnaid@gmail.com";
       };
-    };
-
-    extraConfig = {
       push.default = "current";
       core = {
         excludesfile = "$HOME/.gitignore_global";
@@ -117,10 +114,22 @@
     enableFishIntegration = true;
     enableZshIntegration = true;
   };
+  
+  programs.oh-my-posh = {
+    enable = true;
+    # enableBashIntegration = true;
+    # enableFishIntegration = true;
+    # enableZshIntegration = true;
+    # useTheme = "night-owl";
+    configFile = "$HOME/.config/oh-my-posh.json";
+  };
 
-    programs.carapace.enableBashIntegration = true;
-    programs.carapace.enableFishIntegration = true;
-    programs.carapace.enableZshIntegration = true;
+  programs.carapace = {
+    enable = true;
+    # enableBashIntegration = true;
+    # enableFishIntegration = true;
+    # enableZshIntegration = true;
+  };
 
 
   # Configure fish shell through home-manager
@@ -178,7 +187,8 @@
             set -gx FZF_DEFAULT_OPTS "--bind 'tab:down,shift-tab:up'"
 
             # Initialize various tools
-            starship init fish | source
+            # starship init fish | source
+            # oh-my-posh init fish | source
             fzf --fish | source
             zoxide init fish | source
             set -Ux fifc_editor nvim
