@@ -232,6 +232,7 @@
       # "thock"
       # "readdle-spark"
       # "nikitabobko/tap/aerospace"
+      "handy"
       "adguard"
       "superwhisper"
       "surfshark"
