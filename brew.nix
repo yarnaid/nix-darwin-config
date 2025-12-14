@@ -232,6 +232,7 @@
       # "thock"
       # "readdle-spark"
       # "nikitabobko/tap/aerospace"
+      "webtorrent"
       "handy"
       "adguard"
       "superwhisper"
