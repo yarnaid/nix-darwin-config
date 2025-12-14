@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  # imports = [ ./fish.nix ];
+  imports = [ ./fish.nix ];
   home = {
     username = "yarnaid";
     homeDirectory = "/Users/yarnaid";
@@ -177,6 +177,10 @@
     };
   };
 
+  programs.uv = {
+    enable = true;
+  };
+
   programs.fastfetch = {
     enable = true;
     settings = {
@@ -229,6 +233,7 @@
   };
   programs.sheldon = {
     enable = true;
+    enableFishIntegration = false;
   };
 
   programs.zoxide = {

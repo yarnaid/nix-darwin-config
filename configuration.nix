@@ -37,7 +37,7 @@
   };
 
   programs.fish = {
-    enable = false;
+    enable = true;
     useBabelfish = true;
   };
 
@@ -116,7 +116,7 @@
   users.users.yarnaid = {
     name = "yarnaid";
     home = "/Users/yarnaid";
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
   };
 
   # Enable home-manager

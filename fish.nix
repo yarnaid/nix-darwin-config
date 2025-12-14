@@ -1,8 +1,7 @@
 { pkgs, ... }: {
       # Configure fish shell through home-manager
   programs.fish = {
-    enable = false;
-    # useBabelfish = true;
+    enable = true;
 
     interactiveShellInit = ''
             # Source nix-darwin pre-initialization
@@ -40,24 +39,24 @@
             set -U fish_user_paths /opt/homebrew/bin $fish_user_paths
             
             # FZF configuration
-            set -gx fzf_preview_file_cmd preview
-            set -gx fzf_preview_dir_cmd "eza --all -F --color=always --icons=always --oneline --level=1 --tree"
-            set -gx fzf_fd_opts "--hidden --max-depth 5 --exclude .git --exclude node_modules"
-            set fzf_diff_highlighter "delta --paging=never --width=20"
-            set -gx FZF_CTRL_T_OPTS "--preview 'preview {}' --bind 'tab:down,shift-tab:up'"
+            # set -gx fzf_preview_file_cmd preview
+            # set -gx fzf_preview_dir_cmd "eza --all -F --color=always --icons=always --oneline --level=1 --tree"
+            # set -gx fzf_fd_opts "--hidden --max-depth 5 --exclude .git --exclude node_modules"
+            # set fzf_diff_highlighter "delta --paging=never --width=20"
+            # set -gx FZF_CTRL_T_OPTS "--preview 'preview {}' --bind 'tab:down,shift-tab:up'"
             
             # FZF environment variables from .profile
-            set -gx FZF_DEFAULT_COMMAND "fd --hidden --strip-cwd-prefix --exclude .git --exclude node_modules"
-            set -gx FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
-            set -gx FZF_ALT_C_COMMAND "fd --type=d --hidden --strip-cwd-prefix --exclude .git --exclude node_modules"
-            set -gx FZF_ALT_C_OPTS "--preview 'eza --tree --color=always {} | head -200' --bind 'tab:down,shift-tab:up'"
-            set -gx FZF_DEFAULT_OPTS "--bind 'tab:down,shift-tab:up'"
+            # set -gx FZF_DEFAULT_COMMAND "fd --hidden --strip-cwd-prefix --exclude .git --exclude node_modules"
+            # set -gx FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
+            # set -gx FZF_ALT_C_COMMAND "fd --type=d --hidden --strip-cwd-prefix --exclude .git --exclude node_modules"
+            # set -gx FZF_ALT_C_OPTS "--preview 'eza --tree --color=always {} | head -200' --bind 'tab:down,shift-tab:up'"
+            # set -gx FZF_DEFAULT_OPTS "--bind 'tab:down,shift-tab:up'"
 
             # Initialize various tools
             # starship init fish | source
             # oh-my-posh init fish | source
-            fzf --fish | source
-            zoxide init fish | source
+            # fzf --fish | source
+            # zoxide init fish | source
             set -Ux fifc_editor nvim
 
             # Homebrew completions
@@ -74,8 +73,8 @@
             # pyenv virtualenv-init - | source
 
             # UV shell completion
-            uv generate-shell-completion fish | source
-            uvx --generate-shell-completion fish | source
+            # uv generate-shell-completion fish | source
+            # uvx --generate-shell-completion fish | source
 
             # Set PAGER from .profile
             set -gx PAGER bat
@@ -85,10 +84,10 @@
               bash -c "source ~/.nvm/nvm.sh; nvm $argv"
             end
 
-            set -Ux CARAPACE_BRIDGES 'zsh,fish,bash,inshellisense' # optional
-            carapace _carapace | source
+            # set -Ux CARAPACE_BRIDGES 'zsh,fish,bash,inshellisense' # optional
+            # carapace _carapace | source
 
-            mise activate fish | source
+            # mise activate fish | source
 
             # direnv hook fish | source
       	
@@ -104,7 +103,7 @@
           source $HOMEBREW_COMMAND_NOT_FOUND_HANDLER
         end
 
-        source ~/.config/atuin/atuin.fish
+        # source ~/.config/atuin/atuin.fish
 
     '';
 
@@ -136,15 +135,15 @@
           sha256 = "sha256-DMIRKRAVOn7YEnuAtz4hIxrU93ULxNoQhW6juxCoh4o=";
         };
       }
-      {
-        name = "fifc";
-        src = pkgs.fetchFromGitHub {
-          owner = "gazorby";
-          repo = "fifc";
-          rev = "v0.1.1";
-          sha256 = "sha256-p5E4Mx6j8hcM1bDbeftikyhfHxQ+qPDanuM1wNqGm6E=";
-        };
-      }
+      # {
+      #   name = "fifc";
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "gazorby";
+      #     repo = "fifc";
+      #     rev = "v0.1.1";
+      #     sha256 = "sha256-p5E4Mx6j8hcM1bDbeftikyhfHxQ+qPDanuM1wNqGm6E=";
+      #   };
+      # }
       {
         name = "sponge";
         src = pkgs.fetchFromGitHub {
@@ -208,15 +207,15 @@
           sha256 = "00xqlyl3lffc5l0viin1nyp819wf81fncqyz87jx8ljjdhilmgbs";
         };
       }
-      {
-        name = "fzf.fish";
-        src = pkgs.fetchFromGitHub {
-          owner = "PatrickF1";
-          repo = "fzf.fish";
-          rev = "v10.3";
-          sha256 = "sha256-T8KYLA/r/gOKvAivKRoeqIwE2pINlxFQtZJHpOy9GMM=";
-        };
-      }
+      # {
+      #   name = "fzf.fish";
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "PatrickF1";
+      #     repo = "fzf.fish";
+      #     rev = "v10.3";
+      #     sha256 = "sha256-T8KYLA/r/gOKvAivKRoeqIwE2pINlxFQtZJHpOy9GMM=";
+      #   };
+      # }
     ];
   };
 }
