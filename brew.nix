@@ -31,7 +31,6 @@
         start_service = true;
       }
       "carapace"
-      "music-decoy"
       "gawk"
       "gnu-tar"
       "findutils"
@@ -226,6 +225,7 @@
     ];
     # Add casks (macOS applications)
     casks = [
+      "music-decoy"
       "adguard"
       "superwhisper"
       "qutebrowser"
