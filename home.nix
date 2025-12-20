@@ -270,6 +270,9 @@
       format = {
         quote-style = "double";
       };
+      lint = {
+        ignore = ["D100" "D101"];
+      };
     };
   };
   # not available on macOS
