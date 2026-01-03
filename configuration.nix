@@ -7,8 +7,9 @@
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
     nixfmt-classic
-    appcleaner
+    # appcleaner
     cacert
+    fish
   ];
   stylix.fonts.monospace.name = "MonoLiza Nerd Font";
 
@@ -100,7 +101,13 @@
   # system.defaults.universalaccess.reduceMotion = true;
 
   # Add fish to /etc/shells
-  environment.shells = [ pkgs.zsh pkgs.fish pkgs.bash pkgs.nushell ];
+  environment.shells = with pkgs; [ fish zsh bash nushell ];
+  system.activationScripts.allowPerUserFish.text = ''
+    perUserFish="/etc/profiles/per-user/yarnaid/bin/fish"
+    if [ -x "$perUserFish" ]; then
+      grep -qxF "$perUserFish" /etc/shells || echo "$perUserFish" >> /etc/shells
+    fi
+  '';
 
   # Set Git commit hash for darwin-version.
   system.configurationRevision = null;

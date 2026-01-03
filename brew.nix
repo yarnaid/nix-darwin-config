@@ -30,7 +30,11 @@
         name = "sketchybar";
         start_service = true;
       }
+      "dfu-util"
+      "wtfutil"
       "carapace"
+      # "music-decoy"
+      "soundsource"
       "gawk"
       "gnu-tar"
       "findutils"
@@ -225,7 +229,8 @@
     ];
     # Add casks (macOS applications)
     casks = [
-      "music-decoy"
+      "applite"
+      "alfred"
       "adguard"
       "superwhisper"
       "qutebrowser"

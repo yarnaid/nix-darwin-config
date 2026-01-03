@@ -18,7 +18,7 @@
       # { app = "/Applications/Warp.app"; }
       { app = "/Applications/Ghostty.app"; }
       { app = "/Applications/Cursor.app"; }
-      { app = "/Applications/Antigravity.app"; }
+      # { app = "/Applications/Antigravity.app"; }
       # { app = "/Applications/Zed.app"; }
       { app = "/Applications/Visual Studio Code.app"; }
 
@@ -29,7 +29,7 @@
 
       { spacer = { small = true; }; }
 
-      { app = "/Applications/Todoist.app"; }
+      # { app = "/Applications/Todoist.app"; }
       { app = "/Applications/Things3.app"; }
       {
         app = "/Applications/Tana.app";
