@@ -34,10 +34,6 @@
       "wtfutil"
       "carapace"
       # "music-decoy"
-      "soundsource"
-      "rize"
-      "rectangle-pro"
-      "rescuetime"
       "gawk"
       "gnu-tar"
       "findutils"
@@ -232,6 +228,10 @@
     ];
     # Add casks (macOS applications)
     casks = [
+      "soundsource"
+      "rize"
+      "rectangle-pro"
+      "rescuetime"
       "applite"
       "alfred"
       "adguard"
