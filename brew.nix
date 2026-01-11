@@ -28,7 +28,7 @@
     brews = [
       {
         name = "sketchybar";
-        start_service = true;
+        start_service = false;
       }
       "dfu-util"
       "wtfutil"
