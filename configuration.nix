@@ -1,6 +1,6 @@
 { pkgs, lib, ... }: {
   imports =
-    [ ./brew.nix ./kanata.nix ./mas.nix ./env.nix ./aerospace.nix ./dock.nix ];
+    [ ./brew.nix ./kanata.nix ./mas.nix ./env.nix ./dock.nix ];
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search by name, run:

@@ -30,6 +30,7 @@
         name = "sketchybar";
         start_service = false;
       }
+      "duckduckgo"
       "dfu-util"
       "wtfutil"
       "carapace"
