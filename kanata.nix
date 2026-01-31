@@ -6,7 +6,7 @@
         Label = "kanata";
         ProgramArguments = [
           # "${config.homebrew.brewPrefix}/kanata"
-          "/Users/yarnaid/.cargo/bin/kanata"
+          "/opt/homebrew/bin/kanata"
           "--cfg"
           "/Users/yarnaid/.config/kanata.kbd"
         ];
