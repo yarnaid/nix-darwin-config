@@ -30,7 +30,7 @@
             end
 
 
-
+            set -g fish_pager_color_prefix --bold --underline
             # Set environment variables
             set -gx EDITOR nvim
             set -gx LANG en_US.UTF-8

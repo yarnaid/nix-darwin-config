@@ -30,7 +30,6 @@
         name = "sketchybar";
         start_service = false;
       }
-      "duckduckgo"
       "dfu-util"
       "wtfutil"
       "carapace"
@@ -226,11 +225,16 @@
       "vips"
       # "ice"
       "helix"
+      "ruby"
+      "cocoapods"
     ];
     # Add casks (macOS applications)
     casks = [
+      # "remnote"
+      "lasso-app"
+      "logseq"
+      "paste"
       "soundsource"
-      "rize"
       "rectangle-pro"
       "rescuetime"
       "applite"
@@ -268,7 +272,7 @@
       # "lunar"
       "homerow"
       "launchcontrol"
-      # "qbserve"
+      "qbserve"
       "pearcleaner"
       # "hammerspoon"
       "betterzip"
