@@ -117,7 +117,7 @@
       "imagemagick"
       "iperf3"
       "jq"
-      # "kanata"
+      "kanata"
       "lame"
       "lazygit"
       "lf"
