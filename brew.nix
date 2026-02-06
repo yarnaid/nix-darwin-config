@@ -235,6 +235,7 @@
       "logseq"
       "paste"
       "soundsource"
+      "monocle-app"
       "rectangle-pro"
       "rescuetime"
       "applite"
