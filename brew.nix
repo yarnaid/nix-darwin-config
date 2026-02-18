@@ -231,13 +231,16 @@
     # Add casks (macOS applications)
     casks = [
       # "remnote"
+      "beekeeper-studio"
+      "antinote"
+      "multitouch"
       "lasso-app"
       "logseq"
       "paste"
       "soundsource"
       "monocle-app"
       "rectangle-pro"
-      "rescuetime"
+      # "rescuetime"
       "applite"
       "alfred"
       "adguard"
