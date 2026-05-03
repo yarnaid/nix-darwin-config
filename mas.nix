@@ -30,6 +30,7 @@
     "The Unarchiver" = 425424353;
     "RAR Extractor - Unarchiver" = 646295438;
     "Unzip - RAR ZIP 7Z Unarchiver" = 1537056818;
+    "Itsyhome" = 6758070650;
 
     # Development & Power User Tools
     "JSON Peep" = 1458969831;
@@ -37,6 +38,7 @@
     "Super Agent" = 1568262835;
     "Xcode" = 497799835;
     "LanguageTool" = 1534275760;
+    "Raycast Companion" = 6738274497;
 
     # Browser Extensions & Web Tools
     "Vimlike" = 1584519802;
@@ -47,6 +49,7 @@
     "Karma" = 1481191441;
     "Fakespot" = 1592541616;
     "Hush" = 1544743900;
+    "Keyword Search" = 1558453954;
     "Proton Pass for Safari" = 6502835663;
     "SponsorBlock" = 1573461917;
     "SingleFile" = 6444322545;
