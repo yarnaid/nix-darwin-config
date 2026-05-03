@@ -4,6 +4,7 @@
   system.defaults.dock = {
     persistent-apps = [
       { app = "/Applications/ForkLift.app"; }
+      # { app = "/Applications/Orion.app"; }
       { app = "/Applications/Safari.app"; }
       { app = "/Applications/Google Chrome.app"; }
       { app = "/Applications/Canary Mail.app"; }
@@ -20,6 +21,7 @@
       # { app = "/Applications/Warp.app"; }
       # { app = "/Applications/Ghostty.app"; }
       { app = "/Applications/iTerm.app"; }
+      { app = "/Applications/cmux.app"; }
       { app = "/Applications/Cursor.app"; }
       # { app = "/Applications/Antigravity.app"; }
       { app = "/Applications/Zed.app"; }
@@ -28,6 +30,7 @@
       { spacer = { small = true; }; }
 
       { app = "/System/Applications/System Settings.app"; }
+      { app = "/Applications/ProcessSpy.app"; }
       { app = "/System/Applications/Utilities/Activity Monitor.app"; }
 
       { spacer = { small = true; }; }
@@ -37,9 +40,9 @@
       { app = "/Applications/Tana.app"; }
       # { app = "/Applications/Drafts.app"; }
       { app = "/System/Applications/iPhone Mirroring.app"; }
-      { app = "/Applications/Spotify.app"; }
-      { app = "/System/Applications/Music.app"; }
-      { app = "/Applications/Яндекс Музыка.app"; }
+      # { app = "/Applications/Spotify.app"; }
+      # { app = "/System/Applications/Music.app"; }
+      # { app = "/Applications/Яндекс Музыка.app"; }
 
     ];
   };

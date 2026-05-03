@@ -11,7 +11,6 @@
     "Keynote" = 409183694;
     "Soulver 3" = 1508732804;
     "LiquidText" = 922765270;
-    "Merlin Project Express" = 1202196869;
 
     # Email & Communication
     "Canary Mail" = 1236045954;
@@ -28,7 +27,6 @@
     "WiFi Signal" = 525912054;
     "Windows App" = 1295203466;
     "Speedtest" = 1153157709;
-    "BLEScanner" = 1663446245;
     "The Unarchiver" = 425424353;
     "RAR Extractor - Unarchiver" = 646295438;
     "Unzip - RAR ZIP 7Z Unarchiver" = 1537056818;
@@ -45,10 +43,8 @@
     "StopTheMadness Pro" = 6471380298;
     "PayPal Honey" = 1472777122;
     "Kagi for Safari" = 1622835804;
-    "PiPifier" = 1160374471;
     "Hover for Safari" = 1540705431;
     "Karma" = 1481191441;
-    "Keyword Search" = 1558453954;
     "Fakespot" = 1592541616;
     "Hush" = 1544743900;
     "Proton Pass for Safari" = 6502835663;
@@ -64,19 +60,14 @@
     # Media & Graphics
     "Pixelmator Pro" = 1289583905;
     "YamaCast" = 1415107621;
-    "FilmNoir" = 1528417240;
     "Unsplash Wallpapers" = 1284863847;
-    "Pixea" = 1507782672;
     "Video Speed Controller" = 1588368612;
 
 
     # Weather & Lifestyle
     "flowy" = 6748351905;
-    "Save to Raindrop.io" = 1549370672;
     "Save to Reader" = 1640236961;
-    "Anybox" = 1593408455;
     "iFinance 5" = 1500241909;
-    "MoneyWiz" = 1511185140;
     "MacFamilyTree 11" = 6480510488;
   };
 }

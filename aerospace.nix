@@ -254,10 +254,6 @@
       }
       {
         "if" = {
-          app-id = "com.spotify.client";
-        };
-        run = "move-node-to-workspace X";
-      }
       {
         "if" = {
           app-id = "com.apple.Music";
