@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(nix flake metadata:*)",
+      "Bash(nix flake update:*)",
+      "Bash(darwin-rebuild switch:*)",
+      "Bash(sudo darwin-rebuild switch:*)",
+      "Bash(darwin-rebuild build:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

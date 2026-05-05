@@ -232,6 +232,8 @@
     # Add casks (macOS applications)
     casks = [
       # "remnote"
+      "supasidebar"
+      "claude"
       "antinote"
       "processspy"
       "cmux"
