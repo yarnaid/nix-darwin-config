@@ -10,6 +10,7 @@
             end
 
             fish_add_path /run/current-system/sw/bin
+            fish_add_path /nix/var/nix/profiles/system/sw/bin
 
             # Source nix environment
             if test -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
@@ -22,7 +23,7 @@
             end
 
             # Fix PATH for nix
-            set -gx PATH $HOME/.nix-profile/bin /run/current-system/sw/bin /nix/var/nix/profiles/default/bin $PATH
+            set -gx PATH $HOME/.nix-profile/bin /run/current-system/sw/bin /nix/var/nix/profiles/system/sw/bin /nix/var/nix/profiles/default/bin $PATH
             
             # Apply PATH fix if function is available
             if functions -q __nixos_path_fix

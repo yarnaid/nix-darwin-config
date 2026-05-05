@@ -8,6 +8,8 @@ nix-darwin + Home Manager configuration for macOS (aarch64-darwin). Two machine 
 
 ## Key commands
 
+`darwin-rebuild` does **not** need `sudo` — the nix daemon handles privileged operations internally. If the command is not in PATH (e.g. in a fresh shell), use the full path `/run/current-system/sw/bin/darwin-rebuild`.
+
 ```bash
 # Rebuild and activate the system (run from /private/etc/nix-darwin)
 darwin-rebuild switch --flake .#EPGETBIW0286
@@ -29,7 +31,7 @@ nixfmt-classic *.nix
 ## File layout and responsibilities
 
 | File | Purpose |
-|---|---|
+| --- | --- |
 | `flake.nix` | Entry point. Declares inputs (nixpkgs-unstable, nix-darwin, home-manager, stylix) and `darwinConfigurations` per hostname. |
 | `configuration.nix` | System-level config. Imports all other `*.nix` modules. Sets macOS defaults, nix GC/optimise, fish shell, primary user, Home Manager integration. |
 | `home.nix` | Home Manager entry point for user `yarnaid`. Imports `fish.nix`. Configures shell aliases, git, bat, btop, atuin, direnv, mise, oh-my-posh, zsh, zellij, yazi, fzf, eza, ruff, etc. |

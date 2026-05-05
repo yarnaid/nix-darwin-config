@@ -232,6 +232,7 @@
     # Add casks (macOS applications)
     casks = [
       # "remnote"
+      "tidal"
       "supasidebar"
       "claude"
       "antinote"

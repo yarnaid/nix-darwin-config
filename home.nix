@@ -15,6 +15,7 @@
       gs = "git status";
       gp = "git push";
       gl = "git pull";
+      gst = "git status";
 
       # Vim related
       vim = "nvim";
