@@ -172,15 +172,6 @@
         };
       }
       {
-        name = "zoxide";
-        src = pkgs.fetchFromGitHub {
-          owner = "icezyclon";
-          repo = "zoxide.fish";
-          rev = "3.0";
-          sha256 = "sha256-OjrX0d8VjDMxiI5JlJPyu/scTs/fS/f5ehVyhAA/KDM=";
-        };
-      }
-      {
         name = "abbreviation-tips";
         src = pkgs.fetchFromGitHub {
           owner = "gazorby";

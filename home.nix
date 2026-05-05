@@ -28,7 +28,6 @@
 
       # Navigation
       ".." = "cd ..";
-      cd = "z";
 
       # Chezmoi
       cv = "chezmoi edit --watch";
