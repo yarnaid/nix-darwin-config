@@ -220,10 +220,6 @@
       export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --ansi --preview-window=right:60%:wrap'
       export MANPAGER="sh -c 'col -bx | bat -l man -p'"
       export BAT_THEME="tokyo-night"
-      if [[ -z "$ZELLIJ" && "$TERM_PROGRAM" != "vscode" && -z "$SSH_CONNECTION" ]]; then
-          # Try to attach to a session named "default", or create it if it doesn't exist
-          zellij attach -c default
-      fi
     '';
     localVariables = {
       ZSH_HIGHLIGHT_HIGHLIGHTERS = "(main brackets)";
