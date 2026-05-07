@@ -231,6 +231,7 @@
     ];
     # Add casks (macOS applications)
     casks = [
+      "libreoffice"
       # "remnote"
       "tidal"
       "supasidebar"
