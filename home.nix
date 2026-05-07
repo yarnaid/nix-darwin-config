@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   imports = [ ./fish.nix ];
   home = {
     username = "yarnaid";
@@ -216,11 +216,17 @@
       ignoreDups = true;
     };
     # loginExtra = "zellij\n";
-    initContent = ''
-      export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --ansi --preview-window=right:60%:wrap'
-      export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-      export BAT_THEME="tokyo-night"
-    '';
+    initContent = lib.mkMerge [
+      ''
+        export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --ansi --preview-window=right:60%:wrap'
+        export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+        export BAT_THEME="tokyo-night"
+      ''
+      # zoxide must initialize last so __zoxide_hook is the final precmd_functions entry
+      (lib.mkAfter ''
+        eval "$(zoxide init zsh)"
+      '')
+    ];
     localVariables = {
       ZSH_HIGHLIGHT_HIGHLIGHTERS = "(main brackets)";
       CASE_SENSITIVE = false;
@@ -234,6 +240,7 @@
 
   programs.zoxide = {
     enable = true;
+    enableZshIntegration = false; # initialized manually at end of zsh initContent
   };
   programs.zellij = {
     enable = true;
