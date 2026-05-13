@@ -31,6 +31,7 @@
         start_service = false;
       }
       "mole"
+      # "rclone"
       "dfu-util"
       "wtfutil"
       "carapace"
@@ -52,7 +53,7 @@
       "rustup"
       "codecrafters-io/tap/codecrafters"
       "exercism"
-      "whisper-cpp"
+      # "whisper-cpp"
       "sox"
       "deno"
       "mise"
@@ -147,9 +148,6 @@
       "netpbm"
       "ninja"
       "nlohmann-json"
-      "node@22"
-      "node-build"
-      "nodenv"
       "ouch"
       "p7zip"
       "pandoc"
@@ -231,7 +229,9 @@
     ];
     # Add casks (macOS applications)
     casks = [
+      "macfuse"
       "libreoffice"
+      "keycastr"
       # "remnote"
       "tidal"
       "supasidebar"
@@ -248,7 +248,7 @@
       # "rescuetime"
       "applite"
       "adguard"
-      "superwhisper"
+      # "superwhisper"
       "qutebrowser"
       "codex"
       # "kando"
@@ -283,7 +283,7 @@
       "zed"
       # "marvin"
       "anki"
-      "voiceink"
+      # "voiceink"
       "leader-key"
       "script-debugger"
       "dropbox"
@@ -294,7 +294,7 @@
       "anytype"
       "reverso"
       "cleanshot"
-      "pixelsnap"
+      # "pixelsnap"
       "ghostty"
       "kindavim"
       "keyboard-maestro"

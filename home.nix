@@ -5,7 +5,7 @@
     homeDirectory = "/Users/yarnaid";
     stateVersion = "25.11";
 
-    # packages = with pkgs; [ fishPlugins.foreign-env ];
+    packages = with pkgs; [ nodejs_25 ];
 
     shell.enableShellIntegration = true;
 
@@ -140,7 +140,7 @@
     enable = true;
     settings = {
       experimental = true;
-      verbose = true;
+      verbose = false;
       jobs = 16;
     };
     globalConfig = {
