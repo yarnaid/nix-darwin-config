@@ -131,6 +131,9 @@
     reattach = true;
   };
 
+  environment.etc."sudoers.d/powermetrics-yarnaid".text =
+    "yarnaid ALL=(root) NOPASSWD: /usr/bin/powermetrics\n";
+
   # Enable home-manager
   home-manager = {
     useGlobalPkgs = true;
