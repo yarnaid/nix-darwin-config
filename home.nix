@@ -138,11 +138,6 @@
 
   programs.mise = {
     enable = true;
-    settings = {
-      experimental = true;
-      verbose = false;
-      jobs = 16;
-    };
     globalConfig = {
       min_version = "2024.9.5";
       env = {PROJECT_NAME = "{{ config_root | basename }}";};
@@ -152,6 +147,9 @@
         uv = "latest";
       };
       settings = {
+        experimental = true;
+        verbose = false;
+        jobs = 16;
         idiomatic_version_file_enable_tools = [];
         python.uv_venv_auto = true;
       };
@@ -247,6 +245,7 @@
   };
   programs.yazi = {
     enable = true;
+    shellWrapperName = "y";
   };
   programs.intelli-shell = {
     # enable = true;
