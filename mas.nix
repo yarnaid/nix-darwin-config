@@ -37,7 +37,11 @@
     "Peek" = 1554235898;
     "Super Agent" = 1568262835;
     "Xcode" = 497799835;
-    "LanguageTool" = 1534275760;
+    # LanguageTool (id 1534275760): not managed here — App Store reports
+    # its version as "v8.21.1" while installed is "8.21.1", so mas compares
+    # strings as different and `brew bundle` keeps trying to reinstall on
+    # every activation. App Store auto-updates handle this anyway.
+    # See https://github.com/mas-cli/mas/issues/164
     "Raycast Companion" = 6738274497;
 
     # Browser Extensions & Web Tools
