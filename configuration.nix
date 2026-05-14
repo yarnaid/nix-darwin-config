@@ -7,7 +7,7 @@
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
-    nixfmt-classic
+    nixfmt
     # appcleaner
     cacert
     fish
@@ -133,6 +133,16 @@
 
   environment.etc."sudoers.d/powermetrics-yarnaid".text =
     "yarnaid ALL=(root) NOPASSWD: /usr/bin/powermetrics\n";
+
+  # darwin-rebuild now requires root for system activation. Allow yarnaid
+  # to invoke it without a password prompt. The store-path symlink changes
+  # on every rebuild, so we list both stable wrapper paths and a wildcard
+  # for the nix-store target.
+  environment.etc."sudoers.d/darwin-rebuild-yarnaid".text = ''
+    yarnaid ALL=(root) NOPASSWD: /run/current-system/sw/bin/darwin-rebuild
+    yarnaid ALL=(root) NOPASSWD: /nix/var/nix/profiles/system/sw/bin/darwin-rebuild
+    yarnaid ALL=(root) NOPASSWD: /nix/store/*-darwin-rebuild*/bin/darwin-rebuild
+  '';
 
   # Enable home-manager
   home-manager = {
