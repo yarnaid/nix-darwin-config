@@ -8,7 +8,6 @@
     };
     global = {
       brewfile = true;
-      lockfiles = true;
       autoUpdate = true;
     };
     # Add taps (repositories)
