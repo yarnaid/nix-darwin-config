@@ -110,7 +110,16 @@
       "Bash(brew info *)",
       "Bash(command -v pnpm)",
       "Bash(pnpm --version)",
-      "Bash(npm view *)"
+      "Bash(npm view *)",
+      "Bash(brew list *)",
+      "Read(//opt/homebrew/lib/node_modules/pnpm/bin/**)",
+      "Bash(echo \"=== owner of legacy pnpm dir ===\"; ls -la /opt/homebrew/lib/node_modules/ 2>&1 | head -10; echo \"=== full brew info for pnpm tail ===\"; brew info pnpm 2>&1 | tail -20)",
+      "Read(//opt/homebrew/lib/node_modules/**)",
+      "Bash(command -v pass-cli)",
+      "Bash(command -v proton-pass-cli)",
+      "Bash(/opt/homebrew/bin/pnpm --version)",
+      "Bash(npm uninstall *)",
+      "Bash(brew link *)"
     ],
     "deny": [],
     "ask": [],

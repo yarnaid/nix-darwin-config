@@ -1,5 +1,6 @@
-{ pkgs, ... }: {
-      # Configure fish shell through home-manager
+{ pkgs, ... }:
+{
+  # Configure fish shell through home-manager
   programs.fish = {
     enable = true;
 
@@ -93,10 +94,10 @@
 
             # direnv hook fish | source
       	
-      	# pnpm
+      	# pnpm (v11+ layout: globals live in $PNPM_HOME/bin)
       	set -gx PNPM_HOME "/Users/yarnaid/Library/pnpm"
-      	if not string match -q -- $PNPM_HOME $PATH
-      	  set -gx PATH "$PNPM_HOME" $PATH
+      	if not string match -q -- "$PNPM_HOME/bin" $PATH
+      	  set -gx PATH "$PNPM_HOME/bin" $PATH
       	end
       	# pnpm end
 
