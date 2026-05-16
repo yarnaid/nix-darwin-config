@@ -10,15 +10,18 @@
 
     shell.enableShellIntegration = true;
 
-    # Proton Pass CLI — ставится один раз через npm-обёртку (postinstall качает
+    # Proton Pass CLI — ставится один раз через pnpm-обёртку (postinstall качает
     # официальный бинарь Proton AG с CDN). Идемпотентно: если pass-cli уже в
     # PATH, ничего не делает. Sync между Mac-ами — через Proton-аккаунт после
     # `pass-cli login`. Требует Pass Plus/Family/Professional или Proton-бандл.
+    # pnpm (а не npm) — npm install -g пишет в /nix/store (read-only); pnpm
+    # пишет в $PNPM_HOME (~/Library/pnpm), который user-writable.
     activation.protonPassCli = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      export PATH="${pkgs.nodejs_25}/bin:$PATH"
+      export PNPM_HOME="$HOME/Library/pnpm"
+      export PATH="${pkgs.nodejs_25}/bin:/opt/homebrew/bin:$PNPM_HOME:$PATH"
       if ! command -v pass-cli >/dev/null 2>&1; then
-        $DRY_RUN_CMD npm install -g proton-pass-cli || \
-          echo "WARN: proton-pass-cli install failed (offline?). Run manually: npm install -g proton-pass-cli"
+        $DRY_RUN_CMD pnpm add -g proton-pass-cli || \
+          echo "WARN: proton-pass-cli install failed (offline?). Run manually: pnpm add -g proton-pass-cli"
       fi
     '';
 

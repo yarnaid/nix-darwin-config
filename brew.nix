@@ -56,6 +56,7 @@
       "swiftlint"
       "bat"
       "nvm"
+      "pnpm"
       "podman"
       "podman-compose"
       "bgrep"
@@ -203,19 +204,19 @@
       "cocoapods"
 
       # ─── added by add_tools.sh ───
-      "xh"               # HTTPie на Rust, ~10× быстрее, тот же синтаксис
-      "doggo"            # современный dig: цветной, JSON, DoH/DoT/DoQ
-      "gron"             # JSON → greppable строки: `cat x.json | gron | grep …`
-      "dasel"            # селектор JSON/YAML/TOML/XML/CSV единым синтаксисом
-      "just"             # запускалка project-команд, лучше Make
-      "navi"             # interactive cheatsheets (Ctrl-G), shell-friendly
-      "lnav"             # лог-навигатор с SQL-фильтром и парсингами форматов
-      "dust"             # `du` с барами и UTF-8 деревом
-      "bottom"           # `btm` — современный TUI-монитор, UX лучше btop на macOS
-      "bandwhich"        # network usage per-process (нужен sudo)
-      "pueue"            # очередь долгих команд (docker build, pip, ffmpeg)
-      "glab"             # GitLab CLI (для EPAM GitLab)
-      "act"              # запуск GitHub Actions локально через Docker/podman
+      "xh" # HTTPie на Rust, ~10× быстрее, тот же синтаксис
+      "doggo" # современный dig: цветной, JSON, DoH/DoT/DoQ
+      "gron" # JSON → greppable строки: `cat x.json | gron | grep …`
+      "dasel" # селектор JSON/YAML/TOML/XML/CSV единым синтаксисом
+      "just" # запускалка project-команд, лучше Make
+      "navi" # interactive cheatsheets (Ctrl-G), shell-friendly
+      "lnav" # лог-навигатор с SQL-фильтром и парсингами форматов
+      "dust" # `du` с барами и UTF-8 деревом
+      "bottom" # `btm` — современный TUI-монитор, UX лучше btop на macOS
+      "bandwhich" # network usage per-process (нужен sudo)
+      "pueue" # очередь долгих команд (docker build, pip, ffmpeg)
+      "glab" # GitLab CLI (для EPAM GitLab)
+      "act" # запуск GitHub Actions локально через Docker/podman
 
     ];
     # Add casks (macOS applications)
@@ -308,8 +309,8 @@
       "zoom"
 
       # ─── added by add_tools.sh ───
-      "blockblock"       # Objective-See: monitor persistence (LaunchAgents/Daemons)
-      "knockknock"       # Objective-See: однократный аудит persistently-установленного
+      "blockblock" # Objective-See: monitor persistence (LaunchAgents/Daemons)
+      "knockknock" # Objective-See: однократный аудит persistently-установленного
     ];
   };
 }

@@ -104,7 +104,13 @@
       "Bash(mkdir -p /Users/yarnaid/.claude/projects/-private-etc-nix-darwin/memory; ls /Users/yarnaid/.claude/projects/-private-etc-nix-darwin/memory/ 2>&1)",
       "Bash(defaults delete *)",
       "Bash(echo \"exit:$?\")",
-      "Bash(git reset *)"
+      "Bash(git reset *)",
+      "Bash(nix search *)",
+      "Bash(brew search *)",
+      "Bash(brew info *)",
+      "Bash(command -v pnpm)",
+      "Bash(pnpm --version)",
+      "Bash(npm view *)"
     ],
     "deny": [],
     "ask": [],
