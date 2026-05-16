@@ -20,7 +20,8 @@
       { app = "/Applications/Windows App.app"; }
       # { app = "/Applications/Warp.app"; }
       # { app = "/Applications/Ghostty.app"; }
-      { app = "/Applications/iTerm.app"; }
+      # { app = "/Applications/iTerm.app"; }
+      { app = "/Applications/WezTerm.app"; }
       { app = "/Applications/cmux.app"; }
       { app = "/Applications/Cursor.app"; }
       # { app = "/Applications/Antigravity.app"; }
