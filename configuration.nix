@@ -122,6 +122,17 @@
     fi
   '';
 
+  # Disable Spotlight indexing on every volume + stop the metadata server.
+  # `mdutil -a -i off` flips indexing flag persistently; `-E` erases the index;
+  # `launchctl bootout` stops mds/mds_stores until next boot (system relaunches
+  # them on activation, but with no work to do they idle). SIP prevents fully
+  # unloading the LaunchDaemons, so we re-run on every activation.
+  system.activationScripts.disableSpotlight.text = ''
+    /usr/bin/mdutil -a -i off >/dev/null 2>&1 || true
+    /usr/bin/mdutil -a -E      >/dev/null 2>&1 || true
+    /bin/launchctl bootout system /System/Library/LaunchDaemons/com.apple.metadata.mds.plist >/dev/null 2>&1 || true
+  '';
+
   # Set Git commit hash for darwin-version.
   system.configurationRevision = null;
 

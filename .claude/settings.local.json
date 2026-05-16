@@ -51,7 +51,8 @@
       "Bash(wezterm --config-file /Users/yarnaid/.config/wezterm/wezterm.lua ls-fonts)",
       "Bash(wezterm --config-file ~/.config/wezterm/wezterm.lua ls-fonts --text \"=> != >= <= -> ==\")",
       "Bash(otfinfo --features ~/Library/Fonts/MonoLisaNerdFont-Regular.ttf)",
-      "Bash(fc-scan --format '%{fontfeatures}\\\\n' ~/Library/Fonts/MonoLisaNerdFont-Regular.ttf)"
+      "Bash(fc-scan --format '%{fontfeatures}\\\\n' ~/Library/Fonts/MonoLisaNerdFont-Regular.ttf)",
+      "Bash(mdutil -as)"
     ],
     "deny": [],
     "ask": []

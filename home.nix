@@ -300,6 +300,9 @@
     config.font_size = 13.0
     config.color_scheme = 'Afterglow'
 
+    config.initial_cols = 150
+    config.initial_rows = 40
+
     -- Programming ligatures. Defaults are { kern, liga, clig } but some
     -- builds drop them when shaping prompts coloured by escape sequences,
     -- so set them explicitly. calt is required for many MonoLisa ligatures.
@@ -314,11 +317,11 @@
     config.macos_window_background_blur = 20
     config.window_decorations = 'RESIZE'
     config.hide_tab_bar_if_only_one_tab = true
-    config.use_fancy_tab_bar = false
-    config.tab_bar_at_bottom = true
+    config.use_fancy_tab_bar = true
+    config.tab_bar_at_bottom = false
 
     config.scrollback_lines = 1000000
-    config.enable_scroll_bar = false
+    config.enable_scroll_bar = true
 
     -- macos-option-as-alt: treat Option as Alt (both sides)
     config.send_composed_key_when_left_alt_is_pressed = false
