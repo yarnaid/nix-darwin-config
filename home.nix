@@ -309,6 +309,12 @@
     local wezterm = require 'wezterm'
     local config = wezterm.config_builder()
 
+    -- Plugin: line_time (right-side timestamp gutter, toggled with Cmd+E).
+    -- Sourced from a local checkout during active development; switch to
+    -- the GitHub URL once the plugin stabilises so other machines pick it
+    -- up via the wezterm plugin cache.
+    local line_time = wezterm.plugin.require 'file:///Users/yarnaid/projects/wez_time_line'
+
     config.font = wezterm.font 'MonoLisa Nerd Font'
     config.font_size = 13.0
     config.color_scheme = 'Afterglow'
@@ -367,6 +373,26 @@
         mods = 'OPT',
         action = wezterm.action.SendString '\x1b.',
       },
+      -- Cmd+P: VS Code-style command palette. Wezterm built-in default is
+      -- Ctrl+Shift+P; this adds Cmd+P as an additional binding (the default
+      -- remains active since disable_default_key_bindings is left at false).
+      {
+        key = 'p',
+        mods = 'CMD',
+        action = wezterm.action.ActivateCommandPalette,
+      },
+      -- Cmd+Shift+U: refresh all wezterm.plugin sources. Useful during local
+      -- plugin development to pick up edits in file://-sourced plugins
+      -- without restarting wezterm. (Wezterm default for Ctrl+Shift+U is
+      -- CharSelect; that binding stays untouched — different modifier.)
+      {
+        key = 'u',
+        mods = 'CMD|SHIFT',
+        action = wezterm.action_callback(function(window)
+          wezterm.plugin.update_all()
+          window:toast_notification('wezterm', 'plugins reloaded', nil, 2000)
+        end),
+      },
     }
 
     -- Copy on select: finalize the selection into both clipboard and primary
@@ -393,6 +419,10 @@
 
     -- Inherit working directory on new tabs/panes (OSC 7).
     config.default_cwd = wezterm.home_dir
+
+    -- Apply plugins last so they can extend config.keys and event handlers
+    -- without being overwritten by assignments above.
+    line_time.apply_to_config(config)
 
     return config
   '';
