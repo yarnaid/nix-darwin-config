@@ -310,10 +310,11 @@
     local config = wezterm.config_builder()
 
     -- Plugin: line_time (right-side timestamp gutter, toggled with Cmd+E).
-    -- Sourced from a local checkout during active development; switch to
-    -- the GitHub URL once the plugin stabilises so other machines pick it
-    -- up via the wezterm plugin cache.
-    local line_time = wezterm.plugin.require 'file:///Users/yarnaid/projects/wez_time_line'
+    -- Sourced from the public GitHub repo; wezterm clones it into its
+    -- plugin cache (~/Library/Application Support/wezterm/plugins/) on
+    -- first launch and reuses it afterwards. Press Cmd+Shift+U to pull
+    -- updates without restarting wezterm.
+    local line_time = wezterm.plugin.require 'https://github.com/yarnaid/wez_time_line'
 
     config.font = wezterm.font 'MonoLisa Nerd Font'
     config.font_size = 13.0
