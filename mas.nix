@@ -27,9 +27,6 @@
     "WiFi Signal" = 525912054;
     "Windows App" = 1295203466;
     "Speedtest" = 1153157709;
-    "The Unarchiver" = 425424353;
-    "RAR Extractor - Unarchiver" = 646295438;
-    "Unzip - RAR ZIP 7Z Unarchiver" = 1537056818;
     "Itsyhome" = 6758070650;
 
     # Development & Power User Tools
@@ -47,7 +44,6 @@
     # Browser Extensions & Web Tools
     "Vimlike" = 1584519802;
     "StopTheMadness Pro" = 6471380298;
-    "PayPal Honey" = 1472777122;
     "Kagi for Safari" = 1622835804;
     "Hover for Safari" = 1540705431;
     "Karma" = 1481191441;
