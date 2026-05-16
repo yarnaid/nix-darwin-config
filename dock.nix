@@ -37,7 +37,7 @@
 
       # { app = "/Applications/Todoist.app"; }
       { app = "/Applications/Things3.app"; }
-      { app = "/Applications/Tana.app"; }
+      { app = "/Applications/Tana Outliner.app"; }
       # { app = "/Applications/Drafts.app"; }
       { app = "/System/Applications/iPhone Mirroring.app"; }
       # { app = "/Applications/Spotify.app"; }

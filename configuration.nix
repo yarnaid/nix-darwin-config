@@ -1,7 +1,13 @@
-{ pkgs, lib, ... }: {
-  imports =
-    [ ./brew.nix ./kanata.nix ./mas.nix ./env.nix ./dock.nix ];
-    
+{ pkgs, lib, ... }:
+{
+  imports = [
+    ./brew.nix
+    ./kanata.nix
+    ./mas.nix
+    ./env.nix
+    ./dock.nix
+  ];
+
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search by name, run:
@@ -12,8 +18,7 @@
     cacert
     fish
   ];
-  stylix.fonts.monospace.name = "MonoLiza Nerd Font";
-
+  stylix.fonts.monospace.name = "MonoLisa Nerd Font";
 
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
@@ -31,7 +36,9 @@
     '';
     optimise = {
       automatic = true;
-      interval = { Hour = 12; };
+      interval = {
+        Hour = 12;
+      };
     };
     settings = {
       ssl-cert-file = "/etc/ssl/cert.pem";
@@ -46,14 +53,14 @@
   system.defaults.".GlobalPreferences"."com.apple.mouse.scaling" = 4.0;
 
   system.defaults.CustomSystemPreferences = {
-    NSGlobalDomain = { TISRomanSwitchState = 1; };
+    NSGlobalDomain = {
+      TISRomanSwitchState = 1;
+    };
     "com.apple.Safari" = {
-      "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" =
-        true;
+      "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" = true;
     };
   };
-  system.defaults.NSGlobalDomain.AppleInterfaceStyleSwitchesAutomatically =
-    true;
+  system.defaults.NSGlobalDomain.AppleInterfaceStyleSwitchesAutomatically = true;
   system.defaults.NSGlobalDomain.AppleMeasurementUnits = "Centimeters";
   system.defaults.NSGlobalDomain.AppleMetricUnits = 1;
   system.defaults.NSGlobalDomain.AppleShowAllExtensions = true;
@@ -102,7 +109,12 @@
   # system.defaults.universalaccess.reduceMotion = true;
 
   # Add fish to /etc/shells
-  environment.shells = with pkgs; [ fish zsh bash nushell ];
+  environment.shells = with pkgs; [
+    fish
+    zsh
+    bash
+    nushell
+  ];
   system.activationScripts.allowPerUserFish.text = ''
     perUserFish="/etc/profiles/per-user/yarnaid/bin/fish"
     if [ -x "$perUserFish" ]; then

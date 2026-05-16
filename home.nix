@@ -1,4 +1,5 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, ... }:
+{
   imports = [ ./fish.nix ];
   home = {
     username = "yarnaid";
@@ -22,8 +23,7 @@
       v = "nvim";
 
       # File listing
-      ls =
-        "eza --color=always --long --git --icons=always --no-permissions --header --mounts --git-repos --hyperlink";
+      ls = "eza --color=always --long --git --icons=always --no-permissions --header --mounts --git-repos --hyperlink";
       l = "ls";
       ll = "ls -la";
 
@@ -52,7 +52,6 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
 
   # Git configuration
   programs.git = {
@@ -87,13 +86,18 @@
       };
       rerere.enabled = 1;
       alias = {
-        set-upstream =
-          "!git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`";
+        set-upstream = "!git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`";
       };
       credential = {
-        helper = [ "osxkeychain" "" "/usr/local/bin/git-credential-manager" ];
+        helper = [
+          "osxkeychain"
+          ""
+          "/usr/local/bin/git-credential-manager"
+        ];
       };
-      "credential \"https://dev.azure.com\"" = { useHttpPath = true; };
+      "credential \"https://dev.azure.com\"" = {
+        useHttpPath = true;
+      };
     };
   };
 
@@ -121,10 +125,11 @@
     settings = {
       theme = {
         name = "tokyo-night";
+        enter_accept = true;
       };
     };
   };
-  
+
   programs.direnv = {
     enable = true;
     mise.enable = true;
@@ -140,7 +145,9 @@
     enable = true;
     globalConfig = {
       min_version = "2024.9.5";
-      env = {PROJECT_NAME = "{{ config_root | basename }}";};
+      env = {
+        PROJECT_NAME = "{{ config_root | basename }}";
+      };
       tools = {
         python = "{{ get_env(name='PYTHON_VERSION', default='3.13') }}";
         ruff = "latest";
@@ -150,7 +157,7 @@
         experimental = true;
         verbose = false;
         jobs = 16;
-        idiomatic_version_file_enable_tools = [];
+        idiomatic_version_file_enable_tools = [ ];
         python.uv_venv_auto = true;
       };
       tasks = {
@@ -190,8 +197,6 @@
     enable = true;
   };
 
-
-
   programs.nushell = {
     enable = true;
   };
@@ -199,7 +204,9 @@
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-    syntaxHighlighting = { enable = true;};
+    syntaxHighlighting = {
+      enable = true;
+    };
     antidote = {
       enable = false;
       plugins = [
@@ -222,7 +229,7 @@
       ''
       # zoxide must initialize last so __zoxide_hook is the final precmd_functions entry
       (lib.mkAfter ''
-        eval "$(zoxide init zsh)"
+        eval "$(zoxide init --cmd cd zsh)"
       '')
     ];
     localVariables = {
@@ -239,6 +246,10 @@
   programs.zoxide = {
     enable = true;
     enableZshIntegration = false; # initialized manually at end of zsh initContent
+    options = [
+      "--cmd"
+      "cd"
+    ]; # replace `cd` with zoxide; original is `builtin cd`, interactive is `cdi`
   };
   programs.zellij = {
     enable = true;
@@ -273,10 +284,103 @@
         quote-style = "double";
       };
       lint = {
-        ignore = ["D100" "D101"];
+        ignore = [
+          "D100"
+          "D101"
+        ];
       };
     };
   };
+  # wezterm: GUI installed via brew cask (see brew.nix); config managed here.
+  xdg.configFile."wezterm/wezterm.lua".text = ''
+    local wezterm = require 'wezterm'
+    local config = wezterm.config_builder()
+
+    config.font = wezterm.font 'MonoLisa Nerd Font'
+    config.font_size = 13.0
+    config.color_scheme = 'Afterglow'
+
+    -- Programming ligatures. Defaults are { kern, liga, clig } but some
+    -- builds drop them when shaping prompts coloured by escape sequences,
+    -- so set them explicitly. calt is required for many MonoLisa ligatures.
+    config.harfbuzz_features = {
+      'calt=1',
+      'clig=1',
+      'liga=1',
+      'kern=1',
+    }
+
+    config.window_background_opacity = 0.8
+    config.macos_window_background_blur = 20
+    config.window_decorations = 'RESIZE'
+    config.hide_tab_bar_if_only_one_tab = true
+    config.use_fancy_tab_bar = false
+    config.tab_bar_at_bottom = true
+
+    config.scrollback_lines = 1000000
+    config.enable_scroll_bar = false
+
+    -- macos-option-as-alt: treat Option as Alt (both sides)
+    config.send_composed_key_when_left_alt_is_pressed = false
+    config.send_composed_key_when_right_alt_is_pressed = false
+
+    -- Keybindings.
+    -- Most "classical Linux" shell shortcuts (Ctrl+A/E/W/U/K/R, Alt+B/F/D,
+    -- Alt+Backspace, Alt+.) are readline-level and work automatically once
+    -- Option is sent as Alt — handled above by send_composed_key_when_*_alt_is_pressed = false.
+    -- Wezterm defaults cover Cmd+C / Cmd+V, Cmd+T / Cmd+W (tabs), Ctrl+Tab cycling,
+    -- Cmd+= / Cmd+- zoom, Cmd+F search, etc.
+    config.keys = {
+      -- Cmd+K: clear scrollback + viewport (macOS Terminal / iTerm2 behaviour).
+      -- After clearing, send raw FF (\x0c == Ctrl+L) so the shell redraws the
+      -- prompt. Using SendString instead of SendKey { key = 'l', ... } sidesteps
+      -- modifier-case ambiguity ('L' would mean Shift+L).
+      {
+        key = 'k',
+        mods = 'CMD',
+        action = wezterm.action.Multiple {
+          wezterm.action.ClearScrollback 'ScrollbackAndViewport',
+          wezterm.action.SendString '\x0c',
+        },
+      },
+      -- Opt+. -> ESC + '.' (M-. in readline) = yank-last-arg in bash/zsh,
+      -- history-token-search-backward in fish. Explicit so it works even if
+      -- a future config flip changes the alt-as-meta behaviour.
+      {
+        key = '.',
+        mods = 'OPT',
+        action = wezterm.action.SendString '\x1b.',
+      },
+    }
+
+    -- Copy on select: finalize the selection into both clipboard and primary
+    -- on left-mouse release. Three streaks cover drag (1), double-click word
+    -- (2) and triple-click line (3). Streak 1 uses CompleteSelectionOrOpenLink*
+    -- so single click on a hyperlink still opens it (wezterm default behaviour).
+    config.mouse_bindings = {
+      {
+        event = { Up = { streak = 1, button = 'Left' } },
+        mods = 'NONE',
+        action = wezterm.action.CompleteSelectionOrOpenLinkAtMouseCursor 'ClipboardAndPrimarySelection',
+      },
+      {
+        event = { Up = { streak = 2, button = 'Left' } },
+        mods = 'NONE',
+        action = wezterm.action.CompleteSelection 'ClipboardAndPrimarySelection',
+      },
+      {
+        event = { Up = { streak = 3, button = 'Left' } },
+        mods = 'NONE',
+        action = wezterm.action.CompleteSelection 'ClipboardAndPrimarySelection',
+      },
+    }
+
+    -- Inherit working directory on new tabs/panes (OSC 7).
+    config.default_cwd = wezterm.home_dir
+
+    return config
+  '';
+
   # not available on macOS
   # programs.ghostty = {
   #   enable = true;

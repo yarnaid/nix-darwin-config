@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   homebrew = {
     enable = true;
     onActivation = {
@@ -29,6 +30,7 @@
         name = "sketchybar";
         start_service = false;
       }
+      "ccusage"
       "mole"
       # "rclone"
       "dfu-util"
@@ -362,6 +364,7 @@
       "syntax-highlight"
       "visual-studio-code"
       "warp"
+      "wezterm"
       "zoom"
     ];
   };
