@@ -130,6 +130,19 @@
     };
   };
 
+  # --force kills any leftover daemon and clears stale daemon.sock so
+  # launchd KeepAlive recovers cleanly after crashes/reboots. Without this,
+  # an orphan socket causes EADDRINUSE on every restart and history stops
+  # being recorded silently. home-manager auto-wraps ProgramArguments with
+  # `/bin/sh -c "/bin/wait4path /nix/store && exec ..."`, so the bare argv
+  # is sufficient.
+  launchd.agents.atuin-daemon.config.ProgramArguments = lib.mkForce [
+    "${pkgs.atuin}/bin/atuin"
+    "daemon"
+    "start"
+    "--force"
+  ];
+
   programs.direnv = {
     enable = true;
     mise.enable = true;
