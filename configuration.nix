@@ -80,6 +80,8 @@
   system.defaults.NSGlobalDomain."com.apple.mouse.tapBehavior" = 1;
   system.defaults.SoftwareUpdate.AutomaticallyInstallMacOSUpdates = false;
   system.defaults.WindowManager.AppWindowGroupingBehavior = false;
+  system.defaults.WindowManager.GloballyEnabled = false;
+  system.defaults.WindowManager.AutoHide = false;
   system.defaults.controlcenter.AirDrop = false;
   system.defaults.controlcenter.Bluetooth = false;
   system.defaults.controlcenter.Sound = false;
@@ -128,29 +130,33 @@
     fi
   '';
 
-  # Fully disable Spotlight: indexing, metadata server, user-level UI agent
-  # (menu-bar icon + Cmd-Space search panel) and the Cmd-Space / Cmd-Alt-Space
-  # hotkeys. SIP prevents permanently removing the LaunchDaemon/Agent plists,
-  # so we re-apply on every activation. With indexing flagged off and the
-  # agent disabled, relaunch is a no-op.
+  # Kill Spotlight's UI surfaces but KEEP indexing enabled.
+  #
+  # Why indexing must stay on: `mas` 7.x detects installed App Store apps via
+  # `mdfind kMDItemAppStoreReceipt`. With indexing off, `mas list` returns
+  # empty -> `brew bundle` thinks no MAS apps are installed -> reinstalls all
+  # of `homebrew.masApps` on every `darwin-rebuild switch`. Trade-off chosen:
+  # silent UI + working declarative MAS > fully dead Spotlight.
+  #
+  # What stays alive: mds/mds_stores daemons, the index itself, `mdfind`.
+  # What we kill: menu-bar magnifier, Cmd-Space search panel, Cmd-Alt-Space
+  # Finder search, and (declaratively, via system.defaults below) Siri /
+  # Look Up suggestions. SIP prevents removing the per-user Spotlight
+  # LaunchAgent permanently, so we `launchctl disable` it on every activation.
   system.activationScripts.disableSpotlight.text = ''
     uid=$(/usr/bin/id -u yarnaid)
     plist=/Users/yarnaid/Library/Preferences/com.apple.symbolichotkeys.plist
 
-    # 1. Indexing off on every volume + erase existing indexes.
-    /usr/bin/mdutil -a -i off >/dev/null 2>&1 || true
-    /usr/bin/mdutil -a -E      >/dev/null 2>&1 || true
+    # 1. Ensure indexing is on (recovers from a previously-disabled state).
+    /usr/bin/mdutil -a -i on >/dev/null 2>&1 || true
 
-    # 2. Stop mds / mds_stores. Relaunches idle since indexing is off.
-    /bin/launchctl bootout system /System/Library/LaunchDaemons/com.apple.metadata.mds.plist >/dev/null 2>&1 || true
-
-    # 3. Disable + kill the per-user Spotlight agent (menu-bar magnifier icon
-    #    and the Cmd-Space search panel). `disable` is persisted in
+    # 2. Disable + kill the per-user Spotlight UI agent (menu-bar magnifier
+    #    icon and the Cmd-Space search panel). `disable` is persisted in
     #    ~/Library/LaunchAgents/...disabled.plist, so it survives reboots.
     /bin/launchctl asuser "$uid" /bin/launchctl disable "gui/$uid/com.apple.Spotlight" >/dev/null 2>&1 || true
     /bin/launchctl asuser "$uid" /bin/launchctl bootout  "gui/$uid/com.apple.Spotlight" >/dev/null 2>&1 || true
 
-    # 4. Unbind Cmd-Space (hotkey id 64) and Cmd-Alt-Space (id 65) so even a
+    # 3. Unbind Cmd-Space (hotkey id 64) and Cmd-Alt-Space (id 65) so even a
     #    relaunched Spotlight has no way to surface. PlistBuddy merges into
     #    the existing dict instead of clobbering other hotkeys; killall
     #    cfprefsd forces the prefs daemon to drop its cache.
@@ -159,6 +165,10 @@
       /usr/bin/sudo -u yarnaid /usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:65:enabled false" "$plist" >/dev/null 2>&1 || true
       /usr/bin/sudo -u yarnaid /usr/bin/killall cfprefsd >/dev/null 2>&1 || true
     fi
+
+    # 4. Kick off a one-shot reindex of /Applications so `mas list` can find
+    #    installed App Store apps right after switch (instead of next idle).
+    /usr/bin/mdimport /Applications >/dev/null 2>&1 || true
   '';
 
   # Set Git commit hash for darwin-version.

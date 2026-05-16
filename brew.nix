@@ -363,7 +363,6 @@
       # "obsidian"
       "postman"
       "qlmarkdown"
-      "quicklook-json"
       "send-to-kindle"
       "sf-symbols"
       "sublime-text"
