@@ -97,13 +97,21 @@
       "Bash(git -C /private/etc/nix-darwin --no-pager diff home.nix)",
       "Bash(/run/current-system/sw/bin/darwin-rebuild build *)",
       "Bash(git -C /private/etc/nix-darwin --no-pager status)",
-      "Bash(git -C /private/etc/nix-darwin --no-pager log --oneline -5)"
+      "Bash(git -C /private/etc/nix-darwin --no-pager log --oneline -5)",
+      "Bash(nix-instantiate --parse /private/etc/nix-darwin/home.nix)",
+      "Bash(command -v nixfmt nixfmt-classic nixfmt-rfc-style)",
+      "Bash(echo \"---exit:$?\")",
+      "Bash(mkdir -p /Users/yarnaid/.claude/projects/-private-etc-nix-darwin/memory; ls /Users/yarnaid/.claude/projects/-private-etc-nix-darwin/memory/ 2>&1)",
+      "Bash(defaults delete *)",
+      "Bash(echo \"exit:$?\")",
+      "Bash(git reset *)"
     ],
     "deny": [],
     "ask": [],
     "additionalDirectories": [
       "/Users/yarnaid/.claude",
-      "/Users/yarnaid/.local/share/atuin"
+      "/Users/yarnaid/.local/share/atuin",
+      "/Users/yarnaid/.claude/projects/-private-etc-nix-darwin"
     ]
   }
 }

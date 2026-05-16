@@ -10,6 +10,18 @@
 
     shell.enableShellIntegration = true;
 
+    # Proton Pass CLI — ставится один раз через npm-обёртку (postinstall качает
+    # официальный бинарь Proton AG с CDN). Идемпотентно: если pass-cli уже в
+    # PATH, ничего не делает. Sync между Mac-ами — через Proton-аккаунт после
+    # `pass-cli login`. Требует Pass Plus/Family/Professional или Proton-бандл.
+    activation.protonPassCli = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      export PATH="${pkgs.nodejs_25}/bin:$PATH"
+      if ! command -v pass-cli >/dev/null 2>&1; then
+        $DRY_RUN_CMD npm install -g proton-pass-cli || \
+          echo "WARN: proton-pass-cli install failed (offline?). Run manually: npm install -g proton-pass-cli"
+      fi
+    '';
+
     shellAliases = {
       # git related
       g = "git";
