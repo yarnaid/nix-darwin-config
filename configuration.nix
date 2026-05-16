@@ -60,6 +60,12 @@
       "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" = true;
     };
   };
+
+  # Kill Siri Suggestions + Look Up suggestions (both feed Spotlight results).
+  system.defaults.CustomUserPreferences = {
+    "com.apple.suggestions".SuggestionsAppLibraryEnabled = false;
+    "com.apple.lookup.shared".LookupSuggestionsDisabled = true;
+  };
   system.defaults.NSGlobalDomain.AppleInterfaceStyleSwitchesAutomatically = true;
   system.defaults.NSGlobalDomain.AppleMeasurementUnits = "Centimeters";
   system.defaults.NSGlobalDomain.AppleMetricUnits = 1;
@@ -122,15 +128,37 @@
     fi
   '';
 
-  # Disable Spotlight indexing on every volume + stop the metadata server.
-  # `mdutil -a -i off` flips indexing flag persistently; `-E` erases the index;
-  # `launchctl bootout` stops mds/mds_stores until next boot (system relaunches
-  # them on activation, but with no work to do they idle). SIP prevents fully
-  # unloading the LaunchDaemons, so we re-run on every activation.
+  # Fully disable Spotlight: indexing, metadata server, user-level UI agent
+  # (menu-bar icon + Cmd-Space search panel) and the Cmd-Space / Cmd-Alt-Space
+  # hotkeys. SIP prevents permanently removing the LaunchDaemon/Agent plists,
+  # so we re-apply on every activation. With indexing flagged off and the
+  # agent disabled, relaunch is a no-op.
   system.activationScripts.disableSpotlight.text = ''
+    uid=$(/usr/bin/id -u yarnaid)
+    plist=/Users/yarnaid/Library/Preferences/com.apple.symbolichotkeys.plist
+
+    # 1. Indexing off on every volume + erase existing indexes.
     /usr/bin/mdutil -a -i off >/dev/null 2>&1 || true
     /usr/bin/mdutil -a -E      >/dev/null 2>&1 || true
+
+    # 2. Stop mds / mds_stores. Relaunches idle since indexing is off.
     /bin/launchctl bootout system /System/Library/LaunchDaemons/com.apple.metadata.mds.plist >/dev/null 2>&1 || true
+
+    # 3. Disable + kill the per-user Spotlight agent (menu-bar magnifier icon
+    #    and the Cmd-Space search panel). `disable` is persisted in
+    #    ~/Library/LaunchAgents/...disabled.plist, so it survives reboots.
+    /bin/launchctl asuser "$uid" /bin/launchctl disable "gui/$uid/com.apple.Spotlight" >/dev/null 2>&1 || true
+    /bin/launchctl asuser "$uid" /bin/launchctl bootout  "gui/$uid/com.apple.Spotlight" >/dev/null 2>&1 || true
+
+    # 4. Unbind Cmd-Space (hotkey id 64) and Cmd-Alt-Space (id 65) so even a
+    #    relaunched Spotlight has no way to surface. PlistBuddy merges into
+    #    the existing dict instead of clobbering other hotkeys; killall
+    #    cfprefsd forces the prefs daemon to drop its cache.
+    if [ -f "$plist" ]; then
+      /usr/bin/sudo -u yarnaid /usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:64:enabled false" "$plist" >/dev/null 2>&1 || true
+      /usr/bin/sudo -u yarnaid /usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:65:enabled false" "$plist" >/dev/null 2>&1 || true
+      /usr/bin/sudo -u yarnaid /usr/bin/killall cfprefsd >/dev/null 2>&1 || true
+    fi
   '';
 
   # Set Git commit hash for darwin-version.
