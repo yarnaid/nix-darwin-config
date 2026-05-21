@@ -165,6 +165,55 @@
   programs.direnv = {
     enable = true;
     mise.enable = true;
+    stdlib = ''
+      # direnv helpers: интеграция Proton Pass CLI с .envrc на проектах.
+      #
+      # Команды pass-cli (подтверждены `pass-cli --help` на Proton Duo):
+      #   login / test / info / inject / run / vault / item / password / totp / ssh-agent / ...
+      #
+      # Использование в проекте `.envrc`:
+      #
+      #   use pass                                    # проверить, что pass-cli залогинен
+      #
+      #   # Вариант A — шаблон → .env (одноразово):
+      #   pass_inject .env.tmpl .env                  # .env.tmpl содержит ссылки {{ ... }}
+      #
+      #   # Вариант B — env только на время процесса (без .env-файла):
+      #   #   в shell:  pass run -- python app.py
+      #   #   pass-cli сам читает .pass-env / шаблон и инжектит переменные.
+      #
+      # Pass-ссылки имеют форму, описанную в `pass-cli inject --help` / `pass-cli run --help`.
+
+      use_pass() {
+        if ! command -v pass-cli >/dev/null 2>&1; then
+          log_error "pass-cli не установлен. См. https://proton.me/pass/download"
+          return 1
+        fi
+        if ! pass-cli test >/dev/null 2>&1; then
+          log_error "pass-cli не залогинен. Выполни: pass-cli login"
+          return 1
+        fi
+      }
+
+      # pass_inject <template> [<output>]
+      #   Рендерит шаблон через pass-cli inject. Если output не задан — пишет в .env.
+      pass_inject() {
+        local tmpl="''${1:?usage: pass_inject template [output]}"
+        local out="''${2:-.env}"
+        if [ ! -f "$tmpl" ]; then
+          log_error "pass_inject: шаблон не найден: $tmpl"
+          return 1
+        fi
+        pass-cli inject -i "$tmpl" -o "$out" >/dev/null || {
+          log_error "pass-cli inject упал на $tmpl"
+          return 1
+        }
+        # Подгружаем в текущую среду direnv
+        dotenv "$out"
+        # Перерендериваем, если шаблон поменялся
+        watch_file "$tmpl"
+      }
+    '';
   };
 
   programs.oh-my-posh = {
@@ -181,7 +230,6 @@
         PROJECT_NAME = "{{ config_root | basename }}";
       };
       tools = {
-        python = "{{ get_env(name='PYTHON_VERSION', default='3.13') }}";
         ruff = "latest";
         uv = "latest";
       };
