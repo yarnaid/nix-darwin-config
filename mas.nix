@@ -17,7 +17,7 @@
     "Canary Mail" = 1236045954;
     "rcmd" = 1596283165;
     # iOS app (no native Mac build) — runs on Apple Silicon via App Store.
-    "Swiftgram: Telegram mod client" = 6471879502;
+    # "Swiftgram: Telegram mod client" = 6471879502;
 
     # Utilities
     # "Disk Space Analyzer" = 446243721;
