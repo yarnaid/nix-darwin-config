@@ -108,7 +108,40 @@
 
         # source ~/.config/atuin/atuin.fish
 
+        # Auto-activate .venv on shell start (function is registered as a PWD watcher below)
+        _auto_venv
+
     '';
+
+    functions = {
+      _auto_venv = {
+        onVariable = "PWD";
+        description = "Auto-activate nearest .venv when entering a project directory";
+        body = ''
+          # Деактивируем, если вышли из проекта
+          if set -q VIRTUAL_ENV
+            if not string match -q "$PWD*" "$VIRTUAL_ENV"
+              functions -q deactivate; and deactivate 2>/dev/null
+              set -e VIRTUAL_ENV
+              set -e _AUTO_VENV_DIR
+            end
+          end
+
+          # Ищем .venv вверх по дереву
+          set -l dir $PWD
+          while test "$dir" != "/"
+            if test -d "$dir/.venv"
+              if test "$dir" != "$_AUTO_VENV_DIR"
+                source "$dir/.venv/bin/activate.fish"
+                set -gx _AUTO_VENV_DIR $dir
+              end
+              return
+            end
+            set dir (dirname $dir)
+          end
+        '';
+      };
+    };
 
     plugins = [
       {
