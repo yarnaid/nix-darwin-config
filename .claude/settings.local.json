@@ -124,14 +124,19 @@
       "Bash(curl -s \"https://itunes.apple.com/search?term=swiftgram&entity=macSoftware&country=US&limit=5\")",
       "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); [print\\(r['trackId'], r['trackName'], r['sellerName']\\) for r in d['results']]\")",
       "Bash(curl -s \"https://itunes.apple.com/search?term=swiftgram&entity=software&country=US&limit=5\")",
-      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); [print\\(r.get\\('trackId'\\), r.get\\('trackName'\\), '|', r.get\\('sellerName'\\), '|', r.get\\('kind'\\), '|', 'mac:' + str\\(r.get\\('supportedDevices', ['?']\\)[:3] if 'supportedDevices' in r else '?'\\)\\) for r in d['results']]\")"
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); [print\\(r.get\\('trackId'\\), r.get\\('trackName'\\), '|', r.get\\('sellerName'\\), '|', r.get\\('kind'\\), '|', 'mac:' + str\\(r.get\\('supportedDevices', ['?']\\)[:3] if 'supportedDevices' in r else '?'\\)\\) for r in d['results']]\")",
+      "Bash(direnv version *)",
+      "Bash(mv ~/.config/direnv/direnvrc ~/.config/direnv/direnvrc.pre-hm.bak && ls -la ~/.config/direnv/)"
     ],
     "deny": [],
     "ask": [],
     "additionalDirectories": [
       "/Users/yarnaid/.claude",
       "/Users/yarnaid/.local/share/atuin",
-      "/Users/yarnaid/.claude/projects/-private-etc-nix-darwin"
+      "/Users/yarnaid/.claude/projects/-private-etc-nix-darwin",
+      "/etc/nix-darwin",
+      "/private/etc/nix-darwin",
+      "/Users/yarnaid/.config/direnv"
     ]
   }
 }
