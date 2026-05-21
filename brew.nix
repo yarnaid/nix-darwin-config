@@ -217,6 +217,7 @@
       "pueue" # очередь долгих команд (docker build, pip, ffmpeg)
       "glab" # GitLab CLI (для EPAM GitLab)
       "act" # запуск GitHub Actions локально через Docker/podman
+      "anomalyco/tap/opencode"
 
     ];
     # Add casks (macOS applications)
@@ -236,6 +237,7 @@
       "adguard"
       "qutebrowser"
       "codex"
+      "codexbar"
       "orbstack"
       "zen"
       "mouseless"

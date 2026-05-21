@@ -119,7 +119,12 @@
       "Bash(command -v proton-pass-cli)",
       "Bash(/opt/homebrew/bin/pnpm --version)",
       "Bash(npm uninstall *)",
-      "Bash(brew link *)"
+      "Bash(brew link *)",
+      "Bash(mas search *)",
+      "Bash(curl -s \"https://itunes.apple.com/search?term=swiftgram&entity=macSoftware&country=US&limit=5\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); [print\\(r['trackId'], r['trackName'], r['sellerName']\\) for r in d['results']]\")",
+      "Bash(curl -s \"https://itunes.apple.com/search?term=swiftgram&entity=software&country=US&limit=5\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); [print\\(r.get\\('trackId'\\), r.get\\('trackName'\\), '|', r.get\\('sellerName'\\), '|', r.get\\('kind'\\), '|', 'mac:' + str\\(r.get\\('supportedDevices', ['?']\\)[:3] if 'supportedDevices' in r else '?'\\)\\) for r in d['results']]\")"
     ],
     "deny": [],
     "ask": [],

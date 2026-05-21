@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   homebrew.masApps = {
     # Productivity
     "Things" = 904280696;
@@ -15,6 +16,8 @@
     # Email & Communication
     "Canary Mail" = 1236045954;
     "rcmd" = 1596283165;
+    # iOS app (no native Mac build) — runs on Apple Silicon via App Store.
+    "Swiftgram: Telegram mod client" = 6471879502;
 
     # Utilities
     # "Disk Space Analyzer" = 446243721;
@@ -65,7 +68,6 @@
     "YamaCast" = 1415107621;
     "Unsplash Wallpapers" = 1284863847;
     "Video Speed Controller" = 1588368612;
-
 
     # Weather & Lifestyle
     "flowy" = 6748351905;

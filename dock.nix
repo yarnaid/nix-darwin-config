@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   system.defaults.dock = {
@@ -8,14 +13,22 @@
       { app = "/Applications/Safari.app"; }
       { app = "/Applications/Google Chrome.app"; }
       { app = "/Applications/Canary Mail.app"; }
-      { app = "/Applications/Telegram.app"; }
+      { app = "/Applications/Swiftgram.app"; }
 
-      { spacer = { small = true; }; }
+      {
+        spacer = {
+          small = true;
+        };
+      }
 
       { app = "/Applications/Microsoft Outlook.app"; }
       { app = "/Applications/Microsoft Teams.app"; }
 
-      { spacer = { small = true; }; }
+      {
+        spacer = {
+          small = true;
+        };
+      }
 
       { app = "/Applications/Windows App.app"; }
       # { app = "/Applications/Warp.app"; }
@@ -27,13 +40,21 @@
       { app = "/Applications/Zed.app"; }
       { app = "/Applications/Visual Studio Code.app"; }
 
-      { spacer = { small = true; }; }
+      {
+        spacer = {
+          small = true;
+        };
+      }
 
       { app = "/System/Applications/System Settings.app"; }
       { app = "/Applications/ProcessSpy.app"; }
       { app = "/System/Applications/Utilities/Activity Monitor.app"; }
 
-      { spacer = { small = true; }; }
+      {
+        spacer = {
+          small = true;
+        };
+      }
 
       # { app = "/Applications/Todoist.app"; }
       { app = "/Applications/Things3.app"; }
