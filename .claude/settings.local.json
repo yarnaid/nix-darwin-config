@@ -1,13 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "Bash(nix flake metadata:*)",
-      "Bash(nix flake update:*)",
+      "Bash(nix *)",
       "Bash(darwin-rebuild switch:*)",
       "Bash(sudo darwin-rebuild switch:*)",
       "Bash(darwin-rebuild build:*)",
       "Bash(nixfmt *)",
-      "Bash(nixfmt home.nix brew.nix)",
+      "Bash(nixfmt)",
       "Bash(fish -ic 'type -a z; type -a __zoxide_z; functions -q __zoxide_hook && echo \"hook ok\" || echo \"hook missing\"; echo \"---\"; echo $ZO_DATA_DIR; which zoxide')",
       "Bash(fish -ic 'functions --handlers | grep -i zoxide; echo \"---events---\"; functions --handlers-type variable | head -30; echo \"---\"; zoxide query -l 2>&1 | head -20; echo \"---db count---\"; zoxide query -l 2>&1 | wc -l')",
       "Bash(xargs -I{} sh -c 'echo \"=== {} ===\"; grep -n \"zoxide\" {} 2>&1 | head -5')",
@@ -126,7 +125,13 @@
       "Bash(curl -s \"https://itunes.apple.com/search?term=swiftgram&entity=software&country=US&limit=5\")",
       "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); [print\\(r.get\\('trackId'\\), r.get\\('trackName'\\), '|', r.get\\('sellerName'\\), '|', r.get\\('kind'\\), '|', 'mac:' + str\\(r.get\\('supportedDevices', ['?']\\)[:3] if 'supportedDevices' in r else '?'\\)\\) for r in d['results']]\")",
       "Bash(direnv version *)",
-      "Bash(mv ~/.config/direnv/direnvrc ~/.config/direnv/direnvrc.pre-hm.bak && ls -la ~/.config/direnv/)"
+      "Bash(mv ~/.config/direnv/direnvrc ~/.config/direnv/direnvrc.pre-hm.bak && ls -la ~/.config/direnv/)",
+      "Bash(brew autoupdate *)",
+      "Bash(/usr/bin/plutil -p ~/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure.plist)",
+      "Bash(/usr/bin/mdls -name kMDItemCFBundleIdentifier /System/Library/CoreServices/Finder.app)",
+      "Bash(/usr/bin/find *)",
+      "Bash(/usr/bin/grep *)",
+      "Bash(sed *)"
     ],
     "deny": [],
     "ask": [],

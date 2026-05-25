@@ -6,6 +6,7 @@
     ./mas.nix
     ./env.nix
     ./dock.nix
+    ./logging.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -106,6 +107,40 @@
   system.defaults.finder.ShowRemovableMediaOnDesktop = false;
   system.defaults.finder.ShowStatusBar = true;
   system.defaults.finder._FXShowPosixPathInTitle = true;
+
+  # Pin Finder as the explicit handler for folder UTIs so a cask install (ForkLift,
+  # qutebrowser, etc.) can't silently hijack the binding. macOS resolves folder
+  # opens via LaunchServices; an empty LSHandlers entry resolves to Finder by
+  # default, but is not guaranteed once another app registers itself.
+  #
+  # NOTE: nix-darwin's master `activate` script ONLY composes a fixed set of
+  # phase names (`preActivation`, `extraActivation`, `postActivation`, plus
+  # built-in phases like `defaults`, `homebrew`, etc.). Custom-named scripts
+  # are silently dropped. Activation runs as root — per-user actions need sudo.
+  system.activationScripts.postActivation.text = ''
+    # --- defaultFolderHandler: pin Finder for public.folder ---
+    # Only public.folder is set: it's the concrete UTI for regular folders.
+    # public.directory is an abstract supertype — LaunchServices returns
+    # paramErr (-50) on attempts to bind it, and concrete folder opens always
+    # resolve via the more-specific public.folder anyway.
+    duti=/opt/homebrew/bin/duti
+    user=yarnaid
+    finder=com.apple.finder
+    uti=public.folder
+    if [ ! -x "$duti" ]; then
+      echo "[defaultFolderHandler] $duti not installed yet; will run on next switch"
+    else
+      current="$(sudo -u "$user" "$duti" -d "$uti" 2>/dev/null || true)"
+      if [ "$current" = "$finder" ]; then
+        echo "[defaultFolderHandler] $uti already → $finder"
+      else
+        echo "[defaultFolderHandler] setting $uti → $finder (was: $current)"
+        sudo -u "$user" "$duti" -s "$finder" "$uti" all
+        sudo -u "$user" killall cfprefsd 2>/dev/null || true
+      fi
+    fi
+  '';
+
   system.defaults.hitoolbox.AppleFnUsageType = "Change Input Source";
   system.defaults.menuExtraClock.Show24Hour = true;
   system.defaults.menuExtraClock.ShowDate = 2;

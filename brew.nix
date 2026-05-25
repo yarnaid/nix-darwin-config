@@ -67,6 +67,7 @@
       "curl"
       "djvu2pdf"
       "djvulibre"
+      "duti" # CLI to set per-UTI default apps (used by defaultFolderHandler activation script)
       "e2fsprogs"
       "entr"
       "exiftool"
@@ -223,9 +224,15 @@
     # Add casks (macOS applications)
     casks = [
       "macfuse"
+      "opera-air"
+      "lulu"
+      "little-snitch"
+      "tiny-shield"
+      "macwhisper"
+
       "libreoffice"
       "keycastr"
-      "tidal"
+      "spotify"
       "supasidebar"
       "claude"
       "antinote"
@@ -237,6 +244,7 @@
       "adguard"
       "qutebrowser"
       "codex"
+      "basictex"
       "codexbar"
       "orbstack"
       "zen"

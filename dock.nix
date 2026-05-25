@@ -13,7 +13,7 @@
       { app = "/Applications/Safari.app"; }
       { app = "/Applications/Google Chrome.app"; }
       { app = "/Applications/Canary Mail.app"; }
-      { app = "/Applications/Swiftgram.app"; }
+      { app = "/Applications/Telegram.app"; }
 
       {
         spacer = {
