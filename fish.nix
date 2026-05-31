@@ -108,6 +108,10 @@
 
         # source ~/.config/atuin/atuin.fish
 
+        # Shared aliases — single source shared.toml [aliases], rendered to
+        # ~/.config/sh/aliases (POSIX alias k='v', sourceable by fish too).
+        test -f $HOME/.config/sh/aliases; and source $HOME/.config/sh/aliases
+
         # Auto-activate .venv on shell start (function is registered as a PWD watcher below)
         _auto_venv
 

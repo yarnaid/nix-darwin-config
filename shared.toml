@@ -1,0 +1,77 @@
+# Single source of truth for cross-shell PATH, env vars, and aliases.
+# Read by nix (env.nix -> systemPath + variables; home.nix -> renders
+# ~/.config/sh/aliases{,.nu}). Shells source the rendered alias files.
+# Edit here, then `darwin-rebuild switch`. See docs/specs/2026-05-31-*.
+
+[paths]
+# -> environment.systemPath (session-wide; inherited by all shells + GUI).
+entries = [
+  "/Users/yarnaid/.local/bin",
+  "/Users/yarnaid/.yarn/bin",
+  "/Users/yarnaid/.goenv/path/bin",
+  "/Users/yarnaid/.goenv/go/bin",
+  "/usr/local/sbin",
+  "/usr/local/opt/sqlite/bin",
+  "/opt/homebrew/bin",
+  "/opt/homebrew/sbin",
+  "/opt/homebrew/opt/gnu-sed/libexec/gnubin",
+  "/opt/homebrew/opt/gnu-tar/libexec/gnubin",
+  "/opt/homebrew/opt/findutils/libexec/gnubin",
+  "/opt/homebrew/opt/diffutils/libexec/gnubin",
+  "/opt/homebrew/opt/gpatch/libexec/gnubin",
+  "/Users/yarnaid/.cargo/bin",
+  "/usr/local/bin",
+  "/Applications/Postgres.app/Contents/Versions/17/bin",
+  "/Users/yarnaid/.lmstudio/bin",
+]
+
+[env]
+# -> environment.variables (session-wide).
+WORKON_HOME = "/Users/yarnaid/.virtualenvs"
+BUILDKIT_PROGRESS = "plain"
+GOPATH = "/Users/yarnaid/.goenv/path"
+LANG = "en_US.UTF-8"
+LC_ALL = "en_US.UTF-8"
+CLICOLOR = "1"
+MANPATH = "/usr/local/man:/usr/share/man"
+LDFLAGS = "-L/usr/local/opt/openssl/lib"
+CPPFLAGS = "-I/usr/local/opt/openssl/include"
+HOMEBREW_AUTO_UPDATE_SECS = "86400"
+HOMEBREW_NO_AUTO_UPDATE = "1"
+HOMEBREW_UPGRADE_GREEDY = "1"
+HOMEBREW_BAT = "1"
+EDITOR = "nvim"
+VISUAL = "nvim"
+FZF_DEFAULT_COMMAND = "fd --hidden --strip-cwd-prefix --exclude .git --exclude node_modules"
+FZF_CTRL_T_COMMAND = "fd --hidden --strip-cwd-prefix --exclude .git --exclude node_modules"
+FZF_ALT_C_COMMAND = "fd --type=d --hidden --strip-cwd-prefix --exclude .git --exclude node_modules"
+FZF_ALT_C_OPTS = "--preview 'eza --tree --color=always {} | head -200'"
+PAGER = "bat"
+SAVEHIST = "1000000"
+HISTSIZE = "1000000"
+VIRTUAL_ENV_DISABLE_PROMPT = "1"
+ZSH_TMUX_TERM = "screen-256color"
+
+[aliases]
+# -> rendered to ~/.config/sh/aliases (zsh/fish) and ~/.config/sh/aliases.nu (nu).
+# Simple "cmd args" forms only (render across all shells). Shell-specific or
+# complex aliases live in that shell's own rc, not here.
+g = "git"
+gs = "git status"
+gp = "git push"
+gl = "git pull"
+gst = "git status"
+vim = "nvim"
+v = "nvim"
+ls = "eza --color=always --long --git --icons=always --no-permissions --header --mounts --git-repos --hyperlink"
+l = "ls"
+ll = "ls -la"
+cv = "chezmoi edit --watch"
+ca = "chezmoi add"
+cu = "chezmoi update"
+b = "brew"
+bs = "brew search --desc --eval-all"
+bi = "brew install"
+bu = "brew upgrade -g"
+y = "yazi"
+os = "ollama serve"

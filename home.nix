@@ -1,4 +1,9 @@
 { pkgs, lib, ... }:
+let
+  # Same single source of truth as env.nix; here we render the alias files
+  # that every shell sources (~/.config/sh/aliases for zsh/fish, .nu for nu).
+  shared = builtins.fromTOML (builtins.readFile ./shared.toml);
+in
 {
   imports = [ ./fish.nix ];
   home = {
@@ -29,42 +34,16 @@
       fi
     '';
 
-    shellAliases = {
-      # git related
-      g = "git";
-      gs = "git status";
-      gp = "git push";
-      gl = "git pull";
-      gst = "git status";
-
-      # Vim related
-      vim = "nvim";
-      v = "nvim";
-
-      # File listing
-      ls = "eza --color=always --long --git --icons=always --no-permissions --header --mounts --git-repos --hyperlink";
-      l = "ls";
-      ll = "ls -la";
-
-      # Navigation
-      ".." = "cd ..";
-
-      # Chezmoi
-      cv = "chezmoi edit --watch";
-      ca = "chezmoi add";
-      cu = "chezmoi update";
-
-      # Brew
-      b = "brew";
-      bs = "brew search --desc --eval-all";
-      bi = "brew install";
-      bu = "brew upgrade -g";
-
-      # Other tools
-      y = "yazi";
-      os = "ollama serve";
-
-    };
+    # Aliases come from shared.toml [aliases], rendered once for every shell.
+    # zsh/fish source ~/.config/sh/aliases; nu sources ~/.config/sh/aliases.nu
+    # (nu's `alias` is a parse-time keyword and cannot loop-load).
+    file.".config/sh/aliases".text =
+      lib.concatStringsSep "\n" (
+        lib.mapAttrsToList (k: v: "alias ${k}=${lib.escapeShellArg v}") shared.aliases
+      )
+      + "\n";
+    file.".config/sh/aliases.nu".text =
+      lib.concatStringsSep "\n" (lib.mapAttrsToList (k: v: "alias ${k} = ${v}") shared.aliases) + "\n";
 
   };
 
@@ -315,6 +294,7 @@
         export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --ansi --preview-window=right:60%:wrap'
         export MANPAGER="sh -c 'col -bx | bat -l man -p'"
         export BAT_THEME="tokyo-night"
+        [ -f "$HOME/.config/sh/aliases" ] && source "$HOME/.config/sh/aliases"
       ''
       # zoxide must initialize last so __zoxide_hook is the final precmd_functions entry
       (lib.mkAfter ''
@@ -351,6 +331,7 @@
         # async worker leaked `command not found: z` (bare zoxide cmd, renamed
         # to `cd` via --cmd cd). atuin + autosuggestions cover its features.
         history-substr-search.github = "zsh-users/zsh-history-substring-search";
+        enhancd.github = "b4b4r07/enhancd";
       };
     };
   };
