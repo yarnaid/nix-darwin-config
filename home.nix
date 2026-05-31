@@ -151,21 +151,36 @@ in
   # Bat configuration
   # bat, btop configs migrated to chezmoi; packages via brew (see brew.nix).
 
-  # atuin: binary via home.packages, config via chezmoi (~/.config/atuin/config.toml),
-  # init in chezmoi ~/.zshrc. Daemon stays here (launchd), using the nix atuin.
-
-  # --force kills any leftover daemon and clears stale daemon.sock so
-  # launchd KeepAlive recovers cleanly after crashes/reboots. Without this,
-  # an orphan socket causes EADDRINUSE on every restart and history stops
-  # being recorded silently. home-manager auto-wraps ProgramArguments with
-  # `/bin/sh -c "/bin/wait4path /nix/store && exec ..."`, so the bare argv
-  # is sufficient.
-  launchd.agents.atuin-daemon.config.ProgramArguments = lib.mkForce [
-    "${pkgs.atuin}/bin/atuin"
-    "daemon"
-    "start"
-    "--force"
-  ];
+  # atuin: binary via home.packages, config via chezmoi (~/.config/atuin/config.toml,
+  # which sets [daemon] enabled = true), init in chezmoi ~/.zshrc. Defined as a
+  # raw launchd agent (NOT programs.atuin) — programs.atuin.enable would write its
+  # own config.toml and collide with the chezmoi-owned one. With [daemon] enabled,
+  # the shell hook records history via the daemon socket: if the daemon is down,
+  # new commands are silently dropped, so the agent must be fully self-defined
+  # here (a bare ProgramArguments override is inert without programs.atuin to
+  # create the agent).
+  #
+  # `start --force` kills any leftover daemon and clears a stale daemon.sock so
+  # launchd KeepAlive recovers cleanly after crashes/reboots; without it an orphan
+  # socket causes EADDRINUSE on every restart. home-manager auto-wraps
+  # ProgramArguments with `/bin/sh -c "/bin/wait4path /nix/store && exec ..."`,
+  # so the bare argv is sufficient.
+  launchd.agents.atuin-daemon = {
+    enable = true;
+    config = {
+      ProgramArguments = [
+        "${pkgs.atuin}/bin/atuin"
+        "daemon"
+        "start"
+        "--force"
+      ];
+      KeepAlive = true;
+      RunAtLoad = true;
+      ProcessType = "Background";
+      StandardOutPath = "${config.home.homeDirectory}/Library/Logs/atuin-daemon.out.log";
+      StandardErrorPath = "${config.home.homeDirectory}/Library/Logs/atuin-daemon.err.log";
+    };
+  };
 
   # direnv (+ direnvrc pass-cli helpers), oh-my-posh, mise (config.toml incl.
   # tasks/PROJECT_NAME), carapace: binaries via home.packages, configs via
