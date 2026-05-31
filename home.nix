@@ -6,7 +6,7 @@
     homeDirectory = "/Users/yarnaid";
     stateVersion = "25.11";
 
-    packages = with pkgs; [ nodejs_25 ];
+    packages = with pkgs; [ nodejs_24 ];
 
     shell.enableShellIntegration = true;
 
@@ -18,7 +18,7 @@
     # пишет в $PNPM_HOME (~/Library/pnpm), который user-writable.
     activation.protonPassCli = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       export PNPM_HOME="$HOME/Library/pnpm"
-      export PATH="${pkgs.nodejs_25}/bin:/opt/homebrew/bin:$PNPM_HOME/bin:$HOME/.local/bin:$PATH"
+      export PATH="${pkgs.nodejs_24}/bin:/opt/homebrew/bin:$PNPM_HOME/bin:$HOME/.local/bin:$PATH"
       # Check known install locations directly — activation PATH may not match
       # the user's interactive PATH. pnpm 11 layout: $PNPM_HOME/bin/pass-cli.
       if ! [ -x "$PNPM_HOME/bin/pass-cli" ] \
@@ -62,7 +62,6 @@
 
       # Other tools
       y = "yazi";
-      js = "jupyter server";
       os = "ollama serve";
 
     };
@@ -145,6 +144,18 @@
       theme = {
         name = "tokyo-night";
         enter_accept = true;
+      };
+      ai = {
+        enabled = true;
+        capabilities = {
+          enable_history_search = true;
+          enable_file_tools = true;
+          enable_command_execution = true;
+        };
+        opening = {
+          send_cwd = true;
+          send_last_command = true;
+        };
       };
     };
   };
@@ -275,6 +286,7 @@
 
   programs.carapace = {
     enable = true;
+    enableZshIntegration = true;
   };
 
   programs.nushell = {
@@ -284,9 +296,6 @@
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-    syntaxHighlighting = {
-      enable = true;
-    };
     antidote = {
       enable = false;
       plugins = [
@@ -321,6 +330,29 @@
   programs.sheldon = {
     enable = true;
     enableFishIntegration = false;
+    settings = {
+      shell = "zsh";
+      plugins = {
+        # oh-my-zsh = {
+        #   github = "ohmyzsh/ohmyzsh";
+        #   dir = "plugins";
+        #   use = [
+        #     "{aliases,alias-finder,macos,brew,colored-man-pages,command-not-found,golang,git,magic-enter,python,mac-zsh-completions,node,npm,sudo,aws}/*.plugin.zsh"
+        #   ];
+        # };
+        autosuggestions.github = "zsh-users/zsh-autosuggestions";
+        completion.github = "zsh-users/zsh-completions";
+        mise.github = "wintermi/zsh-mise";
+        # fast-syntax-highlighting — sourced last (key sorts last alphabetically
+        # in the generated TOML), after autosuggestions/completion as required.
+        syntax-highlight.github = "zdharma-continuum/fast-syntax-highlighting";
+        # zsh-autocomplete removed: its menu-search/recent-paths ZLE widgets
+        # conflict with fast-syntax-highlighting (load-order warnings) and its
+        # async worker leaked `command not found: z` (bare zoxide cmd, renamed
+        # to `cd` via --cmd cd). atuin + autosuggestions cover its features.
+        history-substr-search.github = "zsh-users/zsh-history-substring-search";
+      };
+    };
   };
 
   programs.zoxide = {

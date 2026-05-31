@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   # Add directories to the system PATH
   environment.systemPath = [
     "/Users/yarnaid/.local/bin"
@@ -7,6 +8,8 @@
     "/Users/yarnaid/.goenv/go/bin"
     "/usr/local/sbin"
     "/usr/local/opt/sqlite/bin"
+    "/opt/homebrew/bin"
+    "/opt/homebrew/sbin"
     "/opt/homebrew/opt/gnu-sed/libexec/gnubin"
     "/opt/homebrew/opt/gnu-tar/libexec/gnubin"
     "/opt/homebrew/opt/findutils/libexec/gnubin"
@@ -15,6 +18,7 @@
     "/Users/yarnaid/.cargo/bin"
     "/usr/local/bin"
     "/Applications/Postgres.app/Contents/Versions/17/bin"
+    "/Users/yarnaid/.lmstudio/bin" # migrated from ~/.profile (LM Studio CLI)
   ];
 
   environment.variables = {
@@ -50,12 +54,9 @@
     VISUAL = "nvim";
 
     # FZF
-    FZF_DEFAULT_COMMAND =
-      "fd --hidden --strip-cwd-prefix --exclude .git --exclude node_modules";
-    FZF_CTRL_T_COMMAND =
-      "fd --hidden --strip-cwd-prefix --exclude .git --exclude node_modules";
-    FZF_ALT_C_COMMAND =
-      "fd --type=d --hidden --strip-cwd-prefix --exclude .git --exclude node_modules";
+    FZF_DEFAULT_COMMAND = "fd --hidden --strip-cwd-prefix --exclude .git --exclude node_modules";
+    FZF_CTRL_T_COMMAND = "fd --hidden --strip-cwd-prefix --exclude .git --exclude node_modules";
+    FZF_ALT_C_COMMAND = "fd --type=d --hidden --strip-cwd-prefix --exclude .git --exclude node_modules";
     FZF_ALT_C_OPTS = "--preview 'eza --tree --color=always {} | head -200'";
 
     # Pager
@@ -63,6 +64,10 @@
 
     SAVEHIST = "1000000";
     HISTSIZE = "1000000";
+
+    # Migrated from ~/.profile (no nix equivalent previously)
+    VIRTUAL_ENV_DISABLE_PROMPT = "1";
+    ZSH_TMUX_TERM = "screen-256color";
 
   };
 }

@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  pkgs-nixos,
+  ...
+}:
 {
   imports = [
     ./brew.nix
@@ -57,15 +62,19 @@
     NSGlobalDomain = {
       TISRomanSwitchState = 1;
     };
-    "com.apple.Safari" = {
-      "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" = true;
-    };
   };
 
   # Kill Siri Suggestions + Look Up suggestions (both feed Spotlight results).
   system.defaults.CustomUserPreferences = {
     "com.apple.suggestions".SuggestionsAppLibraryEnabled = false;
     "com.apple.lookup.shared".LookupSuggestionsDisabled = true;
+    # Safari Develop menu. Lives in the per-user sandboxed container, NOT the
+    # system domain (CustomSystemPreferences targeted /var/root and aborted the
+    # switch). Writing it still needs the activating terminal to hold Full Disk
+    # Access (TCC) — otherwise `defaults` fails with "Could not write domain …
+    # Containers/com.apple.Safari; exiting". Grant FDA to the terminal first.
+    "com.apple.Safari"."com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" =
+      true;
   };
   system.defaults.NSGlobalDomain.AppleInterfaceStyleSwitchesAutomatically = true;
   system.defaults.NSGlobalDomain.AppleMeasurementUnits = "Centimeters";
@@ -139,6 +148,23 @@
         sudo -u "$user" killall cfprefsd 2>/dev/null || true
       fi
     fi
+
+    # --- disable iStat Menus system daemon ---
+    if [ -f /Library/LaunchDaemons/com.bjango.istatmenus.daemon.plist ]; then
+      /bin/launchctl bootout system /Library/LaunchDaemons/com.bjango.istatmenus.daemon.plist 2>/dev/null || true
+      /bin/launchctl disable system/com.bjango.istatmenus.daemon 2>/dev/null || true
+    fi
+
+    # --- force login shell to zsh ---
+    # `users.users.yarnaid.shell = pkgs.zsh` below is inert: nix-darwin only
+    # writes UserShell for users in `users.knownUsers` (unset here — setting it
+    # would demand matching uid/gid and abort on mismatch). dscl bypasses the
+    # /etc/shells membership check that chsh enforces, so it's robust.
+    shellTarget="/run/current-system/sw/bin/zsh"
+    shellCurrent=$(/usr/bin/dscl . -read /Users/yarnaid UserShell 2>/dev/null | /usr/bin/awk '{print $2}')
+    if [ "$shellCurrent" != "$shellTarget" ]; then
+      /usr/bin/dscl . -create /Users/yarnaid UserShell "$shellTarget" || true
+    fi
   '';
 
   system.defaults.hitoolbox.AppleFnUsageType = "Change Input Source";
@@ -204,6 +230,31 @@
     # 4. Kick off a one-shot reindex of /Applications so `mas list` can find
     #    installed App Store apps right after switch (instead of next idle).
     /usr/bin/mdimport /Applications >/dev/null 2>&1 || true
+
+    # 5. Spotlight Privacy exclusions — heavy / churny dirs that bloat the
+    #    index without ever needing search hits. Stored as the `Exclusions`
+    #    array in /.Spotlight-V100/VolumeConfiguration.plist (per-volume,
+    #    root-owned). PlistBuddy `Add` is not idempotent, so we grep first.
+    #    After mutating, `mdutil -E` erases stale index entries for the path
+    #    and the next indexer pass honours the new exclusion list.
+    volcfg=/.Spotlight-V100/VolumeConfiguration.plist
+    exclusions=(
+      "/Users/yarnaid/Library/Caches"
+      "/Users/yarnaid/.cache"
+      "/Users/yarnaid/projects"
+      "/Users/yarnaid/Developer"
+      "/nix"
+    )
+    if [ -f "$volcfg" ]; then
+      current=$(/usr/libexec/PlistBuddy -c "Print :Exclusions" "$volcfg" 2>/dev/null || true)
+      for path in "''${exclusions[@]}"; do
+        [ -e "$path" ] || continue
+        if ! printf '%s\n' "$current" | grep -qF "$path"; then
+          /usr/libexec/PlistBuddy -c "Add :Exclusions: string $path" "$volcfg" >/dev/null 2>&1 || true
+          /usr/bin/mdutil -E "$path" >/dev/null 2>&1 || true
+        fi
+      done
+    fi
   '';
 
   # Set Git commit hash for darwin-version.
@@ -220,7 +271,7 @@
   users.users.yarnaid = {
     name = "yarnaid";
     home = "/Users/yarnaid";
-    shell = pkgs.fish;
+    shell = pkgs.zsh;
   };
   security.pam.services.sudo_local = {
     touchIdAuth = true;
@@ -245,6 +296,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "backup"; # Add backup extension for existing files
+    extraSpecialArgs = { inherit pkgs-nixos; }; # expose NixOS channel to home modules
     users.yarnaid = import ./home.nix;
   };
 }
