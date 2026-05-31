@@ -6,6 +6,11 @@
       autoUpdate = false;
       upgrade = true;
       cleanup = "zap"; # Uninstall all programs not declared
+      # Homebrew 5.x requires --force/--force-cleanup/$HOMEBREW_ASK alongside
+      # `brew bundle --cleanup`, else activation aborts with "Invalid usage".
+      # --force-cleanup restores prior non-interactive zap (cleanup only, no
+      # --overwrite). nix-darwin appends extraFlags after `--cleanup --zap`.
+      extraFlags = [ "--force-cleanup" ];
     };
     global = {
       brewfile = true;
@@ -182,7 +187,6 @@
       "yarn"
       "yq"
       "zsh-autocomplete"
-      "zsh-syntax-highlighting"
 
       # other
       "chafa"
@@ -224,9 +228,14 @@
     # Add casks (macOS applications)
     casks = [
       "macfuse"
+      "typora"
+      "qlstephen"
+      "qlmobi"
+      "tabby"
+      "devknife"
       "opera-air"
-      "lulu"
       "little-snitch"
+      "downie"
       "tiny-shield"
       "macwhisper"
 
@@ -288,7 +297,7 @@
       "popclip"
       "devutils"
       "orion"
-      "telegram"
+      "telegram-desktop"
       "podman-desktop"
       "lm-studio"
       "ollama-app"
@@ -308,7 +317,6 @@
       "mediainfo"
       "mos"
       "postman"
-      "qlmarkdown"
       "send-to-kindle"
       "sf-symbols"
       "sublime-text"

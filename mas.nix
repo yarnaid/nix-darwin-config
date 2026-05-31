@@ -3,6 +3,7 @@
   homebrew.masApps = {
     # Productivity
     "Things" = 904280696;
+    "USB Status" = 6751750190;
     "Microsoft Excel" = 462058435;
     "Microsoft Word" = 462054704;
     "Microsoft PowerPoint" = 462062816;
@@ -12,6 +13,10 @@
     "Keynote" = 409183694;
     "Soulver 3" = 1508732804;
     "LiquidText" = 922765270;
+    # Not available in current App Store region ("No apps found in the App
+    # Store for ADAM ID 6743316600") — aborts `brew bundle`. Same class as
+    # the Swiftgram entry below.
+    # "Subscription Day" = 6743316600;
 
     # Email & Communication
     "Canary Mail" = 1236045954;
@@ -31,6 +36,7 @@
     "Windows App" = 1295203466;
     "Speedtest" = 1153157709;
     "Itsyhome" = 6758070650;
+    "Barbee - Hide Menu Bar Items" = 1548711022;
 
     # Development & Power User Tools
     "JSON Peep" = 1458969831;

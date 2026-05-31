@@ -11,9 +11,10 @@
       { app = "/Applications/ForkLift.app"; }
       # { app = "/Applications/Orion.app"; }
       { app = "/Applications/Safari.app"; }
+      { app = "/Applications/Opera Neon.app"; }
       { app = "/Applications/Google Chrome.app"; }
       { app = "/Applications/Canary Mail.app"; }
-      { app = "/Applications/Telegram.app"; }
+      { app = "/Applications/Telegram Desktop.app"; }
 
       {
         spacer = {
@@ -33,8 +34,8 @@
       { app = "/Applications/Windows App.app"; }
       # { app = "/Applications/Warp.app"; }
       # { app = "/Applications/Ghostty.app"; }
-      # { app = "/Applications/iTerm.app"; }
-      { app = "/Applications/WezTerm.app"; }
+      # { app = "/Applications/WezTerm.app"; }
+      { app = "/Applications/Tabby.app"; }
       { app = "/Applications/Cursor.app"; }
       # { app = "/Applications/Antigravity.app"; }
       { app = "/Applications/Zed.app"; }
@@ -58,6 +59,7 @@
 
       # { app = "/Applications/Todoist.app"; }
       { app = "/Applications/Things3.app"; }
+      { app = "/Applications/DEVONthink.app"; }
       { app = "/Applications/Tana Outliner.app"; }
       # { app = "/Applications/Drafts.app"; }
       { app = "/System/Applications/iPhone Mirroring.app"; }

@@ -8,14 +8,14 @@ nix-darwin + Home Manager configuration for macOS (aarch64-darwin). Two machine 
 
 ## Key commands
 
-`darwin-rebuild` does **not** need `sudo` — the nix daemon handles privileged operations internally. If the command is not in PATH (e.g. in a fresh shell), use the full path `/run/current-system/sw/bin/darwin-rebuild`.
+`darwin-rebuild build` (eval/build only) needs no `sudo`. `darwin-rebuild switch` (activation) **must run as root** in current nix-darwin — it aborts with "system activation must now be run as root" otherwise. If the command is not in PATH (e.g. in a fresh shell), use the full path `/run/current-system/sw/bin/darwin-rebuild`.
 
 ```bash
 # Rebuild and activate the system (run from /private/etc/nix-darwin)
-darwin-rebuild switch --flake .#EPGETBIW0286
-darwin-rebuild switch --flake .#mpb-14-aum
+sudo darwin-rebuild switch --flake .#EPGETBIW0286
+sudo darwin-rebuild switch --flake .#mpb-14-aum
 
-# Build without activating (check for errors)
+# Build without activating (check for errors) — no sudo
 darwin-rebuild build --flake .#EPGETBIW0286
 
 # Update flake inputs
@@ -53,4 +53,10 @@ nixfmt-classic *.nix
 
 ## Nix channel
 
-Uses `nixpkgs-unstable` for all packages. No stable channel pinning.
+Pinned to the **26.05 stable release**:
+- `nixpkgs` → `nixpkgs-26.05-darwin` (darwin channel: tested + binary-cached for aarch64-darwin)
+- `nix-darwin` → `nix-darwin-26.05`
+- `home-manager` → `release-26.05`
+- `stylix` → master (no 26.05 branch upstream), with `inputs.nixpkgs.follows = "nixpkgs"` so it reuses the pinned nixpkgs instead of pulling its own unstable copy.
+
+Bump to a future release by changing the four `ref`s in `flake.nix` and running `nix flake update`.
