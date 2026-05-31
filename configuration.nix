@@ -8,6 +8,7 @@
   imports = [
     ./brew.nix
     ./kanata.nix
+    ./ssh2iterm2.nix
     ./mas.nix
     ./env.nix
     ./dock.nix
@@ -155,6 +156,17 @@
       /bin/launchctl disable system/com.bjango.istatmenus.daemon 2>/dev/null || true
     fi
 
+    # --- disable macOS' built-in OpenSSH agent ---
+    # SSH keys are served by the Proton Pass CLI agent (home.nix
+    # launchd.agents.proton-pass-agent) over a session-wide SSH_AUTH_SOCK. The
+    # system agent (com.openssh.ssh-agent) is a redundant fallback a stale shell
+    # with SSH_AUTH_SOCK unset would hit, reporting "no identities". It's a
+    # SIP-protected per-user system LaunchAgent — can't be removed, so disable
+    # it per activation; the disable persists in ~/Library/LaunchAgents/...disabled.plist.
+    sshUid=$(/usr/bin/id -u yarnaid)
+    /bin/launchctl asuser "$sshUid" /bin/launchctl disable "gui/$sshUid/com.openssh.ssh-agent" 2>/dev/null || true
+    /bin/launchctl asuser "$sshUid" /bin/launchctl bootout  "gui/$sshUid/com.openssh.ssh-agent" 2>/dev/null || true
+
     # --- force login shell to zsh ---
     # `users.users.yarnaid.shell = pkgs.zsh` below is inert: nix-darwin only
     # writes UserShell for users in `users.knownUsers` (unset here — setting it
@@ -165,47 +177,20 @@
     if [ "$shellCurrent" != "$shellTarget" ]; then
       /usr/bin/dscl . -create /Users/yarnaid UserShell "$shellTarget" || true
     fi
-  '';
 
-  system.defaults.hitoolbox.AppleFnUsageType = "Change Input Source";
-  system.defaults.menuExtraClock.Show24Hour = true;
-  system.defaults.menuExtraClock.ShowDate = 2;
-  system.defaults.menuExtraClock.ShowSeconds = true;
-  system.defaults.trackpad.Clicking = true;
-  system.defaults.trackpad.TrackpadThreeFingerDrag = true;
-  system.defaults.trackpad.TrackpadThreeFingerTapGesture = 0;
-  system.primaryUser = "yarnaid";
-  # system.defaults.universalaccess.reduceMotion = true;
-
-  # Add fish to /etc/shells
-  environment.shells = with pkgs; [
-    fish
-    zsh
-    bash
-    nushell
-  ];
-  system.activationScripts.allowPerUserFish.text = ''
+    # --- add per-user fish to /etc/shells ---
     perUserFish="/etc/profiles/per-user/yarnaid/bin/fish"
     if [ -x "$perUserFish" ]; then
       grep -qxF "$perUserFish" /etc/shells || echo "$perUserFish" >> /etc/shells
     fi
-  '';
 
-  # Kill Spotlight's UI surfaces but KEEP indexing enabled.
-  #
-  # Why indexing must stay on: `mas` 7.x detects installed App Store apps via
-  # `mdfind kMDItemAppStoreReceipt`. With indexing off, `mas list` returns
-  # empty -> `brew bundle` thinks no MAS apps are installed -> reinstalls all
-  # of `homebrew.masApps` on every `darwin-rebuild switch`. Trade-off chosen:
-  # silent UI + working declarative MAS > fully dead Spotlight.
-  #
-  # What stays alive: mds/mds_stores daemons, the index itself, `mdfind`.
-  # What we kill: menu-bar magnifier, Cmd-Space search panel, Cmd-Alt-Space
-  # Finder search, and (declaratively, via system.defaults below) Siri /
-  # Look Up suggestions. SIP prevents removing the per-user Spotlight
-  # LaunchAgent permanently, so we `launchctl disable` it on every activation.
-  system.activationScripts.disableSpotlight.text = ''
-    uid=$(/usr/bin/id -u yarnaid)
+    # --- Spotlight: kill UI surfaces, KEEP indexing on ---
+    # Why indexing must stay on: `mas` 7.x detects installed App Store apps via
+    # `mdfind kMDItemAppStoreReceipt`. With indexing off, `mas list` returns
+    # empty -> `brew bundle` thinks no MAS apps are installed -> reinstalls all
+    # of `homebrew.masApps` on every switch. Trade-off: silent UI + working
+    # declarative MAS > fully dead Spotlight. SIP prevents removing the per-user
+    # Spotlight LaunchAgent permanently, so we `launchctl disable` it each switch.
     plist=/Users/yarnaid/Library/Preferences/com.apple.symbolichotkeys.plist
 
     # 1. Ensure indexing is on (recovers from a previously-disabled state).
@@ -214,8 +199,8 @@
     # 2. Disable + kill the per-user Spotlight UI agent (menu-bar magnifier
     #    icon and the Cmd-Space search panel). `disable` is persisted in
     #    ~/Library/LaunchAgents/...disabled.plist, so it survives reboots.
-    /bin/launchctl asuser "$uid" /bin/launchctl disable "gui/$uid/com.apple.Spotlight" >/dev/null 2>&1 || true
-    /bin/launchctl asuser "$uid" /bin/launchctl bootout  "gui/$uid/com.apple.Spotlight" >/dev/null 2>&1 || true
+    /bin/launchctl asuser "$sshUid" /bin/launchctl disable "gui/$sshUid/com.apple.Spotlight" >/dev/null 2>&1 || true
+    /bin/launchctl asuser "$sshUid" /bin/launchctl bootout  "gui/$sshUid/com.apple.Spotlight" >/dev/null 2>&1 || true
 
     # 3. Unbind Cmd-Space (hotkey id 64) and Cmd-Alt-Space (id 65) so even a
     #    relaunched Spotlight has no way to surface. PlistBuddy merges into
@@ -257,6 +242,23 @@
     fi
   '';
 
+  system.defaults.hitoolbox.AppleFnUsageType = "Change Input Source";
+  system.defaults.menuExtraClock.Show24Hour = true;
+  system.defaults.menuExtraClock.ShowDate = 2;
+  system.defaults.menuExtraClock.ShowSeconds = true;
+  system.defaults.trackpad.Clicking = true;
+  system.defaults.trackpad.TrackpadThreeFingerDrag = true;
+  system.defaults.trackpad.TrackpadThreeFingerTapGesture = 0;
+  system.primaryUser = "yarnaid";
+  # system.defaults.universalaccess.reduceMotion = true;
+
+  # Add fish to /etc/shells
+  environment.shells = with pkgs; [
+    fish
+    zsh
+    bash
+    nushell
+  ];
   # Set Git commit hash for darwin-version.
   system.configurationRevision = null;
 
