@@ -52,6 +52,11 @@ SAVEHIST = "1000000"
 HISTSIZE = "1000000"
 VIRTUAL_ENV_DISABLE_PROMPT = "1"
 ZSH_TMUX_TERM = "screen-256color"
+# Point ssh at the Proton Pass CLI agent (services.proton-pass-agent in home.nix).
+# Must match the daemon's --socket-path exactly: $(getconf DARWIN_USER_TEMP_DIR)/<socket>.
+# Set session-wide here (not via HM) because zsh/fish rc live in chezmoi, so HM's
+# per-shell sshAuthSock injection never reaches them. Expands at shell-source time.
+SSH_AUTH_SOCK = "$(getconf DARWIN_USER_TEMP_DIR)/proton-pass-agent"
 
 [aliases]
 # -> rendered to ~/.config/sh/aliases (zsh/fish) and ~/.config/sh/aliases.nu (nu).

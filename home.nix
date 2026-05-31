@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 let
   # Same single source of truth as env.nix; here we render the alias files
   # that every shell sources (~/.config/sh/aliases for zsh/fish, .nu for nu).
@@ -66,6 +71,34 @@ in
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  # Proton Pass CLI as the ssh-agent — serves SSH keys stored in your Proton Pass
+  # vault over a unix socket. Defined as a raw launchd agent (not the
+  # services.proton-pass-agent module) because that module force-adds its nixpkgs
+  # `proton-pass-cli` to home.packages; we want the single pnpm-installed binary
+  # (home.activation.protonPassCli above) as the only pass-cli on the box.
+  #
+  # Cost of the pnpm path: ~/Library/pnpm/bin is mutable and may be absent at the
+  # first launchd spawn (before activation's pnpm-install finishes). KeepAlive +
+  # the `-x` existence check make the daemon respawn until the binary appears.
+  # SSH_AUTH_SOCK is exported session-wide via shared.toml [env] (same socket).
+  # One-time setup: `pass-cli login` once — daemon reads creds from the system
+  # keychain and respawn-loops until that login exists.
+  launchd.agents.proton-pass-agent = {
+    enable = true;
+    config = {
+      ProgramArguments = [
+        "/bin/sh"
+        "-c"
+        ''p="$HOME/Library/pnpm/bin/pass-cli"; [ -x "$p" ] || p="$HOME/.local/bin/pass-cli"; exec "$p" ssh-agent start --socket-path "$(/usr/bin/getconf DARWIN_USER_TEMP_DIR)/proton-pass-agent"''
+      ];
+      KeepAlive = true;
+      RunAtLoad = true;
+      ProcessType = "Background";
+      StandardOutPath = "${config.home.homeDirectory}/Library/Logs/proton-pass-ssh-agent.out.log";
+      StandardErrorPath = "${config.home.homeDirectory}/Library/Logs/proton-pass-ssh-agent.err.log";
+    };
+  };
 
   # Git configuration
   programs.git = {
