@@ -5,7 +5,10 @@ let
   shared = builtins.fromTOML (builtins.readFile ./shared.toml);
 in
 {
-  imports = [ ./fish.nix ];
+  # fish user config moved to chezmoi (~/.config/fish/config.fish + functions +
+  # fish_plugins via fisher). System fish env-bridge stays in configuration.nix
+  # (programs.fish.enable + useBabelfish → /etc/fish/config.fish).
+  imports = [ ];
   home = {
     username = "yarnaid";
     homeDirectory = "/Users/yarnaid";
