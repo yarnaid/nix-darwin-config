@@ -99,20 +99,7 @@ in
   };
 
   # Bat configuration
-  programs.bat = {
-    enable = true;
-    config = {
-      theme = "TwoDark";
-      style = "numbers,changes,header";
-    };
-  };
-
-  programs.btop = {
-    enable = true;
-    settings = {
-      color_theme = "tokyo-night";
-    };
-  };
+  # bat, btop configs migrated to chezmoi; packages via brew (see brew.nix).
 
   programs.atuin = {
     enable = true;
@@ -252,16 +239,7 @@ in
     };
   };
 
-  programs.uv = {
-    enable = true;
-  };
-
-  programs.fastfetch = {
-    enable = true;
-    settings = {
-      theme = "tokyo-night";
-    };
-  };
+  # uv via mise; fastfetch config migrated to chezmoi + brew. uv has no config file.
 
   programs.carapace = {
     enable = true;
@@ -344,13 +322,7 @@ in
       "cd"
     ]; # replace `cd` with zoxide; original is `builtin cd`, interactive is `cdi`
   };
-  programs.zellij = {
-    enable = true;
-  };
-  programs.yazi = {
-    enable = true;
-    shellWrapperName = "y";
-  };
+  # zellij, yazi → chezmoi config + brew (yazi `y` wrapper replaced by shared alias).
   programs.intelli-shell = {
     # enable = true;
     enable = false;
@@ -358,32 +330,8 @@ in
   programs.fzf = {
     enable = true;
   };
-  programs.broot = {
-    enable = true;
-  };
-  programs.eza = {
-    enable = true;
-    colors = "auto";
-    icons = "auto";
-  };
-  programs.ranger.enable = true;
-  programs.ruff = {
-    enable = true;
-    settings = {
-      line-length = 88;
-      indent-width = 4;
-      indent-style = "space";
-      format = {
-        quote-style = "double";
-      };
-      lint = {
-        ignore = [
-          "D100"
-          "D101"
-        ];
-      };
-    };
-  };
+  # broot, eza, ranger, ruff → chezmoi config + brew (ruff also via mise).
+  # eza alias lives in shared.toml; ruff/uv binaries come from mise tools.
   # wezterm: GUI installed via brew cask (see brew.nix); config managed here.
   xdg.configFile."wezterm/wezterm.lua".text = ''
     local wezterm = require 'wezterm'
