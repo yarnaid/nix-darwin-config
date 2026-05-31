@@ -27,6 +27,7 @@ in
       fzf
       sheldon
       oh-my-posh
+      nushell
     ];
 
     shell.enableShellIntegration = true;
@@ -139,9 +140,8 @@ in
   # file (not generated). mise config.toml keeps its `{{ }}` mise-template
   # (chezmoi stores it literally).
 
-  programs.nushell = {
-    enable = true;
-  };
+  # nushell: binary via home.packages; config (config.nu/env.nu) via chezmoi
+  # (x-cmd boot dropped). Aliases from shared.toml [aliases] → aliases.nu.
 
   # zsh (rc + init order), sheldon (plugins → ~/.config/sheldon/zsh.toml),
   # zoxide (--cmd cd): all moved to chezmoi ~/.zshrc. Binaries via home.packages.
