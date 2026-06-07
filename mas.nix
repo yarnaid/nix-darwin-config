@@ -41,6 +41,7 @@
     # Development & Power User Tools
     "JSON Peep" = 1458969831;
     "Peek" = 1554235898;
+    "Folder Quick Look" = 6753110395;
     "Super Agent" = 1568262835;
     "Xcode" = 497799835;
     # LanguageTool (id 1534275760): not managed here — App Store reports

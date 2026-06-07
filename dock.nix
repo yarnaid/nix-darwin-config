@@ -35,7 +35,6 @@
       # { app = "/Applications/Warp.app"; }
       # { app = "/Applications/Ghostty.app"; }
       # { app = "/Applications/WezTerm.app"; }
-      { app = "/Applications/Tabby.app"; }
       { app = "/Applications/Cursor.app"; }
       # { app = "/Applications/Antigravity.app"; }
       { app = "/Applications/Zed.app"; }

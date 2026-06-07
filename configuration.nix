@@ -76,6 +76,13 @@
     # Containers/com.apple.Safari; exiting". Grant FDA to the terminal first.
     "com.apple.Safari"."com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" =
       true;
+    # Pin Finder as the "reveal in Finder" / default file-viewer target. AppKit's
+    # activateFileViewerSelectingURLs (and `open -R`) consult NSGlobalDomain's
+    # NSFileViewer key — NOT the public.folder UTI handler. ForkLift's "default
+    # file viewer" setting writes this key to com.binarynights.ForkLift, hijacking
+    # every app's "Show in Finder". ForkLift only writes it on its toggle (not on
+    # launch), so asserting Finder here wins durably without a fight.
+    NSGlobalDomain.NSFileViewer = "com.apple.finder";
   };
   system.defaults.NSGlobalDomain.AppleInterfaceStyleSwitchesAutomatically = true;
   system.defaults.NSGlobalDomain.AppleMeasurementUnits = "Centimeters";
@@ -104,7 +111,7 @@
   system.defaults.dock.minimize-to-application = true;
   system.defaults.dock.orientation = "bottom";
   system.defaults.dock.wvous-br-corner = 1;
-  system.defaults.dock.autohide = true;
+  system.defaults.dock.autohide = false;
   system.defaults.dock.autohide-delay = 0.0;
   system.defaults.dock.autohide-time-modifier = 0.25;
   system.defaults.finder.AppleShowAllExtensions = true;

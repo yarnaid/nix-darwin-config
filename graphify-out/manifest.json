@@ -1,0 +1,82 @@
+{
+  "/private/etc/nix-darwin/aerospace.nix": {
+    "mtime": 1778831545.4836886,
+    "ast_hash": "3990cd4bb04c3033bb529579eab8944c",
+    "semantic_hash": "3990cd4bb04c3033bb529579eab8944c"
+  },
+  "/private/etc/nix-darwin/brew.nix": {
+    "mtime": 1780824379.0750687,
+    "ast_hash": "527dd661810ca65ddc095d6a8b261f9d",
+    "semantic_hash": "527dd661810ca65ddc095d6a8b261f9d"
+  },
+  "/private/etc/nix-darwin/configuration.nix": {
+    "mtime": 1780824697.0303583,
+    "ast_hash": "06dbf2976d501a73c06c2e6a09d5828d",
+    "semantic_hash": "06dbf2976d501a73c06c2e6a09d5828d"
+  },
+  "/private/etc/nix-darwin/dock.nix": {
+    "mtime": 1780185069.1437979,
+    "ast_hash": "7e538764327aac599c8a79e400effaa1",
+    "semantic_hash": "7e538764327aac599c8a79e400effaa1"
+  },
+  "/private/etc/nix-darwin/env.nix": {
+    "mtime": 1780217505.6263168,
+    "ast_hash": "df8adda3b4c3b53dca79c852051189c0",
+    "semantic_hash": "df8adda3b4c3b53dca79c852051189c0"
+  },
+  "/private/etc/nix-darwin/flake.nix": {
+    "mtime": 1780185105.2349093,
+    "ast_hash": "78c312ceaacdfb09190dc9d5f7580351",
+    "semantic_hash": "78c312ceaacdfb09190dc9d5f7580351"
+  },
+  "/private/etc/nix-darwin/hb2.nix": {
+    "mtime": 1780154815.78497,
+    "ast_hash": "5ddc84b3fde93c3bdb9f7f9893eda0a7",
+    "semantic_hash": "5ddc84b3fde93c3bdb9f7f9893eda0a7"
+  },
+  "/private/etc/nix-darwin/home.nix": {
+    "mtime": 1780232954.3665047,
+    "ast_hash": "2eae65959a5135180e71e2e4774f0ca6",
+    "semantic_hash": "2eae65959a5135180e71e2e4774f0ca6"
+  },
+  "/private/etc/nix-darwin/kanata.nix": {
+    "mtime": 1769943541.946495,
+    "ast_hash": "d88e3d20bf3da69f80f6f7d3b02ba203",
+    "semantic_hash": "d88e3d20bf3da69f80f6f7d3b02ba203"
+  },
+  "/private/etc/nix-darwin/logging.nix": {
+    "mtime": 1779563014.2779267,
+    "ast_hash": "2bc9d9730910aeddee71629faa5a691e",
+    "semantic_hash": "2bc9d9730910aeddee71629faa5a691e"
+  },
+  "/private/etc/nix-darwin/mas.nix": {
+    "mtime": 1780735385.8577938,
+    "ast_hash": "c358381e03204c057c70f1865de20d9a",
+    "semantic_hash": "c358381e03204c057c70f1865de20d9a"
+  },
+  "/private/etc/nix-darwin/ssh2iterm2.nix": {
+    "mtime": 1780229947.5572915,
+    "ast_hash": "503e10c963c7f37db9a042bc59d0bdc0",
+    "semantic_hash": "503e10c963c7f37db9a042bc59d0bdc0"
+  },
+  "/private/etc/nix-darwin/shared.toml": {
+    "mtime": 1780230875.348588,
+    "ast_hash": "952860d95d99222074f435c55369819e",
+    "semantic_hash": "952860d95d99222074f435c55369819e"
+  },
+  "/private/etc/nix-darwin/CLAUDE.md": {
+    "mtime": 1780219991.418256,
+    "ast_hash": "d15897cbb6358c50fbd5a860532e144a",
+    "semantic_hash": "d15897cbb6358c50fbd5a860532e144a"
+  },
+  "/private/etc/nix-darwin/docs/specs/2026-05-31-nix-to-chezmoi-migration.md": {
+    "mtime": 1780216843.6320722,
+    "ast_hash": "f34c24551fd56ae15e9fbd9fc696d1a0",
+    "semantic_hash": "f34c24551fd56ae15e9fbd9fc696d1a0"
+  },
+  "/private/etc/nix-darwin/docs/superpowers/plans/2026-05-31-nix-to-chezmoi-migration.md": {
+    "mtime": 1780217378.674915,
+    "ast_hash": "f070c20a03bc2ec3f8d4ddf952444ee0",
+    "semantic_hash": "f070c20a03bc2ec3f8d4ddf952444ee0"
+  }
+}

@@ -173,7 +173,9 @@
       "Bash(zsh -lic 'echo $PATH | tr \":\" \"\\\\n\" | grep -n homebrew; echo \"---\"; command -v nvim || echo NOTFOUND; nvim --version 2>&1 | head -1')",
       "Bash(zsh -lic 'cd ~/projects 2>/dev/null; echo \"--- after cd, homebrew in PATH? ---\"; echo $PATH | tr \":\" \"\\\\n\" | grep -c homebrew; echo \"--- nvim findable? ---\"; command -v nvim || echo NOTFOUND; echo \"--- mise active tools here? ---\"; mise ls --current 2>/dev/null | head')",
       "Read(//private/etc/**)",
-      "Read(//private/etc/paths.d/**)"
+      "Read(//private/etc/paths.d/**)",
+      "WebSearch",
+      "Bash(/opt/homebrew/bin/duti -h)"
     ],
     "deny": [],
     "ask": [],
