@@ -148,6 +148,14 @@
         sudo -u "$user" "$duti" -s "$finder" "$uti" all
         sudo -u "$user" killall cfprefsd 2>/dev/null || true
       fi
+
+      # NOTE: do NOT try to pin the file:// URL *scheme* here. duti with a
+      # trailing role arg ("duti -s … file all") parses `file` as a filename
+      # extension → dyn.ah62d4qmxhk2x43xmrvwu → error -50; and even the
+      # correct 2-arg scheme form fails with -50 because macOS refuses
+      # programmatic rebinding of the reserved file:// scheme entirely
+      # (LSSetDefaultHandlerForURLScheme → paramErr). Verified on this host:
+      # both forms exit 2, which aborts activation under set -e.
     fi
 
     # --- disable iStat Menus system daemon ---
