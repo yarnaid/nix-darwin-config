@@ -174,7 +174,6 @@
       "tmux" # Terminal multiplexer
       "tokei" # Program that allows you to count code, quickly
       "tree" # Display directories as trees (with optional color/HTML output)
-      "tree-sitter" # Incremental parsing library — dep of: neovim
       "uchardet" # Encoding detector library — dep of: mpv
       "unar" # Command-line unarchiving tools supporting multiple formats
       "uv" # Extremely fast Python package installer and resolver, written in Rust
