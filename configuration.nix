@@ -308,6 +308,15 @@
     yarnaid ALL=(root) NOPASSWD: /nix/store/*-darwin-rebuild*/bin/darwin-rebuild
   '';
 
+  # DNS-cache flush helpers. Args are pinned, so each rule grants only that
+  # exact invocation. discoveryutil was removed after OS X 10.10 — kept for
+  # completeness; the rule is inert on this macOS version.
+  environment.etc."sudoers.d/dns-flush-yarnaid".text = ''
+    yarnaid ALL=(root) NOPASSWD: /usr/bin/dscacheutil -flushcache
+    yarnaid ALL=(root) NOPASSWD: /usr/bin/killall -HUP mDNSResponder
+    yarnaid ALL=(root) NOPASSWD: /usr/bin/discoveryutil mdnsflushcache
+  '';
+
   # Enable home-manager
   home-manager = {
     useGlobalPkgs = true;
