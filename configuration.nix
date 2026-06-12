@@ -8,7 +8,6 @@
   imports = [
     ./brew.nix
     ./kanata.nix
-    ./ssh2iterm2.nix
     ./mas.nix
     ./env.nix
     ./dock.nix
