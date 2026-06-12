@@ -13,6 +13,7 @@
     "Keynote" = 409183694;
     "Soulver 3" = 1508732804;
     "LiquidText" = 922765270;
+    "Subscription Day" = 6743316600;
     # Not available in current App Store region ("No apps found in the App
     # Store for ADAM ID 6743316600") — aborts `brew bundle`. Same class as
     # the Swiftgram entry below.
@@ -50,6 +51,7 @@
     # every activation. App Store auto-updates handle this anyway.
     # See https://github.com/mas-cli/mas/issues/164
     "Raycast Companion" = 6738274497;
+    "Easy CSV Editor" = 1171346381;
 
     # Browser Extensions & Web Tools
     "Vimlike" = 1584519802;

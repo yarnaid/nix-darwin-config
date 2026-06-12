@@ -21,19 +21,14 @@
       "houmain/tap"
       "acarl005/formulas"
       "domt4/autoupdate"
-      "felixkratz/formulae"
       "lzt1008/powerflow"
       "jesseduffield/lazygit"
       "jstkdng/programs"
       "nikitabobko/tap"
-      "arnested/ssh2iterm2"
+      "jurplel/tap"
     ];
     # Add brews (packages)
     brews = [
-      {
-        name = "sketchybar";
-        start_service = false;
-      }
       "ccusage" # CLI tool for analyzing Claude Code usage from local JSONL files
       "mole" # Deep clean and optimize your Mac
       "carapace" # Multi-shell multi-command argument completer
@@ -155,7 +150,6 @@
       "zsh-autocomplete" # Real-time type-ahead completion for Zsh
 
       # other
-      "ruby" # Powerful, clean, object-oriented scripting language — dep of: cocoapods
       "cocoapods" # Dependency manager for Cocoa projects
 
       # ─── added by add_tools.sh ───
@@ -166,13 +160,14 @@
       "bandwhich" # network usage per-process (нужен sudo)
       "glab" # GitLab CLI (для EPAM GitLab)
       "anomalyco/tap/opencode" # AI coding agent, built for the terminal
-      "arnested/ssh2iterm2/ssh2iterm2" # SSH config → iTerm2 dynamic profiles
 
     ];
     # Add casks (macOS applications)
     casks = [
+      "suspicious-package"
+      "apparency"
       "aldente" # (AlDente) Menu bar tool to limit maximum charging percentage
-      "app-tamer" # (AppTamer) CPU management application
+      # "app-tamer" # (AppTamer) CPU management application
       "ssh-config-editor" # (SSH Config Editor) Tool for managing the OpenSSH ssh client configuration file
       "macfuse" # (macFUSE) File system integration
       "typora" # (Typora) Configurable document editor that supports Markdown
@@ -182,6 +177,7 @@
       "downie" # (Downie) Downloads videos from different websites
       "tiny-shield" # (Tiny Shield) Control and monitor network connections
       "macwhisper" # (MacWhisper) Speech recognition tool
+      "jurplel/tap/instant-space-switcher" # (Instant Space Switcher) Fast macOS Space switching
 
       "libreoffice" # (LibreOffice) Free cross-platform office suite, fresh version
       "keycastr" # (KeyCastr) Open-source keystroke visualiser

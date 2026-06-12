@@ -22,6 +22,7 @@ entries = [
   "$HOME/.cargo/bin",
   "/usr/local/bin",
   "/Applications/Postgres.app/Contents/Versions/17/bin",
+  "/Applications/Setapp/Maestri.app/Contents/Resources",
   "$HOME/.lmstudio/bin",
 ]
 
