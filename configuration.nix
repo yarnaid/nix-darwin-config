@@ -12,6 +12,7 @@
     ./env.nix
     ./dock.nix
     ./logging.nix
+    ./raycast.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
