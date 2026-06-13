@@ -65,7 +65,17 @@
     };
   };
 
-  # Kill Siri Suggestions + Look Up suggestions (both feed Spotlight results).
+  # Neutralise DuetExpertCenter (duetexpertd) + Look Up suggestions — both feed
+  # Spotlight/Siri results. These two keys ARE the canonical Siri/proactive-
+  # suggestion off-switch (every macOS hardening guide uses this pair); don't
+  # add speculative proactive.*/assistant.* keys. They remove duetexpertd's
+  # WORK, not the process: duetexpertd is a SIP-protected per-user LaunchAgent
+  # (/System/Library/LaunchAgents) that launchd re-spawns on Mach-service demand
+  # even after `launchctl disable` + `kill -9` — it cannot be booted out or kept
+  # dead while SIP is engaged. With Siri off (Assistant Enabled = 0) it idles;
+  # it still maintains com.apple.proactive.PersonalizationPortrait (on-device
+  # app-usage learning) — no SIP-safe knob disables that. Only `csrutil disable`
+  # would allow true removal. See ~/.claude/rules/macos-darwin.md (SIP daemons).
   system.defaults.CustomUserPreferences = {
     "com.apple.suggestions".SuggestionsAppLibraryEnabled = false;
     "com.apple.lookup.shared".LookupSuggestionsDisabled = true;

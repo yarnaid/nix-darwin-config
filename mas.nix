@@ -38,6 +38,7 @@
     "Speedtest" = 1153157709;
     "Itsyhome" = 6758070650;
     "Barbee - Hide Menu Bar Items" = 1548711022;
+    "PiPifier" = 1160374471;
 
     # Development & Power User Tools
     "JSON Peep" = 1458969831;
@@ -54,6 +55,7 @@
     "Easy CSV Editor" = 1171346381;
 
     # Browser Extensions & Web Tools
+    "Ghostery AdBlocker for Privacy" = 6504861501;
     "Vimlike" = 1584519802;
     "StopTheMadness Pro" = 6471380298;
     "Kagi for Safari" = 1622835804;

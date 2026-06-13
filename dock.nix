@@ -11,7 +11,6 @@
       { app = "/Applications/ForkLift.app"; }
       # { app = "/Applications/Orion.app"; }
       { app = "/Applications/Safari.app"; }
-      { app = "/Applications/Opera Neon.app"; }
       { app = "/Applications/Google Chrome.app"; }
       { app = "/Applications/Canary Mail.app"; }
       { app = "/Applications/Telegram Desktop.app"; }
@@ -39,6 +38,8 @@
       # { app = "/Applications/Antigravity.app"; }
       { app = "/Applications/Zed.app"; }
       { app = "/Applications/Visual Studio Code.app"; }
+      { app = "/Applications/iTerm.app"; }
+      { app = "/Applications/Setapp/Maestri.app"; }
 
       {
         spacer = {
@@ -61,7 +62,7 @@
       { app = "/Applications/DEVONthink.app"; }
       { app = "/Applications/Tana Outliner.app"; }
       # { app = "/Applications/Drafts.app"; }
-      { app = "/System/Applications/iPhone Mirroring.app"; }
+      # { app = "/System/Applications/iPhone Mirroring.app"; }
       # { app = "/Applications/Spotify.app"; }
       # { app = "/System/Applications/Music.app"; }
       # { app = "/Applications/Яндекс Музыка.app"; }

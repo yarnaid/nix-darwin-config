@@ -164,6 +164,7 @@
     ];
     # Add casks (macOS applications)
     casks = [
+      "cmux"
       "suspicious-package"
       "apparency"
       "aldente" # (AlDente) Menu bar tool to limit maximum charging percentage
