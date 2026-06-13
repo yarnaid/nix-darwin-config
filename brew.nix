@@ -164,6 +164,7 @@
     ];
     # Add casks (macOS applications)
     casks = [
+      "chronosync"
       "cmux"
       "suspicious-package"
       "apparency"
