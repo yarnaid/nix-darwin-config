@@ -165,6 +165,7 @@
     # Add casks (macOS applications)
     casks = [
       "chronosync"
+      "boltai"
       "cmux"
       "suspicious-package"
       "apparency"
