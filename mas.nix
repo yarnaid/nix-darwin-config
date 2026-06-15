@@ -63,6 +63,7 @@
     "Karma" = 1481191441;
     "Fakespot" = 1592541616;
     "Hush" = 1544743900;
+    "Banish" = 1639049780;
     "Keyword Search" = 1558453954;
     "Proton Pass for Safari" = 6502835663;
     "SponsorBlock" = 1573461917;
