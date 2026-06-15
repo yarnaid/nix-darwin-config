@@ -52,6 +52,7 @@ PAGER = "bat"
 SAVEHIST = "1000000"
 HISTSIZE = "1000000"
 VIRTUAL_ENV_DISABLE_PROMPT = "1"
+VIRTUALENVWRAPPER_SCRIPT = "/opt/homebrew/bin/virtualenvwrapper.sh"
 ZSH_TMUX_TERM = "screen-256color"
 # Point ssh at the Proton Pass CLI agent (services.proton-pass-agent in home.nix).
 # Must match the daemon's --socket-path exactly: $(getconf DARWIN_USER_TEMP_DIR)/<socket>.
@@ -81,4 +82,5 @@ bs = "brew search --desc --eval-all"
 bi = "brew install"
 bu = "brew upgrade -g"
 y = "yazi"
+js = "jupyter server"
 os = "ollama serve"
