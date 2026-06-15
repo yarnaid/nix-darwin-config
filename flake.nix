@@ -79,6 +79,8 @@
         specialArgs = { inherit pkgs-nixos; };
         modules = [
           ./configuration.nix
+          ./syncthing.nix
+          ./brew-mpb.nix
           home-manager.darwinModules.home-manager
           stylix.darwinModules.stylix
         ];
