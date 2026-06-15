@@ -8,11 +8,11 @@
       overrideFolders = true;
       settings = {
         devices.nas = {
-          id = "HIRFCQZ-6ES7TXP-E64MTIP-BRTDXHG-TKCAEHO-QZRHQZZ-ISEHWYX-VDB5CAS";
+          id = "TPM43DV-VGRA5G7-2NS7RPZ-7S2VAEU-7IB3GAC-5VSYHIO-QHSSPXI-XKPPMQX";
           addresses = [ "tcp://192.168.0.129:22000" ];
         };
         folders.pictures = {
-          path = "/Users/yarnaid/Pictures";
+          path = "/Users/yarnaid/Pictures/active";
           devices = [ "nas" ];
           type = "sendonly";
 
@@ -21,15 +21,16 @@
           rescanIntervalS = 3600;
 
           ignorePerms = false;
+
+          versioning = {
+            type = "staggered";
+            params = {
+              cleanInterval = "3600";
+              maxAge = "31536000";
+            };
+          };
         };
       };
     };
-
-    # HM 26.05 syncthing module has no `ignores` option — patterns must live
-    # in `.stignore` at the folder root. Leading `/` anchors the pattern to
-    # the folder root (otherwise it would match at any depth).
-    home.file."Pictures/.stignore".text = ''
-      /Photos Library.photoslibrary
-    '';
   };
 }
