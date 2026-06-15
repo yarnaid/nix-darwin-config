@@ -188,6 +188,7 @@
       "supasidebar" # (SupaSidebar) Arc-like sidebar to save links, files and folders from any browser
       "claude" # (Claude) Anthropic's official Claude AI desktop app
       "claude-code"
+      "syncovery"
       "antinote" # (Antinote) Temporary notes with calculations and extensible features
       "processspy" # (ProcessSpy) Process monitor
       "lasso-app" # (Lasso) Move and resize windows with mouse

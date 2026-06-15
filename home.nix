@@ -8,6 +8,29 @@ let
   # Same single source of truth as env.nix; here we render the alias files
   # that every shell sources (~/.config/sh/aliases for zsh/fish, .nu for nu).
   shared = builtins.fromTOML (builtins.readFile ./shared.toml);
+
+  # Proton Pass CLI — declarative install of the official Proton binary.
+  #
+  # Why a custom derivation instead of `pkgs.proton-pass-cli`: pinned 26.05
+  # channel ships 2.0.2; Proton's current is 2.1.3 and we want the latest
+  # (the SSH-agent feature in particular tracks upstream closely).
+  #
+  # Why not the npm wrapper (`pnpm add -g proton-pass-cli`): the unofficial
+  # `nichochar/proton-pass-cli-npm` package hardcodes PINNED_VERSION='1.9.0'
+  # and aborts its postinstall when Proton's versions.json reports anything
+  # else (currently 2.1.3) — broke 2026-06.
+  #
+  # Hash sourced from https://proton.me/download/pass-cli/versions.json
+  # (passCliVersions.urls.macos.aarch64.hash). Bump url+hash when Proton ships
+  # a new version. EPGETBIW0286 + mpb-14-aum are both aarch64-darwin (see
+  # flake.nix system = "aarch64-darwin"), so a single arch is enough.
+  protonPassCliVersion = "2.1.3";
+  protonPassCli = pkgs.runCommand "proton-pass-cli-${protonPassCliVersion}" { } ''
+    install -Dm755 ${pkgs.fetchurl {
+      url = "https://proton.me/download/pass-cli/${protonPassCliVersion}/pass-cli-macos-aarch64";
+      hash = "sha256-pQihDrFG3w5LVbcAqT8MT7cJlhhcfIAgHwD/oyPLcEM=";
+    }} $out/bin/pass-cli
+  '';
 in
 {
   # fish user config moved to chezmoi (~/.config/fish/config.fish + functions +
@@ -33,28 +56,10 @@ in
       sheldon
       oh-my-posh
       nushell
+      protonPassCli # see let-binding for version pin + rationale
     ];
 
     shell.enableShellIntegration = true;
-
-    # Proton Pass CLI — ставится один раз через pnpm-обёртку (postinstall качает
-    # официальный бинарь Proton AG с CDN). Идемпотентно: если pass-cli уже в
-    # PATH, ничего не делает. Sync между Mac-ами — через Proton-аккаунт после
-    # `pass-cli login`. Требует Pass Plus/Family/Professional или Proton-бандл.
-    # pnpm (а не npm) — npm install -g пишет в /nix/store (read-only); pnpm
-    # пишет в $PNPM_HOME (~/Library/pnpm), который user-writable.
-    activation.protonPassCli = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      export PNPM_HOME="$HOME/Library/pnpm"
-      export PATH="${pkgs.nodejs_24}/bin:/opt/homebrew/bin:$PNPM_HOME/bin:$HOME/.local/bin:$PATH"
-      # Check known install locations directly — activation PATH may not match
-      # the user's interactive PATH. pnpm 11 layout: $PNPM_HOME/bin/pass-cli.
-      if ! [ -x "$PNPM_HOME/bin/pass-cli" ] \
-        && ! [ -x "$HOME/.local/bin/pass-cli" ] \
-        && ! command -v pass-cli >/dev/null 2>&1; then
-        $DRY_RUN_CMD pnpm add -g proton-pass-cli || \
-          echo "WARN: proton-pass-cli install failed (offline?). Run manually: pnpm add -g proton-pass-cli"
-      fi
-    '';
 
     # Aliases come from shared.toml [aliases], rendered once for every shell.
     # zsh/fish source ~/.config/sh/aliases; nu sources ~/.config/sh/aliases.nu
@@ -74,14 +79,14 @@ in
 
   # Proton Pass CLI as the ssh-agent — serves SSH keys stored in your Proton Pass
   # vault over a unix socket. Defined as a raw launchd agent (not the
-  # services.proton-pass-agent module) because that module force-adds its nixpkgs
-  # `proton-pass-cli` to home.packages; we want the single pnpm-installed binary
-  # (home.activation.protonPassCli above) as the only pass-cli on the box.
+  # services.proton-pass-agent HM module) because that module pulls nixpkgs's
+  # older `proton-pass-cli` (2.0.2 in 26.05) and force-adds it to home.packages,
+  # conflicting with the custom-derivation install above (2.1.3 from upstream).
   #
-  # Cost of the pnpm path: ~/Library/pnpm/bin is mutable and may be absent at the
-  # first launchd spawn (before activation's pnpm-install finishes). KeepAlive +
-  # the `-x` existence check make the daemon respawn until the binary appears.
-  # SSH_AUTH_SOCK is exported session-wide via shared.toml [env] (same socket).
+  # ProgramArguments points at the nix-store path of `protonPassCli` directly,
+  # so the binary is guaranteed to exist before launchd spawns the agent (no
+  # respawn race like the prior pnpm-postinstall path had). SSH_AUTH_SOCK is
+  # exported session-wide via shared.toml [env] (same socket).
   # One-time setup: `pass-cli login` once — daemon reads creds from the system
   # keychain and respawn-loops until that login exists.
   launchd.agents.proton-pass-agent = {
@@ -90,7 +95,7 @@ in
       ProgramArguments = [
         "/bin/sh"
         "-c"
-        ''p="$HOME/Library/pnpm/bin/pass-cli"; [ -x "$p" ] || p="$HOME/.local/bin/pass-cli"; exec "$p" ssh-agent start --socket-path "$(/usr/bin/getconf DARWIN_USER_TEMP_DIR)/proton-pass-agent"''
+        ''exec "${protonPassCli}/bin/pass-cli" ssh-agent start --socket-path "$(/usr/bin/getconf DARWIN_USER_TEMP_DIR)/proton-pass-agent"''
       ];
       KeepAlive = true;
       RunAtLoad = true;
