@@ -164,6 +164,7 @@
     ];
     # Add casks (macOS applications)
     casks = [
+      "pairpods"
       "chronosync"
       "boltai"
       "cmux"

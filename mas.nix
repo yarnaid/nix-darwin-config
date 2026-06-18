@@ -27,6 +27,7 @@
 
     # Utilities
     # "Disk Space Analyzer" = 446243721;
+    "FlagKBoard" = 6772763170;
     "Blackmagic Disk Speed Test" = 425264550;
     "Apple Configurator" = 1037126344;
     "Amphetamine" = 937984704;
