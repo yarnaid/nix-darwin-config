@@ -1,16 +1,33 @@
-{ ... }:
+{ lib, ... }:
 {
+  # The domt4/autoupdate tap only installs the `brew autoupdate` *command*;
+  # nix-darwin's homebrew module (brew bundle) never starts the launchd agent.
+  # `brew autoupdate start` must run once to create it. Do it here, guarded on
+  # status, so a fresh machine reproduces it and re-running switch is a no-op.
+  # mkAfter → runs after the bundle has installed the tap. launchctl asuser +
+  # sudo -u: the per-user agent must bootstrap in the user's GUI launchd
+  # session, and Homebrew refuses to run as root (see rules/macos-darwin.md).
+  system.activationScripts.postActivation.text = lib.mkAfter ''
+    uid=$(/usr/bin/id -u yarnaid)
+    brew=/opt/homebrew/bin/brew
+    if [ -x "$brew" ]; then
+      if /bin/launchctl asuser "$uid" /usr/bin/sudo -H -u yarnaid "$brew" autoupdate status 2>/dev/null | /usr/bin/grep -q "not configured"; then
+        /bin/launchctl asuser "$uid" /usr/bin/sudo -H -u yarnaid "$brew" autoupdate start --upgrade --immediate >/dev/null 2>&1 || true
+      fi
+    fi
+  '';
+
   homebrew = {
     enable = true;
     onActivation = {
       autoUpdate = false;
       upgrade = true;
       cleanup = "zap"; # Uninstall all programs not declared
-      # Homebrew 5.x requires --force/--force-cleanup/$HOMEBREW_ASK alongside
-      # `brew bundle --cleanup`, else activation aborts with "Invalid usage".
-      # --force-cleanup restores prior non-interactive zap (cleanup only, no
-      # --overwrite). nix-darwin appends extraFlags after `--cleanup --zap`.
-      extraFlags = [ "--force-cleanup" ];
+      # nix-darwin ≥2026-06-18 emits `brew bundle --zap --force-cleanup` for
+      # cleanup="zap": Homebrew 6 deprecated the old `--cleanup` flag, and
+      # cleanup is now triggered non-interactively by `--force-cleanup` (the
+      # module adds it itself). No extraFlags needed — passing --force-cleanup
+      # here just duplicated it.
     };
     global = {
       brewfile = true;
@@ -165,7 +182,6 @@
     # Add casks (macOS applications)
     casks = [
       "pairpods"
-      "chronosync"
       "boltai"
       "cmux"
       "suspicious-package"
@@ -189,7 +205,6 @@
       "supasidebar" # (SupaSidebar) Arc-like sidebar to save links, files and folders from any browser
       "claude" # (Claude) Anthropic's official Claude AI desktop app
       "claude-code"
-      "syncovery"
       "antinote" # (Antinote) Temporary notes with calculations and extensible features
       "processspy" # (ProcessSpy) Process monitor
       "lasso-app" # (Lasso) Move and resize windows with mouse
