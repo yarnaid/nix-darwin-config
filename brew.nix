@@ -164,7 +164,6 @@
       "wget" # Internet file retriever
       "yarn" # JavaScript package manager
       "yq" # Process YAML, JSON, XML, CSV and properties documents from the CLI
-      "zsh-autocomplete" # Real-time type-ahead completion for Zsh
 
       # other
       "cocoapods" # Dependency manager for Cocoa projects

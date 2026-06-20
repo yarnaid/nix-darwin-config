@@ -186,7 +186,9 @@
       "Bash(sudo mdutil -s /Applications)",
       "Bash(sudo mdutil -i on /Applications)",
       "Bash(sudo mdimport -d2 /Applications/Banish.app)",
-      "Bash(sudo mdutil -avs)"
+      "Bash(sudo mdutil -avs)",
+      "Bash(/opt/homebrew/bin/brew autoupdate *)",
+      "Bash(/opt/homebrew/bin/brew tap *)"
     ],
     "deny": [],
     "ask": [],
