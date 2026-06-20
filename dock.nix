@@ -39,7 +39,8 @@
       { app = "/Applications/Zed.app"; }
       { app = "/Applications/Visual Studio Code.app"; }
       { app = "/Applications/iTerm.app"; }
-      { app = "/Applications/Setapp/Maestri.app"; }
+      { app = "/Applications/supacode.app/"; }
+      # { app = "/Applications/Setapp/Maestri.app"; }
 
       {
         spacer = {

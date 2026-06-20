@@ -188,7 +188,9 @@
       "Bash(sudo mdimport -d2 /Applications/Banish.app)",
       "Bash(sudo mdutil -avs)",
       "Bash(/opt/homebrew/bin/brew autoupdate *)",
-      "Bash(/opt/homebrew/bin/brew tap *)"
+      "Bash(/opt/homebrew/bin/brew tap *)",
+      "Skill(arscontexta:setup)",
+      "Bash(claude plugin *)"
     ],
     "deny": [],
     "ask": [],
