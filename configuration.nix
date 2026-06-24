@@ -13,6 +13,7 @@
     ./dock.nix
     ./logging.nix
     ./raycast.nix
+    ./apps-inventory.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -25,7 +26,19 @@
     cacert
     fish
   ];
-  stylix.fonts.monospace.name = "MonoLisa Nerd Font";
+  stylix.fonts.monospace.name = "MonoLisaCode Nerd Font";
+  stylix.fonts.sansSerif.name = "MonoLisaText Nerd Font";
+  stylix.fonts.serif.name = "MonoLisaText Nerd Font";
+
+  # Install the MonoLisa Nerd Fonts shipped in this repo into /Library/Fonts/Nix
+  # Fonts so every macOS app (and the stylix names above) can resolve them.
+  fonts.packages = [
+    (pkgs.runCommand "monolisa-nerd-fonts" { } ''
+      mkdir -p $out/share/fonts/truetype
+      cp ${./MonoLisaCodeNerdFont-Regular.ttf} $out/share/fonts/truetype/
+      cp ${./MonoLisaTextNerdFont-Regular.ttf} $out/share/fonts/truetype/
+    '')
+  ];
 
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";

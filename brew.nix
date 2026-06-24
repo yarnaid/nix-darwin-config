@@ -46,7 +46,6 @@
     ];
     # Add brews (packages)
     brews = [
-      "supacode"
       "ccusage" # CLI tool for analyzing Claude Code usage from local JSONL files
       "mole" # Deep clean and optimize your Mac
       "carapace" # Multi-shell multi-command argument completer
@@ -181,6 +180,8 @@
     ];
     # Add casks (macOS applications)
     casks = [
+      "supacode"
+      "dayflow"
       "pairpods"
       "boltai"
       "cmux"

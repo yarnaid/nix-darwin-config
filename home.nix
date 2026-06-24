@@ -26,10 +26,12 @@ let
   # flake.nix system = "aarch64-darwin"), so a single arch is enough.
   protonPassCliVersion = "2.1.3";
   protonPassCli = pkgs.runCommand "proton-pass-cli-${protonPassCliVersion}" { } ''
-    install -Dm755 ${pkgs.fetchurl {
-      url = "https://proton.me/download/pass-cli/${protonPassCliVersion}/pass-cli-macos-aarch64";
-      hash = "sha256-pQihDrFG3w5LVbcAqT8MT7cJlhhcfIAgHwD/oyPLcEM=";
-    }} $out/bin/pass-cli
+    install -Dm755 ${
+      pkgs.fetchurl {
+        url = "https://proton.me/download/pass-cli/${protonPassCliVersion}/pass-cli-macos-aarch64";
+        hash = "sha256-pQihDrFG3w5LVbcAqT8MT7cJlhhcfIAgHwD/oyPLcEM=";
+      }
+    } $out/bin/pass-cli
   '';
 in
 {
@@ -219,7 +221,7 @@ in
     -- updates without restarting wezterm.
     local line_time = wezterm.plugin.require 'https://github.com/yarnaid/wez_time_line'
 
-    config.font = wezterm.font 'MonoLisa Nerd Font'
+    config.font = wezterm.font 'MonoLisaCode Nerd Font'
     config.font_size = 13.0
     config.color_scheme = 'Afterglow'
 
