@@ -44,6 +44,14 @@ in
     homeDirectory = "/Users/yarnaid";
     stateVersion = "25.11";
 
+    # MonoLisa Nerd Fonts: paid, kept out of this repo. Symlink the Dropbox
+    # originals into ~/Library/Fonts (out-of-store so the flake stays pure and
+    # nothing is copied into git/nix-store). macOS + stylix resolve them by name.
+    file."Library/Fonts/MonoLisaCodeNerdFont-Regular.ttf".source =
+      config.lib.file.mkOutOfStoreSymlink "/Users/yarnaid/Library/CloudStorage/Dropbox/2-Resources/fonts/MonoLisaCodeNerdFont-Regular.ttf";
+    file."Library/Fonts/MonoLisaTextNerdFont-Regular.ttf".source =
+      config.lib.file.mkOutOfStoreSymlink "/Users/yarnaid/Library/CloudStorage/Dropbox/2-Resources/fonts/MonoLisaTextNerdFont-Regular.ttf";
+
     # Shell-integration tools: binaries via nix (on PATH), but their config +
     # shell init live in chezmoi (~/.zshrc etc.). brew-swap of these is a later
     # follow-up; nix keeps the daily-driver shell reliable through the cutover.

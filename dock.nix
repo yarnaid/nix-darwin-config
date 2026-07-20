@@ -8,11 +8,13 @@
 {
   system.defaults.dock = {
     persistent-apps = [
-      { app = "/Applications/ForkLift.app"; }
+      # { app = "/Applications/ForkLift.app"; }
       # { app = "/Applications/Orion.app"; }
-      { app = "/Applications/Safari.app"; }
-      { app = "/Applications/Google Chrome.app"; }
-      { app = "/Applications/Canary Mail.app"; }
+      { app = "/Applications/Vivaldi.app"; }
+      # { app = "/Applications/Brave Browser.app"; }
+      # { app = "/Applications/Safari.app"; }
+      # { app = "/Applications/Google Chrome.app"; }
+      # { app = "/Applications/Canary Mail.app"; }
       { app = "/Applications/Telegram Desktop.app"; }
 
       {
@@ -34,9 +36,9 @@
       # { app = "/Applications/Warp.app"; }
       # { app = "/Applications/Ghostty.app"; }
       # { app = "/Applications/WezTerm.app"; }
-      { app = "/Applications/Cursor.app"; }
+      # { app = "/Applications/Cursor.app"; }
       # { app = "/Applications/Antigravity.app"; }
-      { app = "/Applications/Zed.app"; }
+      # { app = "/Applications/Zed.app"; }
       { app = "/Applications/Visual Studio Code.app"; }
       { app = "/Applications/iTerm.app"; }
       { app = "/Applications/supacode.app/"; }
@@ -49,7 +51,7 @@
       }
 
       { app = "/System/Applications/System Settings.app"; }
-      { app = "/Applications/ProcessSpy.app"; }
+      # { app = "/Applications/ProcessSpy.app"; }
       { app = "/System/Applications/Utilities/Activity Monitor.app"; }
 
       {
@@ -62,6 +64,9 @@
       { app = "/Applications/Things3.app"; }
       { app = "/Applications/DEVONthink.app"; }
       { app = "/Applications/Tana Outliner.app"; }
+      { app = "/Applications/Obsidian.app"; }
+      { app = "/Applications/Proton Pass.app"; }
+      { app = "/Applications/NetNewsWire.app"; }
       # { app = "/Applications/Drafts.app"; }
       # { app = "/System/Applications/iPhone Mirroring.app"; }
       # { app = "/Applications/Spotify.app"; }

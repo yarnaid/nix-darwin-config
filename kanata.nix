@@ -10,7 +10,7 @@
           "--cfg"
           "/Users/yarnaid/.config/kanata.kbd"
         ];
-        RunAtLoad = true;
+        RunAtLoad = false;
         StandardErrorPath = "/tmp/local.job.stderr";
         StandardOutPath = "/tmp/local.job.stdout";
       };

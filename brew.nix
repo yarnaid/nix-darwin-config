@@ -22,6 +22,13 @@
     onActivation = {
       autoUpdate = false;
       upgrade = true;
+      # Homebrew 6.0 turned HOMEBREW_REQUIRE_TAP_TRUST on by default, aborting the
+      # activation `brew bundle` on any third-party tap. The bundle runs under
+      # `sudo … env …` (only PATH preserved), so environment.variables can't reach
+      # it — extraEnv injects the opt-out straight onto the command line.
+      # ponytail: blanket opt-out; upstream may drop this var — switch to per-tap
+      # `{ name = …; trusted = true; }` if it disappears.
+      extraEnv.HOMEBREW_NO_REQUIRE_TAP_TRUST = "1";
       cleanup = "zap"; # Uninstall all programs not declared
       # nix-darwin ≥2026-06-18 emits `brew bundle --zap --force-cleanup` for
       # cleanup="zap": Homebrew 6 deprecated the old `--cleanup` flag, and
@@ -35,6 +42,7 @@
     };
     # Add taps (repositories)
     taps = [
+      "wunderlandmedia/tap"
       "houmain/tap"
       "acarl005/formulas"
       "domt4/autoupdate"
@@ -60,7 +68,6 @@
       "subversion" # Version control system designed to be a better CVS
       "rustup" # Rust toolchain installer
       "codecrafters-io/tap/codecrafters" # CodeCrafters CLI
-      "exercism" # Command-line tool to interact with exercism.io
       "mise" # Polyglot runtime manager (asdf rust clone)
       "swiftlint" # Tool to enforce Swift style and conventions
       "bat" # Clone of cat(1) with syntax highlighting and Git integration
@@ -68,7 +75,7 @@
       "eza" # Modern, maintained replacement for ls
       "ranger" # File browser
       "yazi" # Blazing fast terminal file manager written in Rust, based on async I/O
-      "zellij" # Pluggable terminal workspace, with terminal multiplexer as the base feature
+      # "zellij" # Pluggable terminal workspace, with terminal multiplexer as the base feature
       "nvm" # Manage multiple Node.js versions
       "pnpm" # Fast, disk space efficient package manager
       "podman" # Tool for managing OCI containers and pods — dep of: podman-compose
@@ -115,7 +122,7 @@
       "imagemagick" # Tools and libraries to manipulate images in select formats — dep of: vips
       "iperf3" # Update of iperf: measures TCP, UDP, and SCTP bandwidth
       "jq" # Lightweight and flexible command-line JSON processor
-      "kanata" # Cross-platform software keyboard remapper for Linux, macOS and Windows
+      # "kanata" # Cross-platform software keyboard remapper for Linux, macOS and Windows
       "lame" # High quality MPEG Audio Layer III (MP3) encoder — dep of: ffmpeg, ffmpegthumbnailer, libsndfile, mpv, rubberband +1 more
       "lazygit" # Simple terminal UI for git commands
       "libexif" # EXIF parsing library — dep of: vips
@@ -180,49 +187,41 @@
     ];
     # Add casks (macOS applications)
     casks = [
+      "brave-browser"
+      "netnewswire"
       "supacode"
       "dayflow"
       "pairpods"
       "boltai"
-      "cmux"
-      "suspicious-package"
-      "apparency"
       "aldente" # (AlDente) Menu bar tool to limit maximum charging percentage
-      # "app-tamer" # (AppTamer) CPU management application
       "ssh-config-editor" # (SSH Config Editor) Tool for managing the OpenSSH ssh client configuration file
       "macfuse" # (macFUSE) File system integration
       "typora" # (Typora) Configurable document editor that supports Markdown
-      "qlstephen" # (QLStephen) Quick Look plugin for plaintext files without an extension
       "devknife" # (DevKnife) Collection of handy developer tools
       "little-snitch" # (Little Snitch) Host-based application firewall
-      "downie" # (Downie) Downloads videos from different websites
       "tiny-shield" # (Tiny Shield) Control and monitor network connections
       "macwhisper" # (MacWhisper) Speech recognition tool
       "jurplel/tap/instant-space-switcher" # (Instant Space Switcher) Fast macOS Space switching
 
       "libreoffice" # (LibreOffice) Free cross-platform office suite, fresh version
-      "keycastr" # (KeyCastr) Open-source keystroke visualiser
-      "spotify" # (Spotify) Music streaming service
-      "supasidebar" # (SupaSidebar) Arc-like sidebar to save links, files and folders from any browser
+      # "keycastr" # (KeyCastr) Open-source keystroke visualiser
       "claude" # (Claude) Anthropic's official Claude AI desktop app
       "claude-code"
       "antinote" # (Antinote) Temporary notes with calculations and extensible features
       "processspy" # (ProcessSpy) Process monitor
       "lasso-app" # (Lasso) Move and resize windows with mouse
       "soundsource" # (SoundSource) Sound and audio controller
-      "rectangle-pro" # (Rectangle Pro) Window snapping tool
+      # "rectangle-pro" # (Rectangle Pro) Window snapping tool
       "adguard" # (AdGuard) Stand alone ad blocker
       "codex" # (Codex) OpenAI's coding agent that runs in your terminal
       "basictex" # (BasicTeX) Compact TeX distribution as alternative to the full TeX Live / MacTeX
       "orbstack" # (OrbStack) Replacement for Docker Desktop
-      "zen" # (Zen Browser) Gecko based web browser
       "mouseless" # (Mouseless) Mouse control with the keyboard
 
       "istat-menus" # (iStats Menus) System monitoring app
       "reader" # (Readwise Reader) Save articles to read, highlight key content, and organise notes for review
       "bleunlock" # (BLEUnlock) Lock/unlock Apple computers using the proximity of a bluetooth low energy device
       "istherenet" # (IsThereNet) Your internet connection status at a glance
-      "powerflow" # (Powerflow) macOS App for monitoring power usage and charging status
       "betterdisplay" # (BetterDisplay) Display management tool
       "coconutbattery" # (coconutBattery) Tool to show live information about the batteries in various devices
       "homerow" # (Homerow) Keyboard shortcuts for every button on your screen
@@ -232,7 +231,6 @@
       "betterzip" # (BetterZip) Utility to create and modify archives
       "arq" # (Arq) Multi-cloud backup application
       "zed" # (Zed) Multiplayer code editor
-      "anki" # (Anki) Memory training application
       "script-debugger" # (Script Debugger) Integrated development environment focused entirely on AppleScript
       "dropbox" # (Dropbox) Client for the Dropbox cloud storage service
       "forklift" # (ForkLift) Finder replacement and FTP, SFTP, WebDAV and Amazon s3 client
@@ -252,32 +250,30 @@
       "dash" # (Dash) API documentation browser and code snippet manager
       "popclip" # (PopClip) Used to access context-specific actions when text is selected
       "devutils" # (DevUtils) All-in-one toolbox for developers
-      "orion" # (Orion Browser) WebKit based web browser
       "telegram-desktop" # (Telegram Desktop) Desktop client for Telegram messenger
+      "telegram" # (Telegram Desktop) Desktop client for Telegram messenger
       "podman-desktop" # (Podman Desktop) Browse, manage, inspect containers and images
       "lm-studio" # (LM Studio) Discover, download, and run local LLMs
       "ollama-app" # (Ollama) Get up and running with large language models locally
       "balenaetcher" # (Etcher) Tool to flash OS images to SD cards & USB drives
-      "fsmonitor" # (FSMonitor) Visualize filesystem changes in realtime
-      "folx" # (Folx) Download manager with a torrent client
+      # "fsmonitor" # (FSMonitor) Visualize filesystem changes in realtime
       "dbeaver-community" # (DBeaver Community Edition) Universal database tool and SQL client
       "cursor" # (Cursor) Write, edit, and chat about your code with AI
-      "figma" # (Figma) Collaborative team software
       "karabiner-elements" # (Karabiner Elements) Keyboard customiser
       "git-credential-manager" # (Git Credential Manager) Cross-platform Git credential storage for multiple hosting providers
       "google-chrome" # (Google Chrome) Web browser
       "iina" # (IINA) Free and open-source media player
       "iterm2" # (iTerm2) Terminal emulator as alternative to Apple's Terminal app
       "itermai" # (iTerm2 AI Plugin) Enable generative AI features in iTerm2
-      "macpilot" # (MacPilot) Graphical user interface for the command terminal
+      # "macpilot" # (MacPilot) Graphical user interface for the command terminal
       "mediainfo" # (MediaInfo) Display technical and tag data for video and audio files
       "mos" # (Mos) Smooths scrolling and set mouse scroll directions independently
       "postman" # (Postman) Collaboration platform for API development
       "sf-symbols" # (SF Symbols) Tool that provides consistent, highly configurable symbols for apps
       "sublime-text" # (Sublime Text) Text editor for code, markup and prose
-      "syntax-highlight" # (Syntax Highlight) Quicklook extension for source files
+      # "syntax-highlight" # (Syntax Highlight) Quicklook extension for source files
       "visual-studio-code" # (Microsoft Visual Studio Code, VS Code) Open-source code editor
-      "warp" # (Warp) Rust-based terminal
+      # "warp" # (Warp) Rust-based terminal
       "wezterm" # (WezTerm) GPU-accelerated cross-platform terminal emulator and multiplexer
       "zoom" # (Zoom) Video communication and virtual meeting platform
     ];

@@ -19,7 +19,7 @@ in
         "/Users/yarnaid/projects"
         "/Users/yarnaid/projects/adnoc"
       ];
-      RunAtLoad = true; # актуализация после ребута
+      RunAtLoad = false; # актуализация после ребута
       # launchd's default PATH lacks /opt/homebrew/bin (jq, from brew.nix).
       EnvironmentVariables.PATH = "/opt/homebrew/bin:/usr/bin:/bin";
       StandardOutPath = "/tmp/org.nixos.regen-project-dropdown.stdout";
