@@ -53,11 +53,12 @@
       "nikitabobko/tap"
       "jurplel/tap"
       "FelixKratz/formulae"
+      "felixkratz/formulae"
     ];
     # Add brews (packages)
     brews = [
       "tree-sitter-cli"
-      "atop"
+      # "atop"
       "ccusage" # CLI tool for analyzing Claude Code usage from local JSONL files
       "mole" # Deep clean and optimize your Mac
       "carapace" # Multi-shell multi-command argument completer
@@ -186,7 +187,7 @@
       "bottom" # `btm` — современный TUI-монитор, UX лучше btop на macOS
       "bandwhich" # network usage per-process (нужен sudo)
       "glab" # GitLab CLI (для EPAM GitLab)
-      "anomalyco/tap/opencode" # AI coding agent, built for the terminal
+      # "anomalyco/tap/opencode" # AI coding agent, built for the terminal
 
     ];
     # Add casks (macOS applications)
@@ -194,7 +195,7 @@
       "vorssaint"
       "hrm"
       "aerospace"
-      "borders"
+      # "borders"
       "alfred"
       "keyboard-maestro"
       # "brave-browser"

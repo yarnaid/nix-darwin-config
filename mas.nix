@@ -57,7 +57,7 @@
     "Easy CSV Editor" = 1171346381;
 
     # Browser Extensions & Web Tools
-    "Ghostery AdBlocker for Privacy" = 6504861501;
+    # "Ghostery AdBlocker for Privacy" = 6504861501;
     "Vimlike" = 1584519802;
     "StopTheMadness Pro" = 6471380298;
     "Kagi for Safari" = 1622835804;
@@ -65,7 +65,7 @@
     # "Karma" = 1481191441;
     "Fakespot" = 1592541616;
     "Hush" = 1544743900;
-    "Banish" = 1639049780;
+    # "Banish" = 1639049780;
     "Keyword Search" = 1558453954;
     "Proton Pass for Safari" = 6502835663;
     "SponsorBlock" = 1573461917;
@@ -85,7 +85,7 @@
 
     # Weather & Lifestyle
     "flowy" = 6748351905;
-    "Save to Reader" = 1640236961;
+    # "Save to Reader" = 1640236961;
     # "iFinance 5" = 1500241909;
     # "MacFamilyTree 11" = 6480510488;
   };
