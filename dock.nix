@@ -67,6 +67,11 @@
       { app = "/Applications/Obsidian.app"; }
       { app = "/Applications/Proton Pass.app"; }
       { app = "/Applications/NetNewsWire.app"; }
+
+      # Safari Web App for Home Assistant (http://192.168.20.32:8123).
+      # Created via Safari "Add to Dock" — the bundle is NOT reproduced by nix,
+      # so on a fresh machine re-create it before this entry resolves.
+      { app = "/Users/yarnaid/Applications/Home Assistant.app"; }
       # { app = "/Applications/Drafts.app"; }
       # { app = "/System/Applications/iPhone Mirroring.app"; }
       # { app = "/Applications/Spotify.app"; }
