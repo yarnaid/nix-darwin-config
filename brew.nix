@@ -42,6 +42,7 @@
     };
     # Add taps (repositories)
     taps = [
+      "wontaeyang/hrm"
       "wunderlandmedia/tap"
       "houmain/tap"
       "acarl005/formulas"
@@ -51,9 +52,12 @@
       "jstkdng/programs"
       "nikitabobko/tap"
       "jurplel/tap"
+      "FelixKratz/formulae"
     ];
     # Add brews (packages)
     brews = [
+      "tree-sitter-cli"
+      "atop"
       "ccusage" # CLI tool for analyzing Claude Code usage from local JSONL files
       "mole" # Deep clean and optimize your Mac
       "carapace" # Multi-shell multi-command argument completer
@@ -187,7 +191,13 @@
     ];
     # Add casks (macOS applications)
     casks = [
-      "brave-browser"
+      "vorssaint"
+      "hrm"
+      "aerospace"
+      "borders"
+      "alfred"
+      "keyboard-maestro"
+      # "brave-browser"
       "netnewswire"
       "supacode"
       "dayflow"
@@ -206,14 +216,14 @@
       "libreoffice" # (LibreOffice) Free cross-platform office suite, fresh version
       # "keycastr" # (KeyCastr) Open-source keystroke visualiser
       "claude" # (Claude) Anthropic's official Claude AI desktop app
-      "claude-code"
+      # "claude-code"
       "antinote" # (Antinote) Temporary notes with calculations and extensible features
       "processspy" # (ProcessSpy) Process monitor
       "lasso-app" # (Lasso) Move and resize windows with mouse
       "soundsource" # (SoundSource) Sound and audio controller
       # "rectangle-pro" # (Rectangle Pro) Window snapping tool
       "adguard" # (AdGuard) Stand alone ad blocker
-      "codex" # (Codex) OpenAI's coding agent that runs in your terminal
+      # "codex" # (Codex) OpenAI's coding agent that runs in your terminal
       "basictex" # (BasicTeX) Compact TeX distribution as alternative to the full TeX Live / MacTeX
       "orbstack" # (OrbStack) Replacement for Docker Desktop
       "mouseless" # (Mouseless) Mouse control with the keyboard

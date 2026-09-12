@@ -1,6 +1,6 @@
 # Installed applications — inventory snapshot
 
-_Auto-generated on each `darwin-rebuild switch` (2026-07-20 11:51 +04 on EPGETBIW0286). Do not edit by hand — see apps-inventory.nix._
+_Auto-generated on each `darwin-rebuild switch` (2026-07-20 12:55 +04 on EPGETBIW0286). Do not edit by hand — see apps-inventory.nix._
 
 > **Removal safety:** `homebrew.onActivation.cleanup = "zap"` only uninstalls **Homebrew** casks/formulae/taps not declared in `brew.nix`. It runs `brew bundle cleanup`, which **never** calls `mas uninstall` and never touches non-Homebrew `.app` bundles. MAS apps and manually-downloaded apps are not at risk — only undeclared *brew* packages are.
 

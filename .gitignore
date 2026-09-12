@@ -1,3 +1,7 @@
 result
+.DS_Store
 settings.local.json
+
+# Machine-local AeroSpace config, generated from aerospace.nix.
+aerospace.toml
 

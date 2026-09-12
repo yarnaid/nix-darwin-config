@@ -10,9 +10,9 @@
     persistent-apps = [
       # { app = "/Applications/ForkLift.app"; }
       # { app = "/Applications/Orion.app"; }
-      { app = "/Applications/Vivaldi.app"; }
+      # { app = "/Applications/Vivaldi.app"; }
       # { app = "/Applications/Brave Browser.app"; }
-      # { app = "/Applications/Safari.app"; }
+      { app = "/Applications/Safari.app"; }
       # { app = "/Applications/Google Chrome.app"; }
       # { app = "/Applications/Canary Mail.app"; }
       { app = "/Applications/Telegram Desktop.app"; }
