@@ -44,13 +44,28 @@ in
     homeDirectory = "/Users/yarnaid";
     stateVersion = "25.11";
 
-    # MonoLisa Nerd Fonts: paid, kept out of this repo. Symlink the Dropbox
-    # originals into ~/Library/Fonts (out-of-store so the flake stays pure and
-    # nothing is copied into git/nix-store). macOS + stylix resolve them by name.
-    file."Library/Fonts/MonoLisaCodeNerdFont-Regular.ttf".source =
-      config.lib.file.mkOutOfStoreSymlink "/Users/yarnaid/Library/CloudStorage/Dropbox/2-Resources/fonts/MonoLisaCodeNerdFont-Regular.ttf";
-    file."Library/Fonts/MonoLisaTextNerdFont-Regular.ttf".source =
-      config.lib.file.mkOutOfStoreSymlink "/Users/yarnaid/Library/CloudStorage/Dropbox/2-Resources/fonts/MonoLisaTextNerdFont-Regular.ttf";
+    # Dropbox fonts (MonoLisa NerdFonts: paid, kept out of this repo and the
+    # nix store): every .ttf/.otf in the folder is mirrored into
+    # ~/Library/Fonts/Dropbox on each switch; fonts removed from it are
+    # uninstalled. Copied, not symlinked — macOS ignores symlinked fonts (see
+    # home-manager modules/targets/darwin/fonts.nix). Read at activation, not
+    # eval: pure flakes can't readDir outside the repo. Missing/empty folder
+    # (Dropbox not synced) or a stuck download warns and keeps the installed set.
+    activation.installDropboxFonts =
+      let
+        src = lib.escapeShellArg "${config.home.homeDirectory}/Library/CloudStorage/Dropbox/2-Resources/fonts/output";
+        dst = lib.escapeShellArg "${config.home.homeDirectory}/Library/Fonts/Dropbox";
+      in
+      lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        if [[ -z "$(find -L ${src} -maxdepth 1 -type f \( -iname '*.ttf' -o -iname '*.otf' \) -print -quit 2>/dev/null)" ]]; then
+          warnEcho "No fonts in "${src}"; keeping "${dst}" as is"
+        else
+          run mkdir -p ${dst}
+          run timeout 300 ${pkgs.rsync}/bin/rsync $VERBOSE_ARG -acL --chmod=u+w --delete \
+            --include='*.[oOtT][tT][fF]' --exclude='*' ${src}/ ${dst}/ \
+            || warnEcho "Font sync "${src}" -> "${dst}" failed; keeping installed set"
+        fi
+      '';
 
     # Shell-integration tools: binaries via nix (on PATH), but their config +
     # shell init live in chezmoi (~/.zshrc etc.). brew-swap of these is a later
@@ -229,7 +244,7 @@ in
     -- updates without restarting wezterm.
     local line_time = wezterm.plugin.require 'https://github.com/yarnaid/wez_time_line'
 
-    config.font = wezterm.font 'MonoLisaCode Nerd Font'
+    config.font = wezterm.font 'MonoLisaCode NerdFont'
     config.font_size = 13.0
     config.color_scheme = 'Afterglow'
 
@@ -346,7 +361,7 @@ in
   #   enable = true;
   #   # theme = "tokyo-night";
   #   settings = {
-  #     font-family = "MonoLiza Nerd Font";
+  #     font-family = "MonoLiza NerdFont";
   #     # font-family = Monospace
   #     background-opacity = 0.8;
   #     background-blur = true;

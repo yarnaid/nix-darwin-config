@@ -26,13 +26,13 @@
     cacert
     fish
   ];
-  stylix.fonts.monospace.name = "MonoLisaCode Nerd Font";
-  stylix.fonts.sansSerif.name = "MonoLisaText Nerd Font";
-  stylix.fonts.serif.name = "MonoLisaText Nerd Font";
+  stylix.fonts.monospace.name = "MonoLisaCode NerdFont";
+  stylix.fonts.sansSerif.name = "MonoLisaText NerdFont";
+  stylix.fonts.serif.name = "MonoLisaText NerdFont";
 
-  # MonoLisa Nerd Fonts are paid and must not live in this repo. They are
-  # symlinked from their Dropbox originals into ~/Library/Fonts by home.nix
-  # (config.lib.file.mkOutOfStoreSymlink) — see home.nix.
+  # MonoLisa NerdFonts are paid and must not live in this repo. home.nix
+  # (home.activation.installDropboxFonts) copies them from Dropbox into
+  # ~/Library/Fonts/Dropbox on every switch.
 
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
