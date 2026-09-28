@@ -56,6 +56,7 @@
     ];
     # Add brews (packages)
     brews = [
+      "redis"
       "tree-sitter-cli"
       # "atop"
       "ccusage" # CLI tool for analyzing Claude Code usage from local JSONL files
