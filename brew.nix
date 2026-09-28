@@ -52,7 +52,6 @@
       "jstkdng/programs"
       "nikitabobko/tap"
       "jurplel/tap"
-      "FelixKratz/formulae"
       "felixkratz/formulae"
     ];
     # Add brews (packages)
@@ -187,6 +186,7 @@
       "bottom" # `btm` — современный TUI-монитор, UX лучше btop на macOS
       "bandwhich" # network usage per-process (нужен sudo)
       "glab" # GitLab CLI (для EPAM GitLab)
+      "felixkratz/formulae/borders" # JankyBorders — рамки активного окна (formula, не cask)
       # "anomalyco/tap/opencode" # AI coding agent, built for the terminal
 
     ];
@@ -195,7 +195,6 @@
       "vorssaint"
       "hrm"
       "aerospace"
-      # "borders"
       "alfred"
       "keyboard-maestro"
       # "brave-browser"
