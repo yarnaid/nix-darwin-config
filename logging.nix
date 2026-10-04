@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 {
   # Reduce unified-logging chattiness on subsystems that flood Persist
   # without forensic value. Identified May 2026 via `log show` sampling
@@ -19,7 +19,10 @@
   #
   # `default` mode = only default/error/fault levels; Info/Debug are
   # captured in memory only and not persisted to disk.
-  system.activationScripts.tameUnifiedLog.text = ''
+  #
+  # Must be postActivation: custom-named activationScripts are silently dropped
+  # (this ran as `tameUnifiedLog` May–Oct 2026 and never executed).
+  system.activationScripts.postActivation.text = lib.mkAfter ''
     for sub in \
       com.apple.runningboard \
       com.apple.WebKit \
