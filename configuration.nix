@@ -111,7 +111,7 @@
   system.defaults.NSGlobalDomain.NSAutomaticWindowAnimationsEnabled = false;
   system.defaults.NSGlobalDomain.NSWindowShouldDragOnGesture = true;
   system.defaults.NSGlobalDomain._HIHideMenuBar = false;
-  system.defaults.NSGlobalDomain."com.apple.keyboard.fnState" = false;
+  system.defaults.NSGlobalDomain."com.apple.keyboard.fnState" = true;
   system.defaults.NSGlobalDomain."com.apple.mouse.tapBehavior" = 1;
   system.defaults.SoftwareUpdate.AutomaticallyInstallMacOSUpdates = false;
   system.defaults.WindowManager.AppWindowGroupingBehavior = false;
