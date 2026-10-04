@@ -17,11 +17,12 @@
   #   com.sentinelone.agent - MDM-managed (Persist:Info, Privacy:Public).
   #     Change only via corp IT; local edits get overwritten by profile.
   #
-  # `default` mode = only default/error/fault levels; Info/Debug are
-  # captured in memory only and not persisted to disk.
+  # `level:default` = only default/error/fault are emitted; Info/Debug are
+  # dropped entirely (not even in memory). `persist:default` = only those reach disk.
   #
-  # Must be postActivation: custom-named activationScripts are silently dropped
-  # (this ran as `tameUnifiedLog` May–Oct 2026 and never executed).
+  # Must be postActivation: custom-named activationScripts are silently dropped.
+  # It was defined as `tameUnifiedLog` (May–Oct 2026) and never ran; the settings
+  # were live only because they had been applied by hand on 2026-05-23.
   system.activationScripts.postActivation.text = lib.mkAfter ''
     for sub in \
       com.apple.runningboard \
@@ -31,7 +32,8 @@
       com.apple.network \
       com.apple.CFNetwork \
       com.apple.xpc; do
-      /usr/bin/log config --subsystem "$sub" --mode 'level:default,persist:default' >/dev/null 2>&1 || true
+      /usr/bin/log config --subsystem "$sub" --mode 'level:default,persist:default' >/dev/null \
+        || echo "[logging] log config failed for $sub" >&2
     done
 
     # Drop empty diagnosticd filter override left over from a prior MDM payload
