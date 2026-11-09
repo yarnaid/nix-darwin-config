@@ -13,6 +13,7 @@
       # { app = "/Applications/Vivaldi.app"; }
       # { app = "/Applications/Brave Browser.app"; }
       { app = "/Applications/Safari.app"; }
+      { app = "/Applications/Proton Mail.app"; }
       # { app = "/Applications/Google Chrome.app"; }
       # { app = "/Applications/Canary Mail.app"; }
       { app = "/Applications/Telegram Desktop.app"; }
@@ -38,7 +39,7 @@
       # { app = "/Applications/WezTerm.app"; }
       # { app = "/Applications/Cursor.app"; }
       # { app = "/Applications/Antigravity.app"; }
-      # { app = "/Applications/Zed.app"; }
+      { app = "/Applications/Zed.app"; }
       { app = "/Applications/Visual Studio Code.app"; }
       { app = "/Applications/iTerm.app"; }
       { app = "/Applications/supacode.app/"; }
@@ -67,6 +68,7 @@
       { app = "/Applications/Obsidian.app"; }
       { app = "/Applications/Proton Pass.app"; }
       { app = "/Applications/NetNewsWire.app"; }
+      { app = "/Applications/Clop.app"; }
 
       # Safari Web App for Home Assistant (http://192.168.20.32:8123).
       # Created via Safari "Add to Dock" — the bundle is NOT reproduced by nix,

@@ -42,6 +42,7 @@
     };
     # Add taps (repositories)
     taps = [
+      "lihaoyun6/tap"
       "wontaeyang/hrm"
       "wunderlandmedia/tap"
       "houmain/tap"
@@ -53,9 +54,12 @@
       "nikitabobko/tap"
       "jurplel/tap"
       "felixkratz/formulae"
+      "rana-gmbh/netfluss"
+      # "YT2627801900101023"
     ];
     # Add brews (packages)
     brews = [
+      "golangci-lint"
       "redis"
       "tree-sitter-cli"
       # "atop"
@@ -193,6 +197,13 @@
     ];
     # Add casks (macOS applications)
     casks = [
+      "zen"
+      "mist"
+      "steam"
+      "netfluss"
+      "devtunnel"
+
+      "lihaoyun6/tap/airbattery"
       "vorssaint"
       "hrm"
       "aerospace"

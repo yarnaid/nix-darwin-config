@@ -1,66 +1,66 @@
 # Installed applications — inventory snapshot
 
-_Auto-generated on each `darwin-rebuild switch` (2026-09-28 20:59 +04 on EPGETBIW0286). Do not edit by hand — see apps-inventory.nix._
+_Auto-generated on each `darwin-rebuild switch` (2026-11-09 14:58 +04 on EPGETBIW0286). Do not edit by hand — see apps-inventory.nix._
 
 > **Removal safety:** `homebrew.onActivation.cleanup = "zap"` only uninstalls **Homebrew** casks/formulae/taps not declared in `brew.nix`. It runs `brew bundle cleanup`, which **never** calls `mas uninstall` and never touches non-Homebrew `.app` bundles. MAS apps and manually-downloaded apps are not at risk — only undeclared *brew* packages are.
 
-## Mac App Store (45)
+## Mac App Store (44)
 
 Installed via MAS. Not removed by `zap`. (id 0 = ad-hoc/non-store bundle.)
 ```
  937984704  Amphetamine                 (5.3.2)
-1037126344  Apple Configurator          (2.20)
+1037126344  Apple Configurator          (2.21)
 1548711022  Barbee                      (5.0)
  425264550  Blackmagic Disk Speed Test  (3.4.3)
          0  Click                       (1.0)
- 876540291  Copy 'Em                    (3.3.0)
-1171346381  Easy CSV Editor             (2.75)
+ 876540291  Copy 'Em                    (3.3.2)
+1171346381  Easy CSV Editor             (2.77)
 1592541616  Fakespot                    (1.1.6)
 6772763170  FlagKBoard                  (1.1.5)
-6753110395  Folder Quick Look           (1.8)
+6753110395  Folder Quick Look           (2.1)
 1544743900  Hush                        (1.0.19)
-1672777754  ImprovedTube                (4.1321.0)
+1672777754  ImprovedTube                (4.2027.0)
 6758070650  Itsyhome                    (3.2.0)
 1458969831  JSON Peep                   (2.2)
 1622835804  Kagi for Safari             (2.2.3)
-1558453954  Keyword Search              (2.2)
+1558453954  Keyword Search              (3.0)
 1455214828  MQTT Explorer               (0.3.5)
- 462058435  Microsoft Excel             (16.113.2)
- 985367838  Microsoft Outlook           (16.113.2)
- 462062816  Microsoft PowerPoint        (16.113.2)
- 462054704  Microsoft Word              (16.113.2)
- 823766827  OneDrive                    (26.163.0823)
+ 462058435  Microsoft Excel             (16.114.4)
+ 985367838  Microsoft Outlook           (16.114.4)
+ 462062816  Microsoft PowerPoint        (16.114.4)
+ 462054704  Microsoft Word              (16.114.4)
+ 823766827  OneDrive                    (26.189.0928)
 1554235898  Peek                        (2.6.4)
 1289583905  Pixelmator Pro              (3.8)
-6502835663  Proton Pass for Safari      (1.40.2)
+6502835663  Proton Pass for Safari      (1.43.0)
 6738274497  Raycast Companion           (1.2.2)
-6444322545  SingleFile                  (1.26.5)
-1508732804  Soulver                     (4.0.4)
-1508732804  Soulver 3                   (4.0.2)
-1153157709  Speedtest                   (1.28)
+6444322545  SingleFile                  (1.36.0)
+1508732804  Soulver                     (4.0.5)
+1153157709  Speedtest                   (1.29)
 1573461917  SponsorBlock                (6.1.6)
-6471380298  StopTheMadness Pro          (28.0)
+6471380298  StopTheMadness Pro          (28.2)
 6743316600  Subscription Day            (2.2.7)
-1568262835  Super Agent                 (4.6.5)
-1475387142  Tailscale                   (1.102.3)
- 904280696  Things                      (3.24)
-1637438059  UnTrap                      (110)
+1568262835  Super Agent                 (4.7.4)
+1475387142  Tailscale                   (1.104.4)
+ 904280696  Things                      (3.24.2)
+1637438059  UnTrap                      (113)
 1588368612  Video Speed Controller      (2.0)
-1584519802  Vimlike                     (1.5.8)
- 494803304  WiFi Explorer               (3.6.9)
+1584519802  Vimlike                     (2.0.2)
+ 494803304  WiFi Explorer               (3.6.10)
  525912054  WiFi Signal                 (4.5.3)
-1295203466  Windows App                 (11.4.2)
- 497799835  Xcode                       (27.0)
+1295203466  Windows App                 (11.4.4)
+ 497799835  Xcode                       (27.2)
 1415107621  YamaCast                    (2.0.7)
-6748351905  flowy                       (2.0.1)
+6748351905  flowy                       (2.0.2)
 ```
 
-## Homebrew casks (83)
+## Homebrew casks (89)
 
 GUI apps managed declaratively in `brew.nix`.
 ```
 adguard
 aerospace
+airbattery
 airbuddy
 aldente
 alfred
@@ -84,6 +84,7 @@ dash
 dayflow
 dbeaver-community
 devknife
+devtunnel
 devutils
 dropbox
 forklift
@@ -108,8 +109,10 @@ lm-studio
 macfuse
 macwhisper
 mediainfo
+mist
 mos
 mouseless
+netfluss
 netnewswire
 ollama-app
 orbstack
@@ -130,6 +133,7 @@ script-debugger
 sf-symbols
 soundsource
 ssh-config-editor
+steam
 sublime-text
 supacode
 telegram
@@ -141,10 +145,11 @@ vivaldi
 vorssaint
 wezterm
 zed
+zen
 zoom
 ```
 
-## Homebrew formulae / CLI (286)
+## Homebrew formulae / CLI (294)
 
 ```
 abseil
@@ -156,6 +161,7 @@ apr-util
 bandwhich
 bat
 bgrep
+borders
 bottom
 brotli
 btop
@@ -223,6 +229,7 @@ gnu-tar
 gnupg
 gnutls
 go
+golangci-lint
 gpgme
 gpgmepp
 graphicsmagick
@@ -238,8 +245,8 @@ highlight
 highway
 htop
 hyperfine
-icu4c@77
 icu4c@78
+icu4c@79
 imagemagick
 imath
 iperf3
@@ -252,6 +259,7 @@ jpeg-xl
 jq
 json-c
 just
+krunkit
 lame
 lazygit
 leptonica
@@ -264,6 +272,7 @@ libbluray
 libdatrie
 libde265
 libdeflate
+libepoxy
 libevent
 libexif
 libffi
@@ -273,6 +282,8 @@ libgpg-error
 libheif
 libidn2
 libimagequant
+libkrun
+libkrunfw
 libksba
 libmpc
 libnghttp2
@@ -377,8 +388,10 @@ python-lsp-server
 python-setuptools
 python@3.13
 python@3.14
+python@3.15
 ranger
 readline
+redis
 ripgrep
 ripgrep-all
 rsync
@@ -435,7 +448,7 @@ zimg
 zstd
 ```
 
-## All /Applications bundles (163)
+## All /Applications bundles (173)
 
 Every GUI app present, including manual downloads (GitHub / vendor sites) and other stores (Setapp, Paddle). Cross-reference the MAS and cask lists above to see what is managed; the remainder is installed by hand.
 ```
@@ -443,6 +456,7 @@ Every GUI app present, including manual downloads (GitHub / vendor sites) and ot
 AdGuard VPN
 Adguard
 AeroSpace
+AirBattery
 AirBuddy
 AlDente
 Alfred 5
@@ -453,6 +467,7 @@ Anytype
 Apple Configurator
 Aqua Voice
 Arq
+Audeze
 BLEUnlock
 Barbee
 Battle.net
@@ -471,6 +486,8 @@ Company Portal
 Copy 'Em
 Cursor
 DBeaver
+DEVONagent
+DEVONsphere Express
 DEVONthink
 Dash
 DevKnife
@@ -507,6 +524,7 @@ LaunchControl
 LazyTyper
 LibreOffice
 LibreWolf
+LightCraft
 Little Snitch
 Looq
 MQTT Explorer
@@ -517,8 +535,10 @@ Microsoft Outlook
 Microsoft PowerPoint
 Microsoft Teams
 Microsoft Word
+Mist
 Mos
 Mouseless
+NetFluss
 NetNewsWire
 Obsidian
 Ollama
@@ -527,6 +547,7 @@ OpenWhispr
 OrbStack
 PairPods
 Parallels Desktop
+PastePal
 Pearcleaner
 Peek
 Pipiri
@@ -539,6 +560,7 @@ Postman
 ProcessSpy
 Proton Mail
 Proton Mail Bridge
+Proton Mail Uninstaller
 Proton Pass
 Proton Pass for Safari
 ProtonVPN
@@ -557,10 +579,10 @@ Servo
 SingleFile
 Soniox
 Soulver
-Soulver 3
 SoundSource
 Speedtest
 SponsorBlock
+Steam
 StopTheMadness Pro
 Sublime Text
 Subscription Day
@@ -570,7 +592,6 @@ Supercharge
 TIDAL
 Tailscale
 Tana Outliner
-Tangrid
 Telegram
 Telegram Desktop
 Things3
@@ -593,6 +614,7 @@ WindscribeInstaller
 Xcode
 YamaCast
 Zed
+Zen
 balenaEtcher
 coconutBattery
 flowy
@@ -601,5 +623,6 @@ iTerm
 iTermAI
 iTermBrowserPlugin
 supacode
+supasidebar
 zoom.us
 ```

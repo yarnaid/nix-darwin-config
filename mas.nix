@@ -11,7 +11,7 @@
     # "Pages" = 409201541;
     # "Numbers" = 409203825;
     # "Keynote" = 409183694;
-    "Soulver 3" = 1508732804;
+    "Soulver" = 1508732804;
     # "LiquidText" = 922765270;
     "Subscription Day" = 6743316600;
     # Not available in current App Store region ("No apps found in the App
